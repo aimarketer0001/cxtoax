@@ -27,7 +27,7 @@ export default function RecommendationCard({
       <p style={{ marginBottom: 4 }}>{rec.reason}</p>
       {rec.expectedEffect ? (
         <p className="muted" style={{ margin: "0 0 12px", fontSize: "var(--font-caption)" }}>
-          기대 효과: {rec.expectedEffect}
+          교육 후 기대 효과: {rec.expectedEffect}
         </p>
       ) : null}
       {syllabusUrl && (
@@ -37,7 +37,7 @@ export default function RecommendationCard({
             style={{ fontSize: "var(--font-body)", padding: "10px 16px" }}
             href={syllabusUrl}
           >
-            강의안 보기
+            상세 커리큘럼 보기
           </a>
         </div>
       )}

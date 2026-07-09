@@ -126,7 +126,11 @@ export default async function AdminInquiriesPage({
             </select>
           </div>
           <button className="btn btn-primary btn-sm" type="submit">필터 적용</button>
-          {filtered && <a className="btn btn-ghost btn-sm" href="/admin/inquiries">초기화</a>}
+          {filtered && (
+            <Link className="btn btn-ghost btn-sm" href="/admin/inquiries">
+              초기화
+            </Link>
+          )}
         </form>
       </section>
 

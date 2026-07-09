@@ -6,10 +6,14 @@ import Link from "next/link";
 const floatingLinks = [
   { href: "#overview", label: "전략 개요", id: "overview" },
   { href: "#key-insights", label: "핵심 인사이트", id: "key-insights" },
-  { href: "#strategy-framework", label: "전략 프레임워크", id: "strategy-framework" },
+  { href: "#evidence", label: "근거 기준", id: "evidence" },
+  { href: "#strategy-framework", label: "전략 프레임", id: "strategy-framework" },
   { href: "#campaign-roadmap", label: "캠페인 로드맵", id: "campaign-roadmap" },
+  { href: "#channels", label: "채널별 역할", id: "channels" },
   { href: "#ai-tools", label: "AI 활용 도구", id: "ai-tools" },
   { href: "#kpi-risk", label: "KPI·리스크", id: "kpi-risk" },
+  { href: "#workshop", label: "실행 워크숍", id: "workshop" },
+  { href: "#checklist", label: "체크리스트", id: "checklist" },
 ];
 
 function MailIcon() {
@@ -81,6 +85,7 @@ export default function MicrositeFloatingMenu() {
                     href={item.href}
                     className={active ? "is-active" : undefined}
                     aria-current={active ? "location" : undefined}
+                    onClick={() => setActiveId(item.id)}
                   >
                     <span>{item.label}</span>
                     <i aria-hidden="true" />
@@ -93,8 +98,8 @@ export default function MicrositeFloatingMenu() {
       </div>
 
       <div className="floating-actions">
-        <a href="#report-contact" aria-label="상담 문의">
-          <span>상담 문의</span>
+        <a href="#report-contact" aria-label="교육 상담 문의">
+          <span>교육 상담 문의하기</span>
           <MailIcon />
         </a>
         <Link href="/#about" aria-label="강사 프로필">

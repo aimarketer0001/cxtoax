@@ -36,8 +36,6 @@ if (!normalizedDatabaseUrl?.startsWith("postgresql://") && !normalizedDatabaseUr
 
 const commands = [
   ["npx", ["prisma", "generate", "--schema", "prisma/schema.free.prisma"]],
-  ["npx", ["prisma", "db", "push", "--schema", "prisma/schema.free.prisma"]],
-  ["npx", ["prisma", "db", "seed", "--schema", "prisma/schema.free.prisma"]],
   ["npx", ["next", "build"]],
 ];
 

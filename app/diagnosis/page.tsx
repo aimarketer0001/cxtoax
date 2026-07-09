@@ -33,22 +33,27 @@ export default function DiagnosisPage() {
     fetch("/api/questions")
       .then((r) => r.json())
       .then((d) => setQuestions(d.questions ?? []))
-      .catch(() => setLoadError("문항을 불러오지 못했습니다. 새로고침 해주세요."))
+      .catch(() => setLoadError("진단 문항을 불러오지 못했습니다. 페이지를 새로고침해 주세요."))
       .finally(() => setLoading(false));
   }, []);
 
   // 저장된 초안 감지 (자동저장·이어하기)
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(DRAFT_KEY);
-      if (raw) {
-        const d = JSON.parse(raw);
-        if (d && d.answers && Object.keys(d.answers).length > 0) setResumeAvailable(true);
+    const timer = window.setTimeout(() => {
+      try {
+        const raw = localStorage.getItem(DRAFT_KEY);
+        if (raw) {
+          const d = JSON.parse(raw);
+          if (d && d.answers && Object.keys(d.answers).length > 0) {
+            setResumeAvailable(true);
+          }
+        }
+      } catch {
+        /* ignore */
       }
-    } catch {
-      /* ignore */
-    }
-    setHydrated(true);
+      setHydrated(true);
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   // 자동 저장
@@ -149,7 +154,7 @@ export default function DiagnosisPage() {
     setWarn(null);
     if (pageStep === -1) {
       if (!consent) {
-        setWarn("개인정보 및 브라우저 임시 저장 안내에 동의해 주세요.");
+        setWarn("개인정보 보호 및 브라우저 임시 저장 안내에 동의해 주세요.");
         return;
       }
       setPageStep(0);
@@ -204,7 +209,7 @@ export default function DiagnosisPage() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setSubmitError(data?.error?.message ?? "제출에 실패했습니다.");
+        setSubmitError(data?.error?.message ?? "진단 제출에 실패했습니다. 잠시 후 다시 시도해 주세요.");
         const missing: number[] | undefined = data?.error?.details?.missing;
         if (missing && missing.length) {
           const idx = questions.findIndex((q) => q.no === missing[0]);
@@ -215,7 +220,7 @@ export default function DiagnosisPage() {
       startFresh();
       router.push(`/result/${data.sessionId}`);
     } catch {
-      setSubmitError("네트워크 오류가 발생했습니다. 다시 시도해 주세요.");
+      setSubmitError("일시적인 네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
     } finally {
       setSubmitting(false);
     }
@@ -246,7 +251,7 @@ export default function DiagnosisPage() {
       {resumeAvailable && pageStep === -1 && (
         <div className="alert alert-warning" role="status">
           <div className="row" style={{ gap: 10 }}>
-            <span>작성 중이던 진단이 있습니다. 이어서 하시겠어요?</span>
+            <span>작성 중이던 진단이 있습니다. 이어서 진행하시겠어요?</span>
             <div className="spacer" />
             <button className="btn btn-ghost btn-sm" onClick={startFresh}>
               새로 시작
@@ -290,10 +295,10 @@ export default function DiagnosisPage() {
         <div className="stack">
           <NoticeCard />
           <div className="card">
-            <h2>진단 시작 전 안내</h2>
+            <h2>진단 시작 전 확인 사항</h2>
             <p className="muted" style={{ marginTop: 0 }}>
-              진단은 본 문항 답변만으로 점수와 추천 과정을 산출합니다. 상담에 필요한
-              정보는 결과 확인 후 상담 신청 단계에서 입력할 수 있습니다.
+              진단은 문항 답변만으로 점수와 추천 과정을 산출합니다. 상담에 필요한
+              연락처와 조직 정보는 결과 확인 후 상담 신청 단계에서 입력합니다.
             </p>
 
             <label className={`option ${consent ? "selected" : ""}`}>
@@ -302,7 +307,7 @@ export default function DiagnosisPage() {
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
               />
-              <span>개인정보 및 브라우저 임시 저장 안내를 확인했으며 진단을 시작합니다.</span>
+              <span>개인정보 보호 및 브라우저 임시 저장 안내를 확인했으며 진단을 시작합니다.</span>
             </label>
           </div>
         </div>
@@ -310,7 +315,7 @@ export default function DiagnosisPage() {
         <div className="card">
           <h2>응답 검토</h2>
           <p className="muted" style={{ marginTop: 0 }}>
-            제출 전 응답을 확인하세요. 수정할 문항은 "수정"을 눌러 이동할 수 있습니다.
+            제출 전 응답을 확인해 주세요. 수정할 문항은 수정 버튼을 눌러 다시 확인할 수 있습니다.
           </p>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {questions.map((q, idx) => {
@@ -362,14 +367,14 @@ export default function DiagnosisPage() {
         <div className="spacer" />
         {isReview ? (
           <button className="btn btn-primary" onClick={submit} disabled={submitting}>
-            {submitting ? "결과 분석 중…" : "제출하고 결과 보기"}
+            {submitting ? "결과 분석 중…" : "제출하고 추천 과정 보기"}
           </button>
         ) : (
           <button className="btn btn-primary" onClick={goNext}>
             {pageStep === -1
-              ? "진단 시작"
+              ? "진단 시작하기"
               : pageStep === totalPages - 1
-              ? "응답 검토"
+              ? "응답 검토하기"
               : "다음"}
           </button>
         )}
@@ -379,9 +384,9 @@ export default function DiagnosisPage() {
         <div className="submit-overlay" role="status" aria-live="polite">
           <div className="submit-box">
             <div className="spinner" aria-hidden />
-            <strong>결과를 분석하고 있습니다…</strong>
+            <strong>진단 결과를 분석하고 있습니다…</strong>
             <p className="muted" style={{ margin: 0 }}>
-              점수 계산 → 유형 분류 → 과정 매칭 → 리포트 작성
+              점수 계산 → 유형 분류 → 교육 과정 매칭 → 리포트 작성
             </p>
           </div>
         </div>

@@ -10,10 +10,10 @@ export default function ServiceHeader() {
         <nav className="nav-links" aria-label="서비스 이동">
           <Link href="/diagnosis">역량 진단</Link>
           <Link href="/#programs" className="nav-program-link">
-            강의 보기
+            교육 과정
           </Link>
           <Link href="/#contact" className="nav-cta">
-            상담 문의
+            교육 상담 문의하기
           </Link>
         </nav>
       </div>

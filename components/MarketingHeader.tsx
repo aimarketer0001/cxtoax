@@ -10,10 +10,10 @@ export default function MarketingHeader() {
         <nav className="nav-links" aria-label="사이트 메뉴">
           <Link href="/#about">소개</Link>
           <Link href="/#expertise">전문분야</Link>
-          <Link href="/#programs">강의프로그램</Link>
+          <Link href="/#programs">교육 과정</Link>
           <Link href="/#insights">인사이트</Link>
           <Link href="/#contact" className="nav-cta">
-            문의하기
+            교육 상담 문의하기
           </Link>
         </nav>
       </div>

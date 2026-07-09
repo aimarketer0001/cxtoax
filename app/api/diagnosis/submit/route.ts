@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   }
 
   if (!body?.consent?.privacyNoticeAccepted) {
-    return ApiErrors.validation("개인정보 비저장 안내에 동의해야 합니다.", {
+    return ApiErrors.validation("개인정보 보호 및 임시 저장 안내에 동의해 주세요.", {
       field: "consent.privacyNoticeAccepted",
     });
   }

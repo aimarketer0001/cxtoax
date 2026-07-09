@@ -18,7 +18,7 @@ export default async function ResultPage({
       <div className="container">
         <div className="alert alert-danger">진단 결과를 찾을 수 없습니다.</div>
         <Link href="/diagnosis" className="btn btn-primary">
-          진단 다시 시작
+          진단 다시 시작하기
         </Link>
       </div>
     );
@@ -28,7 +28,7 @@ export default async function ResultPage({
   const onHold = view.summary.fitLevel === "보류";
   const learnerType = view.summary.learnerType;
 
-  // Representative courses have dedicated 강의안 pages on the marketing site;
+  // Representative courses have dedicated curriculum sections on the marketing site;
   // others deep-link to the full 30-course list.
   const SYLLABUS_ANCHOR: Record<string, string> = {
     "CX-B-01": "syllabus-1",
@@ -41,17 +41,17 @@ export default async function ResultPage({
     <div className="container">
       <a className="back-link" href="/">← 홈으로 돌아가기</a>
       <div className="print-header">
-        <span>CX to AX · 역량 진단 결과 리포트</span>
+        <span>CX to AX · 교육 과정 추천 리포트</span>
         <span className="date">
           {new Date(view.createdAt).toLocaleDateString("ko-KR")}
         </span>
       </div>
       <div className="page-head">
         <div className="row">
-          <h1 style={{ margin: 0 }}>진단 결과 리포트</h1>
+          <h1 style={{ margin: 0 }}>교육 과정 추천 리포트</h1>
           <div className="spacer" />
           {report?.source === "ai" && (
-            <span className="badge badge-accent">AI 분석 리포트</span>
+            <span className="badge badge-accent">AI 보조 분석</span>
           )}
         </div>
         <div style={{ marginTop: 12 }}>
@@ -68,14 +68,14 @@ export default async function ResultPage({
 
         {onHold && (
           <div className="alert alert-warning">
-            <strong>상담 권장</strong> — 현재는 무리한 수강보다 방향 설정을 위한 상담을
-            먼저 권장합니다. {view.summary.holdReason ? `(사유: ${view.summary.holdReason})` : ""}
+            <strong>상담 먼저 권장</strong> — 현재는 바로 수강하기보다 학습 방향과 업무 상황을
+            함께 점검하는 상담을 권장합니다. {view.summary.holdReason ? `(사유: ${view.summary.holdReason})` : ""}
           </div>
         )}
 
         {report?.summary && (
           <section className="card">
-            <h2>종합 요약</h2>
+            <h2>진단 요약</h2>
             <p style={{ marginBottom: 0 }}>{report.summary}</p>
           </section>
         )}
@@ -95,7 +95,7 @@ export default async function ResultPage({
               </section>
 
               <section className="card">
-                <h2>보완점</h2>
+                <h2>보완할 부분</h2>
                 <ul className="list-check">
                   {report.improvements.map((s, i) => (
                     <li key={i}>{s}</li>
@@ -105,7 +105,7 @@ export default async function ResultPage({
             </div>
 
             <section className="card">
-              <h2>교육 준비사항</h2>
+              <h2>교육 전 준비사항</h2>
               <ul className="list-check">
                 {report.preparation.map((s, i) => (
                   <li key={i}>{s}</li>
@@ -115,7 +115,7 @@ export default async function ResultPage({
 
             {report.cautions.length > 0 && (
               <section className="card">
-                <h2>참고사항</h2>
+                <h2>참고할 점</h2>
                 <ul className="list-check">
                   {report.cautions.map((s, i) => (
                     <li key={i}>{s}</li>
@@ -130,7 +130,7 @@ export default async function ResultPage({
           <h2>추천 교육 과정</h2>
           {view.recommendations.length === 0 ? (
             <p className="muted">
-              적합한 추천 과정을 찾지 못했습니다. 상담을 통해 안내드리겠습니다.
+              현재 응답만으로는 적합한 과정을 특정하기 어렵습니다. 상담을 통해 업무 상황에 맞는 방향을 안내드리겠습니다.
             </p>
           ) : (
             view.recommendations.map((r) => {
@@ -154,12 +154,12 @@ export default async function ResultPage({
         </section>
 
         <section className="card result-next-step">
-          <h2>다음 단계: 교육 상담 신청</h2>
+          <h2>다음 단계: 교육 상담</h2>
           <p style={{ marginBottom: 16 }}>
             {report?.consultationMessage ??
               (onHold
-                ? "진단 결과를 바탕으로 학습 방향을 함께 점검해 드립니다. 부담 없이 상담을 신청해 보세요."
-                : "추천 강의를 담아 바로 교육 상담을 신청할 수 있습니다. 조직·일정에 맞춰 커리큘럼을 조정해 드립니다.")}
+                ? "진단 결과를 바탕으로 학습 방향과 우선순위를 함께 점검해 드립니다."
+                : "추천 과정을 바탕으로 조직의 업무, 일정, 학습 수준에 맞춰 커리큘럼을 조정해 드립니다.")}
           </p>
           <div className="row">
             <a
@@ -172,17 +172,17 @@ export default async function ResultPage({
                   : ""
               }#contact`}
             >
-              진단 결과로 상담 신청하기 →
+              진단 결과로 교육 상담하기 →
             </a>
             <a className="btn btn-ghost" href="/#courses">
-              전체 강의 둘러보기
+              전체 교육 과정 보기
             </a>
           </div>
         </section>
 
         <div className="result-footer-actions no-print">
           <Link href="/diagnosis" className="btn btn-ghost">
-            다시 진단하기
+            진단 다시 하기
           </Link>
           <Link href="/" className="btn btn-ghost">
             처음으로

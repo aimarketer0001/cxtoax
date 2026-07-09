@@ -19,10 +19,10 @@ export default function ResultActions() {
   return (
     <div className="row no-print" style={{ gap: 8 }}>
       <button className="btn btn-ghost btn-sm" onClick={copyLink}>
-        {copied ? "복사됨 ✓" : "결과 링크 복사"}
+        {copied ? "복사 완료" : "결과 링크 복사"}
       </button>
       <button className="btn btn-ghost btn-sm" onClick={() => window.print()}>
-        인쇄 · PDF 저장
+        인쇄/PDF 저장
       </button>
     </div>
   );

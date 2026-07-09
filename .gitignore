@@ -38,6 +38,8 @@ tmp-ui-review/
 tmp-video-frames/
 og-image_1.jpg
 README__.txt
+.next-dev*.log
+.next-start*.log
 
 # local Supabase CLI state
 supabase/.temp/

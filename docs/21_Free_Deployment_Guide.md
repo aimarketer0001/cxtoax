@@ -48,6 +48,8 @@ npm install
 
 5. 환경변수는 `.env.free.example` 기준으로 등록한다.
 
+운영 배포에서는 `.env` 파일을 올리지 않고 Vercel Project Settings > Environment Variables에 아래 변수명을 등록한다. `DATABASE_URL`, `ADMIN_PASSWORD`, `ADMIN_AUTH_SECRET`, `LLM_API_KEY`는 클라이언트에 노출되면 안 되므로 `NEXT_PUBLIC_` 접두사를 붙이지 않는다.
+
 ```env
 DATABASE_URL=postgresql://...
 ADMIN_PASSWORD=운영용_강한_비밀번호
@@ -73,7 +75,7 @@ copy .env.free.example .env.free
 
 ```powershell
 $env:DATABASE_URL="postgresql://..."
-npm run setup:free
+npm run deploy:db:free
 ```
 
 이 명령은 다음을 수행한다.

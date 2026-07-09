@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 const PROGRAM_OPTIONS = [
   "하반기 마케팅 전략 워크숍",
@@ -48,17 +48,18 @@ export default function MicrositeContactForm({
     return () => document.removeEventListener("click", handleTopicClick);
   }, []);
 
-  async function submit() {
+  async function submit(event?: FormEvent<HTMLFormElement>) {
+    event?.preventDefault();
+    setSuccess("");
     if (!name.trim() || !org.trim() || !phone.trim() || !message.trim()) {
-      setError("이름, 소속, 연락처, 현재 고민을 입력해 주세요.");
+      setError("이름, 소속, 연락처, 문의 내용을 입력해 주세요.");
       return;
     }
     if (!privacyConsent) {
-      setError("개인정보 수집·이용 안내에 동의해야 상담 신청이 가능합니다.");
+      setError("교육 상담 접수를 위해 개인정보 수집·이용 안내에 동의해 주세요.");
       return;
     }
     setError("");
-    setSuccess("");
     setBusy(true);
     try {
       const res = await fetch("/api/inquiries", {
@@ -80,10 +81,10 @@ export default function MicrositeContactForm({
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data?.error?.message ?? "상담 신청 저장에 실패했습니다.");
+        setError(data?.error?.message ?? "교육 상담 신청을 저장하지 못했습니다.");
         return;
       }
-      setSuccess("상담 신청이 접수되었습니다. 관리자 화면에서 확인할 수 있습니다.");
+      setSuccess("교육 상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.");
       setName("");
       setOrg("");
       setPhone("");
@@ -93,9 +94,8 @@ export default function MicrositeContactForm({
       setMessage("");
       setWebsite("");
       setPrivacyConsent(false);
-      setTopic(initialTopic);
     } catch {
-      setError("네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      setError("일시적인 네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
     } finally {
       setBusy(false);
     }
@@ -106,28 +106,28 @@ export default function MicrositeContactForm({
       <div className="microsite-wrap contact-grid">
         <div>
           <p className="section-kicker">CONTACT</p>
-          <h2>하반기 마케팅 실행 체계를 함께 설계해 보세요</h2>
+          <h2>하반기 마케팅 실행 체계를 함께 정리해 보세요</h2>
           <p className="section-lead">
-            현재 조직의 콘텐츠, 검색, CRM, AI 활용 상황을 알려주시면 가장
-            필요한 워크숍 또는 컨설팅 형태로 제안드립니다.
+            현재 조직의 콘텐츠, 검색, CRM, AI 활용 상황을 알려주시면
+            필요한 교육 또는 워크숍 형태로 제안드립니다.
           </p>
           <div className="contact-points">
             <div>
               <strong>상담 범위</strong>
-              <span>전략 워크숍, AEO 진단, CRM 자동화, AI 콘텐츠 운영</span>
+              <span>전략 워크숍, AEO 진단, CRM 자동화, AI 콘텐츠 운영 교육</span>
             </div>
             <div>
               <strong>진행 방식</strong>
-              <span>온라인 사전 미팅 후 교육/컨설팅 범위 확정</span>
+              <span>온라인 사전 미팅 후 교육 범위와 실습 예제 확정</span>
             </div>
             <div>
               <strong>추천 준비물</strong>
-              <span>현재 운영 중인 랜딩, 콘텐츠, CRM 플로우 또는 고민 메모</span>
+              <span>현재 운영 중인 랜딩, 콘텐츠, CRM 플로우 또는 업무 고민 메모</span>
             </div>
           </div>
         </div>
 
-        <form className="contact-card" onSubmit={(event) => event.preventDefault()}>
+        <form className="contact-card" onSubmit={submit}>
           <div className="form-grid">
             <div className="field">
               <label htmlFor="micro-name">
@@ -222,13 +222,13 @@ export default function MicrositeContactForm({
 
           <div className="field">
             <label htmlFor="micro-message">
-              현재 고민 <span className="req">*</span>
+              문의 내용 <span className="req">*</span>
             </label>
             <textarea
               id="micro-message"
               value={message}
               onChange={(event) => setMessage(event.target.value)}
-              placeholder="예: 하반기 캠페인 메시지가 흩어져 있고, CRM 자동화와 콘텐츠 운영을 함께 정리하고 싶습니다."
+              placeholder="예: 하반기 캠페인 메시지, CRM 자동화, 콘텐츠 운영을 함께 정리하는 교육이 필요합니다."
             />
           </div>
 
@@ -261,7 +261,7 @@ export default function MicrositeContactForm({
               onChange={(event) => setPrivacyConsent(event.target.checked)}
               type="checkbox"
             />
-            <span>개인정보 수집·이용 안내를 확인했으며 상담 회신을 위한 정보 제공에 동의합니다.</span>
+            <span>개인정보 수집·이용 안내를 확인했으며 교육 상담 회신을 위한 정보 제공에 동의합니다.</span>
           </label>
           <p className="privacy-note">
             민감한 개인정보나 고객 원본 데이터는 입력하지 마세요.
@@ -272,17 +272,17 @@ export default function MicrositeContactForm({
             </p>
           )}
           {success && (
-            <p className="form-success" role="status">
+            <p className="form-success" role="status" aria-live="polite">
               {success}
             </p>
           )}
           {busy && (
             <p className="form-status" role="status" aria-live="polite">
-              상담 신청 내용을 저장하고 있습니다...
+              교육 상담 내용을 접수하고 있습니다...
             </p>
           )}
-          <button className="contact-submit" type="button" onClick={submit} disabled={busy}>
-            {busy ? "저장 중..." : "상담 신청하기"}
+          <button className="contact-submit" type="submit" disabled={busy}>
+            {busy ? "접수 중..." : "교육 상담 신청하기"}
           </button>
         </form>
       </div>

@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CX to AX — 고객경험에서 AI 전환으로 | 전선희</title>
-<meta name="description" content="CX to AX — 수십 건의 대기업 프로젝트 경험으로 영업·상담·마케팅의 고객 접점을 설계해 온 컨설턴트가, 이제 AI로 일하는 법을 알려드립니다.">
+<title>CX to AX — CRM 경험을 바탕으로 한 현업형 AX 교육 | 전선희</title>
+<meta name="description" content="CRM 컨설팅 경험을 바탕으로 영업·상담·마케팅 현업 문제를 AI로 해결하는 실무형 AX 교육을 제공합니다.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="CX to AX — 고객경험에서 AI 전환으로 | 전선희">
-<meta property="og:description" content="수십 건의 대기업 프로젝트 경험으로 영업·상담·마케팅의 고객 접점을 설계해 온 컨설턴트가, 이제 AI로 일하는 법을 알려드립니다.">
+<meta property="og:title" content="CX to AX — CRM 경험을 바탕으로 한 현업형 AX 교육 | 전선희">
+<meta property="og:description" content="CRM 컨설팅 경험을 바탕으로 영업·상담·마케팅 현업 문제를 AI로 해결하는 실무형 AX 교육을 제공합니다.">
 <meta property="og:url" content="https://cxtoax.vercel.app/">
 <meta property="og:image" content="https://cxtoax.vercel.app/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -73,6 +73,7 @@
   .nav-cta {
     background: var(--cobalt); color: #fff !important;
     padding: 8px 16px; border-radius: 6px; font-weight: 600 !important;
+    white-space: nowrap;
   }
   .nav-cta:hover { background: #1b46c4; }
   @media (max-width: 720px) {
@@ -105,9 +106,9 @@
     margin-bottom: 22px;
   }
   .hero h1 {
-    font-size: 46px;
+    font-size: 50px;
     font-weight: 800;
-    line-height: 1.35;
+    line-height: 1.26;
     letter-spacing: 0;
     margin-bottom: 20px;
   }
@@ -117,7 +118,7 @@
     max-width: 480px; margin-bottom: 32px;
   }
   @media (max-width: 640px) {
-    .hero h1 { font-size: 30px; }
+    .hero h1 { font-size: 34px; }
   }
   .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn {
@@ -205,6 +206,25 @@
     border: 1px dashed #B9C6D8;
   }
   .story-body p { margin-bottom: 18px; font-size: 16px; color: #33404F; }
+  .story-cta {
+    margin-top: 26px;
+    padding: 22px 24px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: var(--radius);
+  }
+  .story-cta p {
+    margin: 0 0 16px;
+    color: #DCE5F0;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .story-cta strong { color: var(--amber); }
+  .story-cta .btn-row { margin-top: 16px; }
+  .story-cta .btn {
+    padding: 11px 16px;
+    font-size: 14px;
+  }
   .career-table { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 14px; }
   .career-table th {
     text-align: left; font-size: 12px; color: var(--gray);
@@ -247,7 +267,28 @@
     background: var(--white); border: 1px solid var(--line);
     border-radius: var(--radius); padding: 34px 32px; margin-bottom: 24px;
   }
-  @media (max-width: 720px) { .course-card { padding: 26px 20px; } }
+  .course-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .course-card-head h3 { margin: 0; }
+  .course-detail-btn {
+    flex: 0 0 auto;
+    padding: 11px 16px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  @media (max-width: 720px) {
+    .course-card { padding: 26px 20px; }
+    .course-card-head { flex-direction: column; gap: 14px; }
+    .course-detail-btn {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+  }
   .course-meta {
     display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 26px;
   }
@@ -256,6 +297,33 @@
     padding: 6px 12px; border-radius: 100px; color: #33404F;
   }
   .course-card h3 { font-size: 21px; font-weight: 800; letter-spacing: 0; }
+  .course-summary {
+    display: grid;
+    gap: 10px;
+    margin: 8px 0 0;
+    padding: 18px 20px;
+    background: #F7FAFD;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    list-style: none;
+  }
+  .course-summary li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #33404F;
+  }
+  .course-summary li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.78em;
+    width: 5px;
+    height: 5px;
+    background: var(--cobalt);
+    border-radius: 50%;
+  }
   .mod-table { width: 100%; border-collapse: collapse; font-size: 14px; }
   .mod-table th {
     text-align: left; font-size: 12px; color: var(--gray);
@@ -300,6 +368,73 @@
   }
   .contact-row a:not(.contact-btn) { color: #B9C6D8; text-decoration: none; }
   .contact-row a:not(.contact-btn):hover { color: #fff; }
+
+  /* ---------- Education FAQ ---------- */
+  .edu-faq {
+    background: var(--off);
+  }
+  .edu-faq-list {
+    display: grid;
+    gap: 10px;
+    max-width: 1040px;
+    margin: 32px auto 0;
+  }
+  .edu-faq-list details {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .edu-faq-list summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 24px;
+    list-style: none;
+    cursor: pointer;
+    color: var(--navy);
+    font-weight: 800;
+  }
+  .edu-faq-list summary::-webkit-details-marker { display: none; }
+  .edu-faq-list summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    color: var(--cobalt);
+    font-size: 20px;
+    line-height: 1;
+    transform: translateY(-50%);
+  }
+  .edu-faq-list details[open] summary::after { content: "-"; }
+  .edu-faq-tag {
+    flex: 0 0 92px;
+    display: inline-flex;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--cobalt-light);
+    color: var(--cobalt);
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .edu-faq-q {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .edu-faq-list p {
+    margin: 12px 0 0;
+    color: #52627a;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  @media (max-width: 640px) {
+    .edu-faq-list summary {
+      align-items: flex-start;
+      gap: 10px;
+    }
+  }
 
   /* ---------- Contact buttons ---------- */
   .contact-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
@@ -385,7 +520,10 @@
   .f-field input:focus, .f-field select:focus, .f-field textarea:focus {
     outline: none; border-color: var(--cobalt); box-shadow: 0 0 0 3px rgba(36,86,230,0.12);
   }
-  .f-privacy {
+  .form-card .f-privacy {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
     font-size: 12.5px;
     color: var(--gray);
     margin: 4px 0 14px;
@@ -495,9 +633,9 @@
     <div class="nav-links">
       <a href="#about">소개</a>
       <a href="#expertise">전문분야</a>
-      <a href="#programs">강의프로그램</a>
+      <a href="#programs">교육 과정</a>
       <a href="#insights">인사이트</a>
-      <a class="nav-cta" href="#contact">문의하기</a>
+      <a class="nav-cta" href="#contact">교육 상담 문의하기</a>
     </div>
   </div>
 </nav>
@@ -507,13 +645,13 @@
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow mono">CX to AX — 고객경험(CX)에서 AI 전환(AX)으로</span>
-      <h1>고객경험을 설계하던 컨설턴트가,<br>이제 <em>AI로 일하는 법</em>을 설계합니다.</h1>
-      <p class="lead">이론이 아닌 현장, 데모가 아닌 실무. 수십 건의 대기업 프로젝트에서 쌓아온 경험을 바탕으로, 조직의 업무에 맞춘 AI 전환(AX)·자동화 교육을 제공합니다.</p>
+      <h1>CRM 현장을 이해하는 강사가,<br><em>AI로 일하는 방식</em>을 함께 설계합니다.</h1>
+      <p class="lead">대기업 CRM 프로젝트에서 쌓은 고객 접점 경험을 바탕으로, 영업·상담·마케팅 업무에 바로 적용할 수 있는 AX·업무 자동화 교육을 진행합니다.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="#contact">강의 문의하기</a>
-        <a class="btn btn-ghost" href="/marketing-h2-2026">전략 보고서 보기</a>
+        <a class="btn btn-primary" href="#contact">교육 상담 문의하기</a>
+        <a class="btn btn-ghost" href="/marketing-h2-2026">실행 전략 보기</a>
       </div>
-      <p style="font-size:13px; color:#8FA2B8; margin-top:14px;">약 10분 · 진단 응답 개인정보 서버 비저장 · 내게 맞는 강의를 1~3순위로 추천해 드립니다.</p>
+      <p style="font-size:13px; color:#8FA2B8; margin-top:14px;">교육 목적과 대상에 맞춰 커리큘럼과 실습 구성을 제안드립니다.</p>
     </div>
 
     <!-- Signature: 강사를 CRM 고객 레코드 형식으로 소개 -->
@@ -527,7 +665,7 @@
       <div class="record-row"><span class="record-key">industries</span><span class="record-val">전자·반도체 / 자동차 / 통신 / 유통 / 공공</span></div>
       <div class="record-row"><span class="record-key">background</span><span class="record-val">Salesforce · Siebel CRM 컨설팅</span></div>
       <div class="record-row"><span class="record-key">certified</span><span class="record-val">Salesforce 공인 자격 5종</span></div>
-      <div class="record-row"><span class="record-key">focus</span><span class="record-val hl">AX · 업무 자동화</span></div>
+      <div class="record-row"><span class="record-key">focus</span><span class="record-val hl">현업형 AX · 업무 자동화</span></div>
     </aside>
   </div>
 </header>
@@ -537,24 +675,24 @@
   <div class="wrap">
     <p class="sec-eyebrow mono">WHY THIS COURSE</p>
     <h2>혹시 이런 고민을 하고 계신가요?</h2>
-    <p class="sec-lead">AI를 도입하라는 지시는 내려왔는데, 정작 현장에서는 어디서부터 손대야 할지 막막한 경우가 대부분입니다.</p>
+    <p class="sec-lead">AI 도입 요구는 커졌지만, 현업에서는 어떤 업무부터 바꿔야 할지 정리하기 어렵습니다.</p>
     <div class="pain-grid">
       <div class="pain-card reveal">
         <div class="q">Q1</div>
-        <p>"위에서는 AI를 도입하라는데, 우리 팀 업무 어디에 어떻게 써야 할지 막막합니다."</p>
+        <p>"AI를 써보라고는 하는데, 우리 팀 업무에 어디부터 적용해야 할지 모르겠습니다."</p>
       </div>
       <div class="pain-card reveal">
         <div class="q">Q2</div>
-        <p>"상담사마다 응대 품질이 다르고, VOC 정리와 보고는 매번 야근거리가 됩니다."</p>
+        <p>"상담 품질 편차를 줄이고, VOC 정리와 보고 시간을 줄이고 싶습니다."</p>
       </div>
       <div class="pain-card reveal">
         <div class="q">Q3</div>
-        <p>"제안서와 메일 쓰다 하루가 다 갑니다. 정작 고객 만날 시간이 없습니다."</p>
+        <p>"제안서와 메일 작성 시간을 줄이고, 고객 대응에 더 집중하고 싶습니다."</p>
       </div>
     </div>
     <div class="pain-answer reveal">
-      AI 도입이 실패하는 이유는 기술이 아니라 <strong>현장의 업무를 모르기 때문</strong>입니다.<br>
-      수십 건의 프로젝트에서 영업·상담·마케팅의 고객 접점 업무를 다뤄 온 컨설턴트가, 여러분의 실무에 AI를 붙이는 법을 알려드립니다.
+      AI 도입의 출발점은 도구가 아니라 <strong>업무 흐름을 정확히 보는 것</strong>입니다.<br>
+      영업·상담·마케팅 현장을 설계해 온 CRM 컨설턴트가, 반복 업무를 줄이고 의사결정을 돕는 AI 활용법을 교육합니다.
     </div>
   </div>
 </section>
@@ -563,7 +701,7 @@
 <section class="alt" id="about">
   <div class="wrap">
     <p class="sec-eyebrow mono">INSTRUCTOR STORY</p>
-    <h2>오랫동안 고객 접점 현장을 지켜온 사람이,<br>AI를 가르치기로 한 이유</h2>
+    <h2>CRM 현장을 설계해 온 컨설턴트가,<br>AX 교육을 시작한 이유</h2>
     <div class="story-grid" style="margin-top:40px;">
       <div>
         <div class="reveal" style="border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: linear-gradient(160deg, #EAF1F8, #F7FAFD); box-shadow: 0 16px 40px rgba(14,27,44,0.12);">
@@ -576,22 +714,24 @@
           <tbody>
             <tr><td>1막</td><td>Siebel 기반 CRM 컨설팅<br><span style="color:var(--gray); font-size:12px;">통신 · 자동차 · 공공</span></td></tr>
             <tr><td>2막</td><td>Salesforce 기반 CRM 컨설팅<br><span style="color:var(--gray); font-size:12px;">전자·반도체 · 유통 · 자동차</span></td></tr>
-            <tr><td>3막</td><td>AX·AI 활용 교육 강사<br><span style="color:var(--gray); font-size:12px;">AI 활용 · 업무 자동화 교육</span></td></tr>
+            <tr><td>3막</td><td>AX·AI 활용 교육 강사<br><span style="color:var(--gray); font-size:12px;">현업형 AI 활용 · 업무 자동화 교육</span></td></tr>
           </tbody>
         </table>
       </div>
       <div class="story-body reveal">
-        <p><strong style="color:var(--navy);">고객의 불만 섞인 질문에 답하지 못해 진땀 흘리던 상담사들을 기억합니다.</strong> 고객 한 통의 전화를 받는 동안 상담사는 여러 개의 화면을 오가며 주문 이력과 상담 기록을 찾았고, 고객은 수화기 너머에서 언성을 높이며 같은 설명을 반복하고 있었습니다. 문제는 상담사의 역량이 아니었습니다. 필요한 정보가 필요한 순간에 손에 쥐어지지 않는 업무 구조가 문제였습니다. 제가 한 일은 그 흩어진 화면과 응대 절차를 하나의 흐름으로 만드는 것이었습니다. 시스템이 바뀌자, 상담사들의 표정이 먼저 달라졌습니다.</p>
+        <p><strong style="color:var(--navy);">CRM 프로젝트에서 가장 많이 본 문제는 사람의 의지가 아니라 업무 구조였습니다.</strong> 필요한 정보가 필요한 순간에 보이지 않으면 상담, 영업, 마케팅의 실행 품질은 흔들립니다. 저는 흩어진 화면과 절차를 하나의 흐름으로 정리하는 일을 해 왔습니다.</p>
 
-        <p>저는 커리어의 대부분을 기업의 CRM 컨설팅에 쏟아왔습니다 — Siebel의 시대부터 Salesforce의 시대까지. 수많은 프로젝트를 거치며 분명해진 것이 하나 있습니다 — <strong>솔루션만으로는 닿지 못하는 지점이 있다</strong>는 것. 아무리 잘 구축된 시스템도, 그것을 다루는 사람과 업무 방식이 함께 바뀌지 않으면 어느 순간 한계에 부딪혔습니다.</p>
+        <p>Siebel부터 Salesforce까지, 커리어의 대부분을 기업 CRM 컨설팅에 집중해 왔습니다. 그 과정에서 분명해진 것은 <strong>시스템 구축만으로는 현업 변화가 완성되지 않는다</strong>는 점입니다. 도구를 쓰는 사람의 업무 방식과 판단 기준이 함께 정리되어야 성과가 이어집니다.</p>
 
-        <p>그 한계를 넘고 AI 활용을 극대화하기 위해, 저는 직접 AI 공부를 시작했습니다. AI와 AX를 파고들수록 확신은 선명해졌습니다. 현장에서 쌓아온 깊은 컨설팅 경험과 AI가 만나면 — 기술 이해와 현장 경험이 함께 있을 때 더 현실적인 <strong>시너지</strong>가 난다는 것을요. 그 확신이 저를 강단으로 이끌었습니다.</p>
+        <p>제 교육은 기능 소개에 머물지 않습니다. 영업·상담·마케팅 업무를 기준으로, <strong>어떤 반복 업무를 줄이고 어떤 판단을 보강할지</strong>를 함께 설계합니다. 수강자가 교육 후 자기 업무에 바로 적용할 수 있는 실행안을 가져가는 것이 목표입니다.</p>
 
-        <p>그래서 저는 AI 이론만 설명하지 않습니다. 영업·상담·마케팅 현장의 고객 접점 업무를 설계해 온 눈으로, <strong>여러분의 업무 어디에, 어떤 순서로 AI를 붙일지</strong>를 가르칩니다. 그것이 제가 가장 잘할 수 있는 일입니다.</p>
-
-        <div style="margin-top:28px; padding:22px 24px; background:var(--navy); color:#fff; border-radius:var(--radius);">
+        <div class="story-cta">
           <div class="mono" style="font-size:11px; color:#7EA0F5; letter-spacing:0.08em; margin-bottom:10px;">WHY "CX TO AX"</div>
-          <p style="margin:0; font-size:15px; line-height:1.8; color:#DCE5F0;">저는 고객경험<strong style="color:#fff;">(CX)</strong>의 현장에서 커리어의 대부분을 보냈고, 이제 그 현장에 AI 전환<strong style="color:#fff;">(AX)</strong>을 붙이는 법을 가르칩니다. 두 X는 다른 단어지만, 제가 서 있는 자리는 같습니다 — <strong style="color:var(--amber);">고객을 만나는 현장.</strong></p>
+          <p>저는 고객경험<strong>(CX)</strong> 현장에서 업무 흐름을 설계해 왔고, 이제 그 흐름에 AI 전환<strong>(AX)</strong>을 연결하는 교육을 합니다. 기준은 같습니다. <strong>고객을 만나는 현업에서 실제로 작동해야 한다는 것</strong>입니다.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#programs">실무형 교육 과정 보기</a>
+            <a class="btn btn-ghost" href="#contact">교육 상담 문의하기</a>
+          </div>
         </div>
       </div>
     </div>
@@ -603,13 +743,13 @@
   <div class="wrap">
     <p class="sec-eyebrow mono">EXPERTISE</p>
     <h2>CRM 현장 경험에서 AI·AX 실행 교육까지</h2>
-    <p class="sec-lead">전문 분야는 기술 목록이 아니라, 고객을 만나는 현장의 문제를 해결해 온 방식입니다.</p>
+    <p class="sec-lead">전문 분야는 도구 목록이 아니라, 고객 접점 업무를 정리하고 실행 가능한 변화로 바꿔 온 경험입니다.</p>
     <div class="expertise-grid">
       <article class="expertise-card reveal"><div class="icon">CRM</div><h3>CRM 전략</h3><p>고객 데이터, 영업·상담 흐름, 고객 접점 운영 구조를 설계합니다.</p><span>대상 · 영업/CS/마케팅 조직</span></article>
       <article class="expertise-card reveal"><div class="icon">SF</div><h3>Salesforce / 고객경험</h3><p>Salesforce 기반 고객관리와 서비스 프로세스 경험을 교육 사례로 전환합니다.</p><span>대상 · CRM 운영/기획 담당자</span></article>
       <article class="expertise-card reveal"><div class="icon">AI</div><h3>AI 마케팅</h3><p>AI 검색, 콘텐츠 공급망, CRM 자동화를 연결한 마케팅 실행 체계를 다룹니다.</p><span>대상 · 마케팅 실무자/리더</span></article>
       <article class="expertise-card reveal"><div class="icon">AX</div><h3>AX 전환</h3><p>AI 도입을 도구 사용이 아니라 업무 방식 전환으로 설계합니다.</p><span>대상 · 전사 교육/혁신 조직</span></article>
-      <article class="expertise-card reveal"><div class="icon">Gen</div><h3>생성형 AI 활용 교육</h3><p>문서, 보고, 제안, 상담, 콘텐츠 제작 업무에 AI를 붙이는 실습을 제공합니다.</p><span>대상 · 일반 재직자</span></article>
+      <article class="expertise-card reveal"><div class="icon">Gen</div><h3>생성형 AI 활용 교육</h3><p>문서, 보고, 제안, 상담, 콘텐츠 제작 업무에 AI를 적용하는 실습을 제공합니다.</p><span>대상 · 일반 재직자</span></article>
       <article class="expertise-card reveal"><div class="icon">VC</div><h3>프롬프트 기반 업무도구 제작</h3><p>비개발자도 아이디어를 서비스 구조와 실행 프롬프트로 구체화하도록 돕습니다. 바이브코딩 방식의 실습을 포함합니다.</p><span>대상 · 기획자/마케터/교육 담당자</span></article>
     </div>
   </div>
@@ -619,8 +759,8 @@
 <section id="proof">
   <div class="wrap">
     <p class="sec-eyebrow mono">TRACK RECORD</p>
-    <h2>현장 경험의 숫자로 신뢰를 보여드립니다</h2>
-    <p class="sec-lead">화려한 수식어보다 정확한 기록을 믿습니다. 아래는 컨설팅 현장에서 쌓아온 실적입니다.</p>
+    <h2>CRM 프로젝트 경험으로 교육의 신뢰를 설명합니다</h2>
+    <p class="sec-lead">화려한 수식어보다 실제 수행 경험을 중요하게 봅니다. 아래 기록은 현업형 교육의 기반입니다.</p>
 
     <div class="num-strip">
       <div class="num-cell reveal"><div class="n">30<span>건+</span></div><div class="l">수행 프로젝트</div></div>
@@ -636,7 +776,7 @@
         <div class="psr">
           <div><b>PROBLEM · 문제</b>급증하는 가입자와 상담 요청. 고객 정보와 응대 절차가 흩어져 있어 상담 현장의 응대가 느려지고, 상담사마다 품질 편차가 컸습니다.</div>
           <div><b>SOLUTION · 해결</b>PL/BA 역할로 CRM 시스템 구축과 이후 운영 과정에 참여했습니다. 시스템을 만드는 것에서 끝내지 않고 상담 현장에 정착시키는 일까지가 프로젝트였습니다.</div>
-          <div class="result"><b>RESULT · 성과</b>상담사가 고객 정보를 한 흐름으로 다루는 응대 체계 정착. 이 현장 경험이 <a href="#syllabus-2" style="color:var(--cobalt); font-weight:700;">"고객 상담 업무에 AI 붙이기" 강의</a>의 뼈대가 되었습니다.</div>
+          <div class="result"><b>RESULT · 성과</b>상담사가 고객 정보를 한 흐름으로 다루는 응대 체계 정착. 이 현장 경험이 <a href="#syllabus-2" style="color:var(--cobalt); font-weight:700;">"고객 상담 업무에 AI 적용하기" 강의</a>의 뼈대가 되었습니다.</div>
         </div>
       </article>
       <article class="case-card reveal">
@@ -656,26 +796,26 @@
 <section id="diagnosis-cta" style="background:var(--navy); color:#fff;">
   <div class="wrap">
     <p class="sec-eyebrow mono" style="color:var(--amber);">FIND YOUR COURSE</p>
-    <h2 style="color:#fff;">어떤 강의가 맞을지 모르겠다면,<br>10분 역량 진단부터.</h2>
-    <p class="sec-lead" style="color:#B9C6D8;">AI 이해도부터 업무 적용·기획·실행력까지 20개 문항으로 진단하고, 30개 강의 중 가장 적합한 과정을 1~3순위로 추천해 드립니다. 진단 결과에서 바로 강의안 확인과 상담 신청까지 이어집니다.</p>
+    <h2 style="color:#fff;">우리 조직에 맞는 교육이 궁금하다면,<br>10분 진단부터 시작하세요.</h2>
+    <p class="sec-lead" style="color:#B9C6D8;">AI 이해도, 업무 적용 경험, 기획·실행 준비도를 20개 문항으로 확인하고, 30개 교육 주제 중 적합한 과정을 1~3순위로 안내합니다. 결과 화면에서 커리큘럼 확인과 상담 신청까지 이어집니다.</p>
     <div class="diag-steps" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px;">
       <div style="background:var(--navy-soft); border:1px solid rgba(126,160,245,0.25); border-radius:var(--radius); padding:22px;">
         <div class="mono" style="color:var(--amber); font-size:13px; margin-bottom:8px;">STEP 1</div>
-        <strong style="display:block; margin-bottom:6px;">역량 진단</strong>
-        <span style="font-size:14px; color:#B9C6D8;">20개 문항 · 약 10분 · 진단 응답 개인정보 서버 비저장</span>
+        <strong style="display:block; margin-bottom:6px;">업무 역량 진단</strong>
+        <span style="font-size:14px; color:#B9C6D8;">20개 문항 · 약 10분 · 개인 식별정보 서버 저장 없음</span>
       </div>
       <div style="background:var(--navy-soft); border:1px solid rgba(126,160,245,0.25); border-radius:var(--radius); padding:22px;">
         <div class="mono" style="color:var(--amber); font-size:13px; margin-bottom:8px;">STEP 2</div>
         <strong style="display:block; margin-bottom:6px;">맞춤 강의 추천</strong>
-        <span style="font-size:14px; color:#B9C6D8;">유형 분류 + 1~3순위 강의안 바로 보기</span>
+        <span style="font-size:14px; color:#B9C6D8;">유형 분류 + 1~3순위 커리큘럼 확인</span>
       </div>
       <div style="background:var(--navy-soft); border:1px solid rgba(126,160,245,0.25); border-radius:var(--radius); padding:22px;">
         <div class="mono" style="color:var(--amber); font-size:13px; margin-bottom:8px;">STEP 3</div>
-        <strong style="display:block; margin-bottom:6px;">상담 신청</strong>
-        <span style="font-size:14px; color:#B9C6D8;">추천 강의를 담아 바로 교육 상담 접수</span>
+        <strong style="display:block; margin-bottom:6px;">교육 상담 신청</strong>
+        <span style="font-size:14px; color:#B9C6D8;">추천 과정과 조직 상황을 바탕으로 상담 접수</span>
       </div>
     </div>
-    <a class="btn btn-primary" href="/diagnosis">무료 역량 진단 시작하기 →</a>
+    <a class="btn btn-primary" href="/diagnosis">교육 진단 시작하기 →</a>
   </div>
 </section>
 <style>
@@ -687,12 +827,17 @@
   <span id="courses" class="anchor-alias"></span>
   <div class="wrap">
     <p class="sec-eyebrow mono">COURSES</p>
-    <h2>강의 안내</h2>
-    <p class="sec-lead">이론 설명은 최소로, 실습은 실제 현장 사례로. 수강 후 바로 자기 업무에 적용할 수 있는 것을 목표로 설계했습니다.</p>
+    <h2>실무형 교육 과정</h2>
+    <p class="sec-lead">이론 설명은 필요한 만큼만 다루고, CRM·고객 접점 사례를 바탕으로 수강 후 바로 적용할 수 있는 실습을 중심으로 구성했습니다.</p>
 
     <article class="course-card reveal">
-      <span class="case-tag">COURSE 01 · 고객관리</span>
-      <h3>AI로 고객관리(CRM) 업무 자동화하기 — 실무자를 위한 AX 첫걸음</h3>
+      <div class="course-card-head">
+        <div>
+          <span class="case-tag">COURSE 01 · 고객관리</span>
+          <h3>AI로 고객관리(CRM) 업무 자동화하기 — 실무자를 위한 AX 첫걸음</h3>
+        </div>
+        <a class="btn btn-primary course-detail-btn" href="#syllabus-1">상세 커리큘럼 보기 →</a>
+      </div>
       <div class="course-meta">
         <span>대상 · 영업·CS·마케팅 실무자, 기업 교육 담당자</span>
         <span>형태 · 오프라인 출강 / 온라인 라이브 (선택)</span>
@@ -701,17 +846,11 @@
         <span>난이도 · 입문</span>
         <span>준비물 · 노트북, 생성형 AI 계정</span>
       </div>
-      <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;"><table class="mod-table" style="min-width:560px;">
-        <thead>
-          <tr><th>모듈</th><th>주제</th><th>내용</th><th>방식</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>01</td><td>왜 고객관리 업무부터인가</td><td>DX와 AX의 차이, 실패하는 AI 도입의 공통점, 고객 접점 업무에 숨어 있는 자동화 기회</td><td><span class="badge-theory">이론</span></td></tr>
-          <tr><td>02</td><td>실전 프롬프트 기초</td><td>고객관리 업무 맥락으로 배우는 프롬프트 작성법 — 지시·맥락·형식의 3요소</td><td><span class="badge-practice">실습</span></td></tr>
-          <tr><td>03</td><td>고객관리 문서 자동화</td><td>고객 응대문, 팔로업 메일, 고객 정보 요약을 AI로 처리하는 실전 루틴 만들기</td><td><span class="badge-practice">실습</span></td></tr>
-          <tr><td>04</td><td>내 업무 적용 설계</td><td>자기 업무에서 AI 적용 포인트를 도출하고 우선순위를 정하는 미니 워크숍</td><td><span class="badge-practice">실습</span></td></tr>
-        </tbody>
-      </table></div>
+      <ul class="course-summary">
+        <li>CRM 문서, 고객 응대, 팔로업 메일처럼 반복되는 고객관리 업무에 AI를 적용합니다.</li>
+        <li>프롬프트 작성 원리부터 재사용 가능한 업무 루틴 설계까지 실습합니다.</li>
+        <li>마지막에는 본인 업무에서 바로 시도할 AI 적용 포인트와 우선순위를 정리합니다.</li>
+      </ul>
       <ul class="effect-list">
         <li>자기 업무에서 AI 적용 포인트 3가지를 스스로 도출할 수 있다</li>
         <li>반복되는 고객관리 문서 업무를 AI 루틴으로 처리할 수 있다</li>
@@ -719,12 +858,16 @@
       <div class="diff-note">
         이 강의가 다른 AI 강의와 다른 점 — 국내 대기업 다수의 CRM 시스템 구축 경험을 바탕으로, 실제 고객관리 현장의 업무 사례로 실습을 설계했습니다.
       </div>
-      <a class="btn btn-primary" style="margin-top:22px; font-size:14px; padding:12px 22px;" href="#syllabus-1">상세 강의안 보기 →</a>
     </article>
 
     <article class="course-card reveal">
-      <span class="case-tag">COURSE 02 · 고객상담</span>
-      <h3>고객 상담 업무에 생성형 AI 붙이기 — 응대 스크립트·FAQ 자동화</h3>
+      <div class="course-card-head">
+        <div>
+          <span class="case-tag">COURSE 02 · 고객상담</span>
+          <h3>고객 상담 업무에 생성형 AI 적용하기 — 응대 스크립트·FAQ 자동화</h3>
+        </div>
+        <a class="btn btn-primary course-detail-btn" href="#syllabus-2">상세 커리큘럼 보기 →</a>
+      </div>
       <div class="course-meta">
         <span>대상 · 상담·CS 조직 실무자와 관리자</span>
         <span>형태 · 오프라인 출강 / 온라인 라이브 (선택)</span>
@@ -733,17 +876,11 @@
         <span>난이도 · 입문–중급</span>
         <span>준비물 · 노트북, 생성형 AI 계정</span>
       </div>
-      <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;"><table class="mod-table" style="min-width:560px;">
-        <thead>
-          <tr><th>모듈</th><th>주제</th><th>내용</th><th>방식</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>01</td><td>AI 시대의 고객 상담</td><td>AICC(AI 컨택센터) 흐름, 상담사를 대체가 아닌 협업으로 설계하는 관점</td><td><span class="badge-theory">이론</span></td></tr>
-          <tr><td>02</td><td>응대 스크립트 자동화</td><td>상황별 응대문·불만 응대 스크립트를 AI로 생성하고 우리 조직 톤에 맞게 다듬기</td><td><span class="badge-practice">실습</span></td></tr>
-          <tr><td>03</td><td>FAQ·지식베이스 만들기</td><td>흩어진 상담 지식에서 FAQ를 도출하고 상담사용 지식베이스 초안 구축</td><td><span class="badge-practice">실습</span></td></tr>
-          <tr><td>04</td><td>VOC 요약·리포트 자동화</td><td>상담 내용 요약, 고객의 소리(VOC) 분석 리포트를 AI로 작성하는 루틴</td><td><span class="badge-practice">실습</span></td></tr>
-        </tbody>
-      </table></div>
+      <ul class="course-summary">
+        <li>상담 스크립트, FAQ, 지식베이스를 AI로 정리해 상담 품질 편차를 줄입니다.</li>
+        <li>불만·문의·해지 방어 등 실제 상담 상황에 맞는 응대문 작성 실습을 진행합니다.</li>
+        <li>VOC 요약과 분석 리포트 작성 루틴을 만들어 보고 시간을 줄이는 방법을 다룹니다.</li>
+      </ul>
       <ul class="effect-list">
         <li>상담 품질 편차를 줄이는 응대 스크립트 체계를 직접 만들 수 있다</li>
         <li>VOC 요약과 보고 업무를 AI 루틴으로 자동화할 수 있다</li>
@@ -751,12 +888,16 @@
       <div class="diff-note">
         이 강의가 다른 AI 강의와 다른 점 — CRM·고객상담 시스템 구축 경험을 바탕으로, 상담 현장의 언어로 가르칩니다.
       </div>
-      <a class="btn btn-primary" style="margin-top:22px; font-size:14px; padding:12px 22px;" href="#syllabus-2">상세 강의안 보기 →</a>
     </article>
 
     <article class="course-card reveal">
-      <span class="case-tag">COURSE 03 · 영업</span>
-      <h3>영업 실무자를 위한 AI — 제안서·영업 메일·미팅 준비 자동화</h3>
+      <div class="course-card-head">
+        <div>
+          <span class="case-tag">COURSE 03 · 영업</span>
+          <h3>영업 실무자를 위한 AI — 제안서·영업 메일·미팅 준비 자동화</h3>
+        </div>
+        <a class="btn btn-primary course-detail-btn" href="#syllabus-3">상세 커리큘럼 보기 →</a>
+      </div>
       <div class="course-meta">
         <span>대상 · B2B 영업 실무자, 영업 관리자</span>
         <span>형태 · 오프라인 출강 / 온라인 라이브 (선택)</span>
@@ -765,17 +906,11 @@
         <span>난이도 · 입문</span>
         <span>준비물 · 노트북, 생성형 AI 계정</span>
       </div>
-      <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;"><table class="mod-table" style="min-width:560px;">
-        <thead>
-          <tr><th>모듈</th><th>주제</th><th>내용</th><th>방식</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>01</td><td>영업 업무의 AI 적용 지도</td><td>리드 발굴부터 계약 후 관리까지, 영업 프로세스 단계별 자동화 기회 찾기</td><td><span class="badge-theory">이론</span></td></tr>
-          <tr><td>02</td><td>영업 메일·팔로업 자동화</td><td>첫 접촉 메일, 미팅 후 팔로업, 장기 미응답 고객 재접촉 메일을 AI로 작성</td><td><span class="badge-practice">실습</span></td></tr>
-          <tr><td>03</td><td>제안서 초안 자동화</td><td>고객사 정보를 반영한 맞춤 제안서 뼈대를 AI로 빠르게 만드는 방법</td><td><span class="badge-practice">실습</span></td></tr>
-          <tr><td>04</td><td>미팅 준비·기록 자동화</td><td>미팅 전 고객사 브리핑 자동 생성, 미팅 후 기록·할 일 정리 루틴</td><td><span class="badge-practice">실습</span></td></tr>
-        </tbody>
-      </table></div>
+      <ul class="course-summary">
+        <li>리드 발굴, 영업 메일, 제안서, 미팅 준비 업무에서 AI 적용 지점을 찾습니다.</li>
+        <li>고객사 정보와 영업 맥락을 반영한 메일·제안서 초안 작성 실습을 진행합니다.</li>
+        <li>미팅 전 브리핑부터 후속 기록까지 이어지는 개인별 AI 영업 루틴을 설계합니다.</li>
+      </ul>
       <ul class="effect-list">
         <li>영업 문서 작성 시간을 줄이고 고객 대면 시간을 늘릴 수 있다</li>
         <li>미팅 준비부터 팔로업까지 이어지는 나만의 AI 영업 루틴을 갖게 된다</li>
@@ -783,16 +918,15 @@
       <div class="diff-note">
         이 강의가 다른 AI 강의와 다른 점 — 국내 대기업 다수의 영업 시스템(SFA)을 Salesforce로 구축해 온 강사가, 영업 프로세스를 아는 사람만 짚을 수 있는 자동화 포인트를 알려드립니다.
       </div>
-      <a class="btn btn-primary" style="margin-top:22px; font-size:14px; padding:12px 22px;" href="#syllabus-3">상세 강의안 보기 →</a>
     </article>
 
     <div style="margin: 6px 0 26px; padding: 22px 24px; background: var(--white); border: 1px dashed var(--cobalt); border-radius: var(--radius); display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;">
-      <div style="font-size: 15px; color: var(--ink);"><strong>위 3개는 대표 강의입니다.</strong> 이 외에도 AX 전략, AI 마케팅·콘텐츠, 업무 자동화 등 30개 주제로 강의를 개설할 수 있습니다.</div>
-      <a class="btn btn-primary" style="font-size:14px; padding:12px 22px; white-space:nowrap;" href="#courses-all">전체 강의 주제 30선 보기 →</a>
+      <div style="font-size: 15px; color: var(--ink);"><strong>위 3개는 대표 과정입니다.</strong> 이 외에도 AX 전략, AI 마케팅·콘텐츠, 업무 자동화 등 30개 주제로 교육을 구성할 수 있습니다.</div>
+      <a class="btn btn-primary" style="font-size:14px; padding:12px 22px; white-space:nowrap;" href="#courses-all">전체 교육 주제 30선 보기 →</a>
     </div>
 
     <p style="font-size:14px; color:var(--gray); margin-top:8px;">
-      강의료 및 상세 조건은 문의 시 안내드립니다. · 커리큘럼은 조직의 업무 특성에 맞춰 조정 가능합니다. · 출강 가능 지역: 서울·경기 (온라인 강의는 전국) · 예약 리드타임: 최소 2주 전
+      강의료와 상세 조건은 상담 시 안내드립니다. · 커리큘럼은 조직의 업무 특성에 맞춰 조정 가능합니다. · 출강 가능 지역: 서울·경기 (온라인 교육은 전국) · 최소 2주 전 문의를 권장합니다.
     </p>
   </div>
 </section>
@@ -801,11 +935,11 @@
 <section id="insights">
   <div class="wrap">
     <p class="sec-eyebrow mono">FEATURED INSIGHT</p>
-    <h2>대표 인사이트 리포트</h2>
-    <p class="sec-lead">강사의 전문성을 보고서형 콘텐츠로 확인할 수 있는 대표 리포트입니다.</p>
+    <h2>실무 관점의 인사이트 리포트</h2>
+    <p class="sec-lead">CRM과 마케팅 실행 관점에서 정리한 대표 리포트입니다. 교육 전 강사의 관점과 설명 방식을 확인할 수 있습니다.</p>
     <article class="insight-card reveal">
       <div>
-        <span class="case-tag">2026 하반기 마케팅 전략 보고서</span>
+        <span class="case-tag">2026 하반기 마케팅 전략 리포트</span>
         <h3 style="font-size:26px; color:var(--navy); margin:18px 0 10px;">AI 검색 시대, 하반기 마케팅은 캠페인이 아니라 운영 시스템입니다</h3>
         <p style="color:#33404F;">AI 검색 대응, 브랜드 신뢰, 영상 콘텐츠, CRM 자동화, AI 에이전트 운영을 하나의 실행 체계로 정리한 전략 리포트입니다.</p>
         <div class="insight-points">
@@ -813,7 +947,7 @@
           <div>롱폼 원본 콘텐츠는 숏폼, 뉴스레터, CRM 메시지로 재활용되어야 합니다.</div>
           <div>하반기 성과는 7~8월 구조 정비와 CRM 플로우 설계에서 갈립니다.</div>
         </div>
-        <a class="btn btn-primary" style="margin-top:22px; font-size:14px; padding:12px 22px;" href="/marketing-h2-2026">보고서 자세히 보기 →</a>
+        <a class="btn btn-primary" style="margin-top:22px; font-size:14px; padding:12px 22px;" href="/marketing-h2-2026">전략 리포트 보기 →</a>
       </div>
       <aside class="insight-preview">
         <div class="mono">INSIGHT REPORT</div>
@@ -824,16 +958,47 @@
   </div>
 </section>
 
+<!-- ============ EDUCATION FAQ ============ -->
+<section class="edu-faq" id="education-faq">
+  <div class="wrap">
+    <p class="sec-eyebrow mono">FAQ</p>
+    <h2>교육 문의 전에 자주 묻는 질문</h2>
+    <p class="sec-lead">강의 신청이나 상담 전에 확인하면 좋은 내용을 교육 진행 관점으로 정리했습니다.</p>
+    <div class="edu-faq-list">
+      <details>
+        <summary><span class="edu-faq-tag">진행 방식</span><span class="edu-faq-q">교육과 컨설팅은 어떻게 다르나요?</span></summary>
+        <p>교육은 내부 구성원이 직접 이해하고 실행할 수 있도록 역량을 높이는 데 초점을 둡니다. 컨설팅은 실제 페이지, CRM 플로우, 운영 체계 설계까지 함께 다루는 방식입니다.</p>
+      </details>
+      <details>
+        <summary><span class="edu-faq-tag">상담 준비</span><span class="edu-faq-q">교육 상담 전에 어떤 자료를 준비하면 좋나요?</span></summary>
+        <p>현재 운영 중인 랜딩 페이지, FAQ, 콘텐츠 캘린더, CRM 플로우 또는 반복 업무 고민을 준비하면 조직에 맞는 교육 범위를 더 빠르게 정할 수 있습니다.</p>
+      </details>
+      <details>
+        <summary><span class="edu-faq-tag">교육 대상</span><span class="edu-faq-q">어떤 조직이나 수강자에게 적합한가요?</span></summary>
+        <p>영업, 상담, 마케팅, 고객경험, 교육 담당 조직에 적합합니다. AI를 처음 쓰는 실무자부터 업무 자동화 방향을 정해야 하는 관리자까지 수준에 맞춰 구성할 수 있습니다.</p>
+      </details>
+      <details>
+        <summary><span class="edu-faq-tag">커리큘럼</span><span class="edu-faq-q">커리큘럼은 우리 조직에 맞게 조정할 수 있나요?</span></summary>
+        <p>가능합니다. 사전 미팅에서 교육 대상, 업무 환경, 사용 가능한 도구, 기대 결과를 확인한 뒤 실습 예제와 모듈 구성을 조정합니다.</p>
+      </details>
+      <details>
+        <summary><span class="edu-faq-tag">운영 조건</span><span class="edu-faq-q">온라인과 오프라인 교육 모두 가능한가요?</span></summary>
+        <p>오프라인 출강과 온라인 라이브 모두 가능합니다. 실습 중심 과정은 노트북과 생성형 AI 계정이 준비되어 있으면 더 효과적으로 진행할 수 있습니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CTA ============ -->
 <section class="cta-final" id="contact">
   <div class="wrap">
     <p class="sec-eyebrow mono" style="color:var(--amber);">CONTACT</p>
-    <h2>우리 조직에 맞는 AI 교육,<br>지금 상담해 보세요</h2>
-    <p>조직의 업무 특성과 교육 목표를 알려주시면, 가장 적합한 커리큘럼 구성을 제안드립니다.</p>
+    <h2>우리 조직에 맞는 AI 활용 교육,<br>상담으로 구체화해 보세요</h2>
+    <p>업무 특성, 교육 대상, 기대 효과를 알려주시면 현업에 적용 가능한 커리큘럼으로 제안드립니다.</p>
     <div class="form-card">
       <div id="diag-banner" style="display:none; background:var(--cobalt-light); border:1px solid #BCD0F5; border-radius:8px; padding:14px 16px; margin-bottom:20px;">
         <strong id="diag-banner-title" style="color:var(--cobalt); display:block; margin-bottom:2px;">진단 결과 기반 상담 신청</strong>
-        <span id="diag-banner-desc" style="font-size:14px; color:#33404F;">아래 문의 내용에 진단 결과와 추천 강의가 자동으로 채워졌습니다. 연락처만 입력하시면 상담이 접수됩니다.</span>
+        <span id="diag-banner-desc" style="font-size:14px; color:#33404F;">아래 문의 내용에 진단 결과와 추천 과정이 자동으로 입력되었습니다. 연락처를 남겨주시면 교육 상담을 이어가겠습니다.</span>
       </div>
       <div class="f-grid">
         <div class="f-field">
@@ -858,9 +1023,9 @@
       <div class="f-field">
         <label for="fq-purpose">문의 목적 <span class="opt">(선택)</span></label>
         <select id="fq-purpose">
-          <option value="">선택해주세요</option>
-          <option>대표 강의 문의 (고객관리·상담·영업 AI)</option>
-          <option>기타 강의 주제 문의 (전체 강의 30선)</option>
+          <option value="">선택해 주세요</option>
+          <option>대표 교육 과정 문의 (고객관리·상담·영업 AI)</option>
+          <option>기타 교육 주제 문의 (전체 30개 주제)</option>
           <option>특강·행사 강연 문의</option>
           <option>커리큘럼 맞춤 상담</option>
           <option>기타</option>
@@ -868,7 +1033,7 @@
       </div>
       <div class="f-field">
         <label for="fq-msg">문의 내용 <span class="req">*</span></label>
-        <textarea id="fq-msg" placeholder="교육 목적, 희망 일정, 예상 인원 등을 자유롭게 적어주세요." required></textarea>
+        <textarea id="fq-msg" placeholder="교육 대상, 희망 일정, 예상 인원, 해결하고 싶은 업무 문제를 적어주세요." required></textarea>
       </div>
       <div class="bot-field" aria-hidden="true">
         <label for="fq-website">웹사이트</label>
@@ -883,13 +1048,12 @@
       </p>
       <label class="f-consent" for="fq-privacy">
         <input id="fq-privacy" type="checkbox">
-        <span>개인정보 수집·이용 안내를 확인했으며 상담 회신을 위한 정보 제공에 동의합니다.</span>
+        <span>개인정보 수집·이용 안내를 확인했으며 교육 상담 회신을 위한 정보 제공에 동의합니다.</span>
       </label>
-      <button type="button" class="f-submit" id="fq-submit">상담 신청하기</button>
-      <p class="f-status" id="fq-status" role="status" aria-live="polite">상담 신청 내용을 저장하고 있습니다...</p>
-      <p class="f-error" id="fq-error">이름, 소속, 연락처, 문의 내용은 필수 항목입니다.</p>
-      <p class="f-success" id="fq-success" role="status" aria-live="polite" style="display:none; color:#15803d; font-size:13px; margin-top:10px; font-weight:700;">상담 신청이 저장되었습니다. 관리자 화면에서 확인할 수 있습니다.</p>
-      <p style="font-size:12.5px; color:var(--gray); margin-top:12px; text-align:center;">신청 내용은 관리자 상담 화면에 저장됩니다.</p>
+      <button type="button" class="f-submit" id="fq-submit">교육 상담 신청하기</button>
+      <p class="f-status" id="fq-status" role="status" aria-live="polite">교육 상담 내용을 접수하고 있습니다...</p>
+      <p class="f-error" id="fq-error">이름, 소속, 연락처, 문의 내용을 입력해 주세요.</p>
+      <p style="font-size:12.5px; color:var(--gray); margin-top:12px; text-align:center;">접수 내용은 교육 상담 회신을 위해 보관됩니다.</p>
     </div>
     <div class="contact-row">
       <a class="contact-btn kakao-btn" href="https://open.kakao.com/o/s7kJSMCi" target="_blank" rel="noopener">
@@ -907,7 +1071,7 @@
 
 <section class="syllabus-view" id="syllabus-1" data-course="CX-B-01" data-title="AI로 고객관리(CRM) 업무 자동화하기">
   <div class="wrap">
-    <a class="syl-back" href="#courses">← 강의 목록으로 돌아가기</a>
+    <a class="syl-back" href="#courses">← 교육 과정으로 돌아가기</a>
     <div class="syl-head">
       <span class="case-tag">COURSE 01 · 고객관리</span>
       <h2 style="margin-top:10px;">AI로 고객관리(CRM) 업무 자동화하기 — 실무자를 위한 AX 첫걸음</h2>
@@ -943,21 +1107,21 @@
         <li>사전 설문 회신 — 자주 하는 고객관리 업무 3가지 (실습 예제에 반영됩니다)</li>
     </ul>
 
-    <div class="syl-note">본 강의안은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
+    <div class="syl-note">본 커리큘럼은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
 
     <div style="margin-top:34px;">
-      <a class="btn btn-primary syl-inquiry" href="#contact">이 강의 상담 신청하기</a>
-      <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 강의 보기</a>
+      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담 문의하기</a>
+      <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 과정 보기</a>
     </div>
   </div>
 </section>
 
-<section class="syllabus-view" id="syllabus-2" data-course="CX-B-02" data-title="고객 상담 업무에 생성형 AI 붙이기 — 응대 스크립트·FAQ 자동화">
+<section class="syllabus-view" id="syllabus-2" data-course="CX-B-02" data-title="고객 상담 업무에 생성형 AI 적용하기 — 응대 스크립트·FAQ 자동화">
   <div class="wrap">
-    <a class="syl-back" href="#courses">← 강의 목록으로 돌아가기</a>
+    <a class="syl-back" href="#courses">← 교육 과정으로 돌아가기</a>
     <div class="syl-head">
       <span class="case-tag">COURSE 02 · 고객상담</span>
-      <h2 style="margin-top:10px;">고객 상담 업무에 생성형 AI 붙이기 — 응대 스크립트·FAQ 자동화</h2>
+      <h2 style="margin-top:10px;">고객 상담 업무에 생성형 AI 적용하기 — 응대 스크립트·FAQ 자동화</h2>
       <div class="course-meta" style="margin:16px 0 0;"><span>대상 · 상담·CS 조직 실무자와 관리자</span><span>형태 · 오프라인 출강 / 온라인 라이브 (선택)</span><span>시간 · 4시간 기본 (8시간 심화 가능)</span><span>인원 · 10–30명</span><span>준비물 · 노트북, 생성형 AI 계정</span></div>
     </div>
 
@@ -990,18 +1154,18 @@
         <li>가능하면 자주 받는 고객 문의 유형 5가지 준비 (개인정보 제외) — 실습 예제로 사용합니다</li>
     </ul>
 
-    <div class="syl-note">본 강의안은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
+    <div class="syl-note">본 커리큘럼은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
 
     <div style="margin-top:34px;">
-      <a class="btn btn-primary syl-inquiry" href="#contact">이 강의 상담 신청하기</a>
-      <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 강의 보기</a>
+      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담 문의하기</a>
+      <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 과정 보기</a>
     </div>
   </div>
 </section>
 
 <section class="syllabus-view" id="syllabus-3" data-course="CX-B-04" data-title="영업 실무자를 위한 AI: 제안서·영업 메일·미팅 준비 자동화">
   <div class="wrap">
-    <a class="syl-back" href="#courses">← 강의 목록으로 돌아가기</a>
+    <a class="syl-back" href="#courses">← 교육 과정으로 돌아가기</a>
     <div class="syl-head">
       <span class="case-tag">COURSE 03 · 영업</span>
       <h2 style="margin-top:10px;">영업 실무자를 위한 AI — 제안서·영업 메일·미팅 준비 자동화</h2>
@@ -1037,11 +1201,11 @@
         <li>가능하면 최근 작성한 영업 메일·제안서 1건 준비 (사내 기밀 제외) — 개선 실습에 사용합니다</li>
     </ul>
 
-    <div class="syl-note">본 강의안은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
+    <div class="syl-note">본 커리큘럼은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
 
     <div style="margin-top:34px;">
-      <a class="btn btn-primary syl-inquiry" href="#contact">이 강의 상담 신청하기</a>
-      <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 강의 보기</a>
+      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담 문의하기</a>
+      <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 과정 보기</a>
     </div>
   </div>
 </section>
@@ -1049,18 +1213,18 @@
 
 <section class="syllabus-view" id="courses-all">
   <div class="wrap">
-    <a class="syl-back" href="#courses">← 강의 목록으로 돌아가기</a>
+    <a class="syl-back" href="#courses">← 교육 과정으로 돌아가기</a>
     <div class="syl-head">
       <span class="case-tag">FULL COURSE LIST</span>
-      <h2 style="margin-top:10px;">전체 강의 주제 30선</h2>
-      <p style="margin-top:12px; color:var(--gray); font-size:15px; max-width:640px;">고객 접점(CX)에서 AI 전환(AX)까지 — 아래 주제들은 조직의 수요와 눈높이에 맞춰 4시간 또는 8시간 과정으로 개설할 수 있습니다. 굵게 표시된 3개는 상세 강의안이 준비된 대표 강의입니다.</p>
+      <h2 style="margin-top:10px;">전체 교육 주제 30선</h2>
+      <p style="margin-top:12px; color:var(--gray); font-size:15px; max-width:640px;">고객 접점(CX)에서 AI 전환(AX)까지, 조직의 수요와 학습 수준에 맞춰 4시간 또는 8시간 과정으로 구성할 수 있습니다. 굵게 표시된 3개는 상세 커리큘럼이 준비된 대표 과정입니다.</p>
     </div>
 
     <p class="syl-section-title" style="margin-top:44px;">A. AX 전략·개론</p>
     <p style="font-size:14px; color:var(--gray); margin:-4px 0 14px;">컨설팅 경험을 바탕으로 설명하기 좋은 영역 — 특강·임원 교육에 적합합니다.</p>
     <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <table class="tt-table">
-        <thead><tr><th>#</th><th>강의 주제</th><th>유형</th><th>주 대상</th></tr></thead>
+        <thead><tr><th>#</th><th>교육 주제</th><th>유형</th><th>주 대상</th></tr></thead>
         <tbody>
           <tr><td>01</td><td>DX와 AX는 무엇이 다른가: 실패하는 AI 도입의 공통점</td><td style="white-space:nowrap;">이론</td><td>기업 재직자·관리자</td></tr>
           <tr><td>02</td><td>중소기업 AX 로드맵: 어디서부터 시작할 것인가</td><td style="white-space:nowrap;">이론</td><td>중소기업 경영진</td></tr>
@@ -1075,12 +1239,12 @@
     <p style="font-size:14px; color:var(--gray); margin:-4px 0 14px;">CRM 컨설팅 경험이 강점으로 드러나는 영역 — CX to AX의 핵심 라인업입니다.</p>
     <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <table class="tt-table">
-        <thead><tr><th>#</th><th>강의 주제</th><th>유형</th><th>주 대상</th></tr></thead>
+        <thead><tr><th>#</th><th>교육 주제</th><th>유형</th><th>주 대상</th></tr></thead>
         <tbody>
-          <tr><td>06</td><td>AI로 고객관리(CRM) 업무 자동화하기 <a href="#syllabus-1" style="display:inline-block; margin-left:8px; font-size:11px; background:var(--cobalt); color:#fff; padding:3px 9px; border-radius:4px; text-decoration:none; white-space:nowrap;">대표 강의 · 상세 보기</a></td><td style="white-space:nowrap;">실습</td><td>영업·CS 실무자</td></tr>
-          <tr><td>07</td><td>고객 상담 업무에 생성형 AI 붙이기: 응대 스크립트·FAQ 자동화 <a href="#syllabus-2" style="display:inline-block; margin-left:8px; font-size:11px; background:var(--cobalt); color:#fff; padding:3px 9px; border-radius:4px; text-decoration:none; white-space:nowrap;">대표 강의 · 상세 보기</a></td><td style="white-space:nowrap;">실습</td><td>상담·CS 조직</td></tr>
+          <tr><td>06</td><td>AI로 고객관리(CRM) 업무 자동화하기 <a href="#syllabus-1" style="display:inline-block; margin-left:8px; font-size:11px; background:var(--cobalt); color:#fff; padding:3px 9px; border-radius:4px; text-decoration:none; white-space:nowrap;">대표 과정 · 상세 보기</a></td><td style="white-space:nowrap;">실습</td><td>영업·CS 실무자</td></tr>
+          <tr><td>07</td><td>고객 상담 업무에 생성형 AI 적용하기: 응대 스크립트·FAQ 자동화 <a href="#syllabus-2" style="display:inline-block; margin-left:8px; font-size:11px; background:var(--cobalt); color:#fff; padding:3px 9px; border-radius:4px; text-decoration:none; white-space:nowrap;">대표 과정 · 상세 보기</a></td><td style="white-space:nowrap;">실습</td><td>상담·CS 조직</td></tr>
           <tr><td>08</td><td>AI 기반 VOC(고객의 소리) 분석과 리포트 자동화</td><td style="white-space:nowrap;">AI툴+실습</td><td>CS·기획</td></tr>
-          <tr><td>09</td><td>영업 실무자를 위한 AI: 제안서·영업 메일·미팅 준비 자동화 <a href="#syllabus-3" style="display:inline-block; margin-left:8px; font-size:11px; background:var(--cobalt); color:#fff; padding:3px 9px; border-radius:4px; text-decoration:none; white-space:nowrap;">대표 강의 · 상세 보기</a></td><td style="white-space:nowrap;">실습</td><td>영업직</td></tr>
+          <tr><td>09</td><td>영업 실무자를 위한 AI: 제안서·영업 메일·미팅 준비 자동화 <a href="#syllabus-3" style="display:inline-block; margin-left:8px; font-size:11px; background:var(--cobalt); color:#fff; padding:3px 9px; border-radius:4px; text-decoration:none; white-space:nowrap;">대표 과정 · 상세 보기</a></td><td style="white-space:nowrap;">실습</td><td>영업직</td></tr>
           <tr><td>10</td><td>고객 여정 지도 그리기 & AI 적용 포인트 도출 워크숍</td><td style="white-space:nowrap;">실습(워크숍)</td><td>마케팅·CX팀</td></tr>
           <tr><td>11</td><td>CRM 솔루션(Salesforce 등)과 생성형 AI 연계 활용</td><td style="white-space:nowrap;">AI툴</td><td>CRM 운영 담당자</td></tr>
           <tr><td>12</td><td>고객 데이터가 없어도 시작하는 소기업 고객관리 + AI</td><td style="white-space:nowrap;">이론+실습</td><td>소상공인·스타트업</td></tr>
@@ -1092,7 +1256,7 @@
     <p style="font-size:14px; color:var(--gray); margin:-4px 0 14px;">콘텐츠 기획부터 제작까지 — 마케팅 조직과 소상공인 대상 실습형 강의입니다.</p>
     <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <table class="tt-table">
-        <thead><tr><th>#</th><th>강의 주제</th><th>유형</th><th>주 대상</th></tr></thead>
+        <thead><tr><th>#</th><th>교육 주제</th><th>유형</th><th>주 대상</th></tr></thead>
         <tbody>
           <tr><td>13</td><td>생성형 AI로 마케팅 콘텐츠 기획부터 제작까지</td><td style="white-space:nowrap;">실습</td><td>마케팅 실무자</td></tr>
           <tr><td>14</td><td>AI 활용 SNS 콘텐츠 제작 실무 (블로그·인스타그램)</td><td style="white-space:nowrap;">AI툴+실습</td><td>SNS 운영자</td></tr>
@@ -1107,10 +1271,10 @@
     </div>
 
     <p class="syl-section-title" style="margin-top:44px;">D. 스마트 경영지원·업무 자동화</p>
-    <p style="font-size:14px; color:var(--gray); margin:-4px 0 14px;">직군을 가리지 않는 범용 실습 강의 — 전사 교육에 적합합니다.</p>
+    <p style="font-size:14px; color:var(--gray); margin:-4px 0 14px;">직군을 가리지 않는 범용 실습 과정 — 전사 교육에 적합합니다.</p>
     <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <table class="tt-table">
-        <thead><tr><th>#</th><th>강의 주제</th><th>유형</th><th>주 대상</th></tr></thead>
+        <thead><tr><th>#</th><th>교육 주제</th><th>유형</th><th>주 대상</th></tr></thead>
         <tbody>
           <tr><td>21</td><td>업무에 바로 쓰는 실전 프롬프트 작성법</td><td style="white-space:nowrap;">실습</td><td>전 직군</td></tr>
           <tr><td>22</td><td>AI로 보고서·기획서 초안 자동화</td><td style="white-space:nowrap;">실습</td><td>사무직 재직자</td></tr>
@@ -1126,7 +1290,7 @@
     <p style="font-size:14px; color:var(--gray); margin:-4px 0 14px;">조직·세대 특성에 맞춘 눈높이 교육입니다.</p>
     <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <table class="tt-table">
-        <thead><tr><th>#</th><th>강의 주제</th><th>유형</th><th>주 대상</th></tr></thead>
+        <thead><tr><th>#</th><th>교육 주제</th><th>유형</th><th>주 대상</th></tr></thead>
         <tbody>
           <tr><td>27</td><td>중장년 실무자를 위한 생성형 AI 첫걸음</td><td style="white-space:nowrap;">이론+실습</td><td>40–60대 재직자·구직자</td></tr>
           <tr><td>28</td><td>비전공자를 위한 AI 리터러시: 재직자 눈높이 AI 이해</td><td style="white-space:nowrap;">이론+실습</td><td>일반 재직자</td></tr>
@@ -1137,8 +1301,8 @@
     </div>
     <div class="syl-note">이 목록에 없는 주제도 고객 접점·CRM·AI 활용 범위라면 협의 후 개설 가능합니다. 조직의 교육 목표를 알려주시면 적합한 주제와 구성을 제안드립니다.</div>
     <div style="margin-top:34px;">
-      <a class="btn btn-primary" href="#contact">강의 문의하기</a>
-      <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">대표 강의 보기</a>
+      <a class="btn btn-primary" href="#contact">교육 상담 문의하기</a>
+      <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">대표 과정 보기</a>
     </div>
   </div>
 </section>
@@ -1151,8 +1315,8 @@
 </footer>
 
 <div class="mobile-cta" id="mobile-cta" aria-hidden="false">
-  <a href="/diagnosis" class="mc-diag">무료 진단</a>
-  <a href="#contact">강의 문의</a>
+  <a href="/diagnosis" class="mc-diag">교육 진단</a>
+  <a href="#contact">교육 상담 문의하기</a>
 </div>
 
 <script>
@@ -1175,26 +1339,22 @@
           email = g('fq-email'), purpose = g('fq-purpose'), msg = g('fq-msg'),
           website = g('fq-website');
     const err = document.getElementById('fq-error');
-    const ok = document.getElementById('fq-success');
     const status = document.getElementById('fq-status');
     const btn = document.getElementById('fq-submit');
     const privacyConsent = document.getElementById('fq-privacy');
     if (!name || !org || !phone || !msg) {
-      err.textContent = '이름, 소속, 연락처, 문의 내용은 필수 항목입니다.';
+      err.textContent = '이름, 소속, 연락처, 문의 내용을 입력해 주세요.';
       err.style.display = 'block';
-      if (ok) ok.style.display = 'none';
       if (status) status.style.display = 'none';
       return;
     }
     if (!privacyConsent || !privacyConsent.checked) {
-      err.textContent = '개인정보 수집·이용 안내에 동의해야 상담 신청이 가능합니다.';
+      err.textContent = '교육 상담 접수를 위해 개인정보 수집·이용 안내에 동의해 주세요.';
       err.style.display = 'block';
-      if (ok) ok.style.display = 'none';
       if (status) status.style.display = 'none';
       return;
     }
     err.style.display = 'none';
-    if (ok) ok.style.display = 'none';
     sendInquiry.busy = true;
     const startedAt = Date.now();
     const keepProgressVisible = () => new Promise(resolve => {
@@ -1202,12 +1362,12 @@
       setTimeout(resolve, left);
     });
     if (status) {
-      status.textContent = '상담 신청 내용을 저장하고 있습니다...';
+      status.textContent = '교육 상담 내용을 접수하고 있습니다...';
       status.style.display = 'block';
     }
     if (btn) {
       btn.disabled = true;
-      btn.textContent = '저장 중...';
+      btn.textContent = '접수 중...';
     }
     try {
       const res = await fetch('/api/inquiries', {
@@ -1228,12 +1388,12 @@
       if (!res.ok) {
         await keepProgressVisible();
         const data = await res.json().catch(() => ({}));
-        err.textContent = data && data.error && data.error.message ? data.error.message : '상담 신청 저장에 실패했습니다.';
+        err.textContent = data && data.error && data.error.message ? data.error.message : '교육 상담 신청을 저장하지 못했습니다.';
         err.style.display = 'block';
         if (status) status.style.display = 'none';
         if (btn) {
           btn.disabled = false;
-          btn.textContent = '상담 신청하기';
+          btn.textContent = '교육 상담 신청하기';
         }
         sendInquiry.busy = false;
         return;
@@ -1249,18 +1409,21 @@
       if (status) status.style.display = 'none';
       if (btn) {
         btn.disabled = false;
-        btn.textContent = '상담 신청하기';
+        btn.textContent = '교육 상담 신청하기';
       }
-      if (ok) ok.style.display = 'block';
+      if (status) {
+        status.textContent = '교육 상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.';
+        status.style.display = 'block';
+      }
       sendInquiry.busy = false;
     } catch (e) {
       await keepProgressVisible();
-      err.textContent = '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+      err.textContent = '일시적인 네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
       err.style.display = 'block';
       if (status) status.style.display = 'none';
       if (btn) {
         btn.disabled = false;
-        btn.textContent = '상담 신청하기';
+        btn.textContent = '교육 상담 신청하기';
       }
       sendInquiry.busy = false;
     }
@@ -1286,11 +1449,11 @@
     if (ctx.title) lines.push('· 추천/관심 강의: ' + ctx.title + (ctx.course ? ' (' + ctx.course + ')' : ''));
     else if (ctx.course) lines.push('· 관심 강의: ' + ctx.course);
 
-    if (bTitle) bTitle.textContent = ctx.fromDiagnosis ? '진단 결과 기반 상담 신청' : '선택하신 강의 상담 신청';
-    if (bDesc) bDesc.textContent = '아래 문의 내용에 ' + (ctx.fromDiagnosis ? '진단 결과와 ' : '') + '강의 정보가 자동으로 채워졌습니다. 연락처만 입력하시면 상담이 접수됩니다.';
+    if (bTitle) bTitle.textContent = ctx.fromDiagnosis ? '진단 결과 기반 상담 신청' : '선택하신 교육 과정 상담 신청';
+    if (bDesc) bDesc.textContent = '아래 문의 내용에 ' + (ctx.fromDiagnosis ? '진단 결과와 ' : '') + '교육 과정 정보가 자동으로 입력되었습니다. 연락처를 남겨주시면 상담을 이어가겠습니다.';
     banner.style.display = 'block';
 
-    if (purpose) purpose.value = ctx.fromDiagnosis ? '커리큘럼 맞춤 상담' : '대표 강의 문의 (고객관리·상담·영업 AI)';
+    if (purpose) purpose.value = ctx.fromDiagnosis ? '커리큘럼 맞춤 상담' : '대표 교육 과정 문의 (고객관리·상담·영업 AI)';
 
     if (msg) {
       const prefill = lines.join('\n') + '\n\n';
@@ -1314,7 +1477,7 @@
     }
   })();
 
-  // 2) 상세 강의안의 "이 강의 상담 신청하기" 클릭 시: 해당 강의 맥락 채우기
+  // 2) 상세 커리큘럼의 상담 CTA 클릭 시: 해당 교육 과정 맥락 채우기
   document.querySelectorAll('.syl-inquiry').forEach(function (a) {
     a.addEventListener('click', function () {
       const sec = a.closest('.syllabus-view');

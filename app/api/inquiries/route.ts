@@ -42,11 +42,11 @@ export async function POST(req: NextRequest) {
   }
 
   if (!name || !org || !phone || !message) {
-    return ApiErrors.validation("이름, 소속, 연락처, 문의 내용은 필수입니다.");
+    return ApiErrors.validation("이름, 소속, 연락처, 문의 내용을 입력해 주세요.");
   }
 
   if (body.privacyConsent !== true) {
-    return ApiErrors.validation("개인정보 수집·이용 안내에 동의해야 상담 신청이 가능합니다.", {
+    return ApiErrors.validation("교육 상담 접수를 위해 개인정보 수집·이용 안내에 동의해 주세요.", {
       field: "privacyConsent",
     });
   }
