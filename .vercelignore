@@ -1,0 +1,10 @@
+.env
+.env*
+.vercel
+.next
+node_modules
+prisma/*.db
+prisma/*.db-journal
+tmp-ui-review
+tmp-video-frames
+Archived

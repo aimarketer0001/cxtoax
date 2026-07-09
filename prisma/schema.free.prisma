@@ -1,0 +1,160 @@
+// Prisma schema for free hosted deployment.
+// Use this with Vercel Hobby + Supabase Free Postgres.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  no          Int     @id
+  question    String
+  type        String
+  area        String
+  required    Boolean @default(true)
+  optionsJson String?
+}
+
+model Course {
+  courseId          String  @id @map("course_id")
+  category          String
+  title             String
+  type              String
+  target            String
+  suggestedLevel    String  @map("suggested_level")
+  recommendedFor    String  @map("recommended_for")
+  notRecommendedFor String  @map("not_recommended_for")
+  isRepresentative  Boolean @default(false) @map("is_representative")
+
+  recommendations Recommendation[]
+}
+
+model DiagnosisSession {
+  id              String    @id @default(cuid())
+  jobRole         String?   @map("job_role")
+  interestAreas   String?   @map("interest_areas")
+  learningPurpose String?   @map("learning_purpose")
+  desiredOutput   String?   @map("desired_output")
+  status          String    @default("started")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  completedAt     DateTime? @map("completed_at")
+
+  answers         Answer[]
+  score           Score?
+  recommendations Recommendation[]
+  reports         Report[]
+  adminNotes      AdminNote[]
+
+  @@index([createdAt])
+}
+
+model Answer {
+  id         String @id @default(cuid())
+  sessionId  String @map("session_id")
+  questionNo Int    @map("question_no")
+  value      String
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+}
+
+model Score {
+  id          String  @id @default(cuid())
+  sessionId   String  @unique @map("session_id")
+  areaScores  String  @map("area_scores")
+  totalScore  Int     @map("total_score")
+  learnerType String  @map("learner_type")
+  fitLevel    String  @map("fit_level")
+  holdReason  String? @map("hold_reason")
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([learnerType])
+}
+
+model Recommendation {
+  id         String @id @default(cuid())
+  sessionId  String @map("session_id")
+  courseId   String @map("course_id")
+  rank       Int
+  reason     String
+  matchScore Float  @map("match_score")
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  course  Course           @relation(fields: [courseId], references: [courseId])
+
+  @@index([courseId])
+}
+
+model Report {
+  id          String   @id @default(cuid())
+  sessionId   String   @map("session_id")
+  source      String
+  contentJson String   @map("content_json")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  notes        AdminNote[]
+  inquiryNotes ConsultationInquiryNote[]
+}
+
+model AdminNote {
+  id        String   @id @default(cuid())
+  sessionId String   @map("session_id")
+  adminId   String?  @map("admin_id")
+  note      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  admin   AdminUser?       @relation(fields: [adminId], references: [id])
+
+  @@index([sessionId])
+}
+
+model ConsultationInquiry {
+  id        String   @id @default(cuid())
+  source    String   @default("landing")
+  name      String
+  org       String
+  phone     String
+  email     String?
+  topic     String?
+  industry  String?
+  schedule  String?
+  message   String
+  status    String   @default("new")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  notes ConsultationInquiryNote[]
+
+  @@index([createdAt])
+  @@index([status])
+}
+
+model ConsultationInquiryNote {
+  id        String   @id @default(cuid())
+  inquiryId String   @map("inquiry_id")
+  adminId   String?  @map("admin_id")
+  note      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  inquiry ConsultationInquiry @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  admin   AdminUser?          @relation(fields: [adminId], references: [id])
+
+  @@index([inquiryId])
+}

@@ -1,0 +1,41 @@
+{
+  "name": "cxtoax-diagnosis",
+  "version": "1.0.0",
+  "private": true,
+  "description": "수강 전 역량 진단 및 맞춤 교육 추천 서비스 (MVP)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:free": "prisma generate --schema prisma/schema.free.prisma && next build",
+    "build:vercel": "node scripts/vercel-build.mjs",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:push:free": "prisma db push --schema prisma/schema.free.prisma",
+    "db:seed": "prisma db seed",
+    "db:seed:free": "prisma db seed --schema prisma/schema.free.prisma",
+    "db:reset": "prisma db push --force-reset && prisma db seed",
+    "setup": "prisma generate && prisma db push && prisma db seed",
+    "setup:free": "prisma generate --schema prisma/schema.free.prisma && prisma db push --schema prisma/schema.free.prisma && prisma db seed --schema prisma/schema.free.prisma",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.2.1",
+    "next": "^15.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "prisma": "^6.2.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,43 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# env
+.env
+.env*.local
+
+# database (SQLite dev)
+/prisma/*.db
+/prisma/*.db-journal
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+.vercel
+.env.local
+.env.*.local
+.env.vercel*.local
+
+# local assistant/browser artifacts
+.agents/
+.claude/
+Archived/
+cxtoax/
+tmp-ui-review/
+tmp-video-frames/
+og-image_1.jpg
+README__.txt
+
+# local Supabase CLI state
+supabase/.temp/

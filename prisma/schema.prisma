@@ -1,0 +1,163 @@
+// Prisma schema for the pre-enrollment diagnosis service (MVP).
+// Uses SQLite for zero-setup local dev. To move to PostgreSQL, change the
+// datasource provider to "postgresql" and point DATABASE_URL at your server.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  no       Int     @id
+  question String
+  type     String // single_choice | multi_choice | scale_5 | branch_choice | free_text
+  area     String
+  required Boolean @default(true)
+  // Options / scoring metadata are held in code (lib/domain/questionConfig.ts),
+  // rendered from a JSON blob so the seed stays the single source of truth.
+  optionsJson String? // JSON-encoded option list for choice questions
+}
+
+model Course {
+  courseId         String  @id @map("course_id")
+  category         String
+  title            String
+  type             String
+  target           String
+  suggestedLevel   String  @map("suggested_level")
+  recommendedFor   String  @map("recommended_for")
+  notRecommendedFor String @map("not_recommended_for")
+  isRepresentative Boolean @default(false) @map("is_representative")
+
+  recommendations Recommendation[]
+}
+
+model DiagnosisSession {
+  id              String   @id @default(cuid())
+  jobRole         String?  @map("job_role")
+  interestAreas   String?  @map("interest_areas") // JSON-encoded string[]
+  learningPurpose String?  @map("learning_purpose")
+  desiredOutput   String?  @map("desired_output")
+  status          String   @default("started") // started | submitted | completed
+  createdAt       DateTime @default(now()) @map("created_at")
+  completedAt     DateTime? @map("completed_at")
+
+  answers         Answer[]
+  score           Score?
+  recommendations Recommendation[]
+  reports         Report[]
+  adminNotes      AdminNote[]
+
+  @@index([createdAt])
+}
+
+model Answer {
+  id         String @id @default(cuid())
+  sessionId  String @map("session_id")
+  questionNo Int    @map("question_no")
+  value      String // stored as string/JSON; free-text is masked before saving
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+}
+
+model Score {
+  id          String @id @default(cuid())
+  sessionId   String @unique @map("session_id")
+  areaScores  String @map("area_scores") // JSON-encoded { area: score }
+  totalScore  Int    @map("total_score")
+  learnerType String @map("learner_type")
+  fitLevel    String @map("fit_level")
+  holdReason  String? @map("hold_reason")
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([learnerType])
+}
+
+model Recommendation {
+  id        String @id @default(cuid())
+  sessionId String @map("session_id")
+  courseId  String @map("course_id")
+  rank      Int
+  reason    String
+  matchScore Float @map("match_score")
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  course  Course           @relation(fields: [courseId], references: [courseId])
+
+  @@index([courseId])
+}
+
+model Report {
+  id        String   @id @default(cuid())
+  sessionId String   @map("session_id")
+  source    String // "rule" | "ai"
+  contentJson String @map("content_json") // JSON-encoded report body
+  createdAt DateTime @default(now()) @map("created_at")
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  notes AdminNote[]
+  inquiryNotes ConsultationInquiryNote[]
+}
+
+model AdminNote {
+  id        String   @id @default(cuid())
+  sessionId String   @map("session_id")
+  adminId   String?  @map("admin_id")
+  note      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  session DiagnosisSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  admin   AdminUser?       @relation(fields: [adminId], references: [id])
+
+  @@index([sessionId])
+}
+
+model ConsultationInquiry {
+  id        String   @id @default(cuid())
+  source    String   @default("landing") // landing | microsite | diagnosis
+  name      String
+  org       String
+  phone     String
+  email     String?
+  topic     String?
+  industry  String?
+  schedule  String?
+  message   String
+  status    String   @default("new") // new | contacted | proposed | closed
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  notes ConsultationInquiryNote[]
+
+  @@index([createdAt])
+  @@index([status])
+}
+
+model ConsultationInquiryNote {
+  id        String   @id @default(cuid())
+  inquiryId String   @map("inquiry_id")
+  adminId   String?  @map("admin_id")
+  note      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  inquiry ConsultationInquiry @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  admin   AdminUser?          @relation(fields: [adminId], references: [id])
+
+  @@index([inquiryId])
+}

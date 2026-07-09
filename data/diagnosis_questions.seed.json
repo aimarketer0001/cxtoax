@@ -1,0 +1,86 @@
+[
+  {
+    "no": 1,
+    "question": "생성형 AI에 대해 어느 정도 알고 있습니까?",
+    "type": "single_choice",
+    "area": "AI 이해도",
+    "required": true
+  },
+  {
+    "no": 2,
+    "question": "사용해 본 AI 도구를 모두 선택해 주세요.",
+    "type": "multi_choice",
+    "area": "AI 이해도",
+    "required": true
+  },
+  {
+    "no": 3,
+    "question": "문서·엑셀 등 디지털 도구를 어느 정도 활용할 수 있습니까?",
+    "type": "single_choice",
+    "area": "디지털 활용 역량",
+    "required": true
+  },
+  {
+    "no": 4,
+    "question": "새로운 디지털 도구를 배우는 데 거부감이 적다.",
+    "type": "scale_5",
+    "area": "디지털 활용 역량",
+    "required": true
+  },
+  {
+    "no": 5,
+    "question": "현재 업무에서 AI를 적용하고 싶은 영역은 무엇입니까?",
+    "type": "branch_choice",
+    "area": "업무 적용 역량",
+    "required": true
+  },
+  {
+    "no": 6,
+    "question": "교육 후 만들고 싶은 결과물이 있습니까?",
+    "type": "single_choice",
+    "area": "업무 적용 역량",
+    "required": true
+  },
+  {
+    "no": 7,
+    "question": "본인의 직무 또는 관심 분야는 무엇입니까?",
+    "type": "branch_choice",
+    "area": "업무 적용 역량",
+    "required": true
+  },
+  {
+    "no": 8,
+    "question": "목표·대상·문제·결과물을 구분해서 설명할 수 있다.",
+    "type": "scale_5",
+    "area": "기획 및 문제정의 역량",
+    "required": true
+  },
+  {
+    "no": 9,
+    "question": "가장 배우고 싶은 방향은 무엇입니까?",
+    "type": "branch_choice",
+    "area": "기획 및 문제정의 역량",
+    "required": true
+  },
+  {
+    "no": 10,
+    "question": "교육 후 스스로 반복 실습할 의지가 있다.",
+    "type": "scale_5",
+    "area": "학습 의지 및 실행력",
+    "required": true
+  },
+  {
+    "no": 11,
+    "question": "교육에서 원하는 방식은 무엇입니까?",
+    "type": "single_choice",
+    "area": "학습 의지 및 실행력",
+    "required": true
+  },
+  {
+    "no": 12,
+    "question": "교육 참여 목적은 무엇입니까?",
+    "type": "branch_choice",
+    "area": "학습 의지 및 실행력",
+    "required": true
+  }
+]
