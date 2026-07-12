@@ -23,6 +23,7 @@ export default function DiagnosisPage() {
   const [consent, setConsent] = useState(false);
   const [answers, setAnswers] = useState<Record<number, AnswerValue>>({});
   const [warn, setWarn] = useState<string | null>(null);
+  const [missingQuestionNo, setMissingQuestionNo] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -145,6 +146,22 @@ export default function DiagnosisPage() {
     if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  const focusQuestion = useCallback((no: number) => {
+    if (typeof window === "undefined") return;
+    window.setTimeout(() => {
+      const target = document.getElementById(`question-${no}`);
+      target?.scrollIntoView({ block: "center", behavior: "smooth" });
+      const field = target?.querySelector<HTMLElement>("input, textarea, button, select");
+      field?.focus({ preventScroll: true });
+    }, 0);
+  }, []);
+
+  useEffect(() => {
+    if (missingQuestionNo !== null) {
+      focusQuestion(missingQuestionNo);
+    }
+  }, [focusQuestion, missingQuestionNo, pageStep]);
+
   function firstUnansweredOnPage(): PublicQuestion | null {
     if (!currentPage) return null;
     return currentPage.find((q) => q.required && !isAnswered(q, answers[q.no])) ?? null;
@@ -157,15 +174,20 @@ export default function DiagnosisPage() {
         setWarn("개인정보 보호 및 브라우저 임시 저장 안내에 동의해 주세요.");
         return;
       }
+      setMissingQuestionNo(null);
       setPageStep(0);
       scrollTop();
       return;
     }
-    if (firstUnansweredOnPage()) {
-      setWarn("이 페이지의 필수 문항에 모두 응답해 주세요.");
+    const firstMissingOnPage = firstUnansweredOnPage();
+    if (firstMissingOnPage) {
+      setMissingQuestionNo(firstMissingOnPage.no);
+      setWarn(`${firstMissingOnPage.no}번 문항에 응답해 주세요.`);
+      focusQuestion(firstMissingOnPage.no);
       return;
     }
     if (pageStep < totalPages) {
+      setMissingQuestionNo(null);
       setPageStep(pageStep + 1); // 마지막 페이지 다음은 검토
       scrollTop();
     }
@@ -173,6 +195,7 @@ export default function DiagnosisPage() {
 
   function goPrev() {
     setWarn(null);
+    setMissingQuestionNo(null);
     if (pageStep >= 0) {
       setPageStep(pageStep - 1);
       scrollTop();
@@ -187,10 +210,12 @@ export default function DiagnosisPage() {
     );
     if (firstMissing) {
       setSubmitError(`${firstMissing.no}번 문항이 아직 응답되지 않았습니다.`);
+      setMissingQuestionNo(firstMissing.no);
       const pageIdx = Math.floor(
         questions.findIndex((q) => q.no === firstMissing.no) / QUESTIONS_PER_PAGE
       );
       setPageStep(pageIdx);
+      focusQuestion(firstMissing.no);
       return;
     }
     const payload = {
@@ -213,7 +238,11 @@ export default function DiagnosisPage() {
         const missing: number[] | undefined = data?.error?.details?.missing;
         if (missing && missing.length) {
           const idx = questions.findIndex((q) => q.no === missing[0]);
-          if (idx >= 0) setPageStep(Math.floor(idx / QUESTIONS_PER_PAGE));
+          if (idx >= 0) {
+            setMissingQuestionNo(missing[0]);
+            setPageStep(Math.floor(idx / QUESTIONS_PER_PAGE));
+            focusQuestion(missing[0]);
+          }
         }
         return;
       }
@@ -243,7 +272,12 @@ export default function DiagnosisPage() {
   const pageEnd = Math.min(pageStart + QUESTIONS_PER_PAGE - 1, totalQuestions);
 
   return (
-    <div className="container has-sticky-actions" style={{ maxWidth: 720 }}>
+    <div
+      className={`container has-sticky-actions ${
+        pageStep === -1 ? "diagnosis-start" : ""
+      }`}
+      style={{ maxWidth: 720 }}
+    >
       <a className="back-link" href="/">
         ← 홈으로 돌아가기
       </a>
@@ -352,7 +386,15 @@ export default function DiagnosisPage() {
               key={q.no}
               question={q}
               value={answers[q.no]}
-              onChange={(v) => setAnswers((a) => ({ ...a, [q.no]: v }))}
+              invalid={missingQuestionNo === q.no}
+              onChange={(v) => {
+                setAnswers((a) => ({ ...a, [q.no]: v }));
+                if (missingQuestionNo === q.no) {
+                  setMissingQuestionNo(null);
+                  setWarn(null);
+                  setSubmitError(null);
+                }
+              }}
             />
           ))}
         </div>
@@ -367,7 +409,7 @@ export default function DiagnosisPage() {
         <div className="spacer" />
         {isReview ? (
           <button className="btn btn-primary" onClick={submit} disabled={submitting}>
-            {submitting ? "결과 분석 중…" : "제출하고 추천 과정 보기"}
+            {submitting ? "결과 분석 중…" : "제출하고 추천 교육 과정 보기"}
           </button>
         ) : (
           <button className="btn btn-primary" onClick={goNext}>

@@ -37,7 +37,7 @@ Vercel Hobby는 공식 가격표 기준 $0 플랜이 있으며, Supabase Free는
 3. Build Command를 아래처럼 설정한다.
 
 ```bash
-npm run build:free
+npm run build:vercel
 ```
 
 4. Install Command는 기본값 또는 아래처럼 둔다.
@@ -83,6 +83,8 @@ npm run deploy:db:free
 - Postgres용 Prisma Client 생성
 - Supabase DB에 테이블 생성
 - 진단 문항, 과정, 관리자 기본 사용자 시드 입력
+
+Vercel Build Command는 `npm run build:vercel`을 사용한다. 이 명령은 `DATABASE_URL` 값에서 따옴표나 `DATABASE_URL=` 접두사가 섞여 들어온 경우를 보정하고, Postgres URL 형식이 아니면 빌드를 중단한다.
 
 ## 무료 운영을 위한 설정값
 

@@ -7,16 +7,16 @@
  */
 :root {
   /* Marketing palette (matches public/index.html) */
-  --navy: #0e1b2c;
-  --navy-soft: #16283f;
-  --cobalt: #2456e6;
-  --cobalt-dark: #1b46c4;
-  --cobalt-light: #e8eefc;
-  --amber: #e8a33d;
-  --off: #f5f7fa;
-  --ink: #1a2433;
-  --gray: #5b6b7f;
-  --line: #dde4ec;
+  --navy: #1e293b;
+  --navy-soft: #334155;
+  --cobalt: #2563eb;
+  --cobalt-dark: #1d4ed8;
+  --cobalt-light: #dbeafe;
+  --amber: #d97706;
+  --off: #f8fafc;
+  --ink: #0f172a;
+  --gray: #64748b;
+  --line: #e2e8f0;
 
   /* Semantic tokens (consumed by components) */
   --color-primary-900: var(--navy);
@@ -224,6 +224,10 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 28px 26px;
+}
+.question-card-invalid {
+  border-color: var(--color-danger-600);
+  box-shadow: 0 0 0 3px rgba(190, 18, 60, 0.12);
 }
 .card + .card {
   margin-top: 16px;
@@ -787,6 +791,10 @@ select:focus {
 }
 
 @media (max-width: 640px) {
+  .marketing-header .nav-cta {
+    display: none;
+  }
+
   .options-scale {
     grid-template-columns: repeat(5, minmax(44px, 1fr));
     gap: 6px;
@@ -829,6 +837,16 @@ select:focus {
     background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(6px);
     border-top: 1px solid var(--line);
+  }
+  .diagnosis-start .notice {
+    padding: 16px 18px;
+    font-size: 15px;
+  }
+  .diagnosis-start .card {
+    padding: 24px 26px;
+  }
+  .diagnosis-start .option {
+    padding: 10px 12px;
   }
 }
 

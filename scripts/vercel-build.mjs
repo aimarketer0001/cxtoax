@@ -1,4 +1,6 @@
 import { spawnSync } from "node:child_process";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 function normalizeDatabaseUrl(value) {
   if (!value) return value;
@@ -34,16 +36,25 @@ if (!normalizedDatabaseUrl?.startsWith("postgresql://") && !normalizedDatabaseUr
   process.exit(1);
 }
 
+const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
 const commands = [
-  ["npx", ["prisma", "generate", "--schema", "prisma/schema.free.prisma"]],
-  ["npx", ["next", "build"]],
+  [
+    process.execPath,
+    [path.join(rootDir, "node_modules/prisma/build/index.js"), "generate", "--schema", "prisma/schema.free.prisma"],
+  ],
+  [process.execPath, [path.join(rootDir, "node_modules/next/dist/bin/next"), "build"]],
 ];
 
 for (const [command, args] of commands) {
   const result = spawnSync(command, args, {
     env,
-    shell: process.platform === "win32",
+    shell: false,
     stdio: "inherit",
   });
+  if (result.error) {
+    console.error(result.error.message);
+    process.exit(1);
+  }
   if (result.status !== 0) process.exit(result.status ?? 1);
 }

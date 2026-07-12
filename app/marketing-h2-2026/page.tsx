@@ -5,17 +5,29 @@ import MarketingHeader from "@/components/MarketingHeader";
 import MicrositeContactForm from "./MicrositeContactForm";
 import MicrositeFloatingMenu from "./MicrositeFloatingMenu";
 import WorkshopChecklist from "./WorkshopChecklist";
+import { OG_IMAGE, absoluteUrl } from "@/lib/site";
 import "./styles.css";
 
 export const metadata: Metadata = {
   title: "2026 하반기 마케팅 실행 전략 리포트",
   description:
     "AI 검색, CRM 자동화, 콘텐츠 운영, 캠페인 실행 로드맵을 실무 관점으로 정리한 2026 하반기 마케팅 전략 리포트입니다.",
+  alternates: {
+    canonical: absoluteUrl("/marketing-h2-2026"),
+  },
   openGraph: {
     title: "2026 하반기 마케팅 실행 전략 리포트",
     description:
       "AI 검색 대응부터 CRM 자동화까지, 하반기 마케팅 실행 체계를 실무 관점으로 정리합니다.",
-    images: ["/og-image.jpg"],
+    url: absoluteUrl("/marketing-h2-2026"),
+    images: [absoluteUrl(OG_IMAGE)],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "2026 하반기 마케팅 실행 전략 리포트",
+    description:
+      "AI 검색 대응부터 CRM 자동화까지, 하반기 마케팅 실행 체계를 실무 관점으로 정리합니다.",
+    images: [absoluteUrl(OG_IMAGE)],
   },
 };
 
@@ -34,7 +46,7 @@ const keyInsights = [
   },
   {
     title: "CRM 리텐션 전략이 하반기 성과를 좌우한다",
-    copy: "신규 유입보다 먼저 welcome, nurture, win-back 플로우를 정비해야 매출 누수를 막습니다.",
+    copy: "신규 유입보다 먼저 웰컴·육성·휴면 회수 플로우를 정비해야 매출 누수를 막습니다.",
   },
   {
     title: "AI 업무 흐름이 실무 생산성을 높인다",
@@ -67,7 +79,7 @@ const workshopSteps = [
   {
     step: "Step 4",
     title: "실행 과제 정리",
-    copy: "방문 많은 페이지 1개를 골라 바로 개편합니다.",
+    copy: "방문이 많은 페이지 1개를 골라 바로 개편합니다.",
     awareness: "오늘 해야 할 일이 명확하다",
     action: "이번 주에 바꿀 페이지 1개 정하기",
   },
@@ -119,7 +131,7 @@ const workshopResources = [
 const weeklyActions = [
   {
     title: "페이지 찾기",
-    copy: "GA에서 방문 많은 페이지 상위 20개를 확인한다.",
+    copy: "GA에서 방문이 많은 페이지 상위 20개를 확인한다.",
     time: "10분",
   },
   {
@@ -172,7 +184,7 @@ function ComparePageMockup({ tone }: { tone: string }) {
       <div className="mock-answer-block">
         <strong>Q. 이 에센스는 어떤 피부 고민에 적합한가요?</strong>
         <p>
-          건조로 인한 속당김과 칙칙한 피부톤이 고민인 복합성·건성 피부에
+          건조로 인한 속당김과 칙칙한 피부 톤이 고민인 복합성·건성 피부에
           적합합니다. 세안 후 토너 다음 단계에서 2~3방울을 얼굴 전체에 펴 바릅니다.
         </p>
       </div>
@@ -325,8 +337,8 @@ const evidenceCriteria = [
     label: "CRM 자동화",
     title: "신규 광고 전에 회수·육성 플로우가 정리됐는가",
     basis:
-      "Klaviyo 자동화 벤치마크와 CRM 플로우 운영 관점을 참고해 welcome, nurture, win-back 흐름을 우선순위로 둡니다.",
-    criteria: ["세그먼트 기준", "welcome 플로우", "nurture 플로우", "win-back 플로우", "성과 cohort 분석"],
+      "Klaviyo 자동화 벤치마크와 CRM 플로우 운영 관점을 참고해 웰컴, 육성, 휴면 회수 흐름을 우선순위로 둡니다.",
+    criteria: ["세그먼트 기준", "웰컴 플로우", "육성 플로우", "휴면 회수 플로우", "성과 코호트 분석"],
   },
   {
     label: "AI 운영 체계",
@@ -369,7 +381,7 @@ const relatedPrograms = [
     copy: "고객 세그먼트, 리텐션, 회수 플로우를 CRM 관점에서 설계합니다.",
   },
   {
-    title: "프롬프트 기반 업무도구 제작(바이브코딩) 교육",
+    title: "프롬프트 기반 업무 도구 제작(바이브 코딩) 교육",
     copy: "비개발자도 캠페인 자동화 도구와 내부 업무 도구를 기획해 봅니다.",
   },
 ];
@@ -388,7 +400,7 @@ const faqs = [
   {
     category: "CRM·자동화",
     question: "작은 조직도 CRM 자동화를 시작할 수 있나요?",
-    answer: "가능합니다. welcome, nurture, win-back 같은 기본 플로우부터 작게 시작하는 편이 가장 현실적입니다.",
+    answer: "가능합니다. 웰컴, 육성, 휴면 회수 같은 기본 플로우부터 작게 시작하는 편이 가장 현실적입니다.",
   },
   {
     category: "AI 검색",
@@ -408,7 +420,7 @@ const faqs = [
   {
     category: "CRM·자동화",
     question: "CRM 자동화는 어떤 플로우부터 시작하는 것이 좋나요?",
-    answer: "처음에는 welcome, nurture, win-back처럼 고객 여정이 분명하고 반복성이 높은 플로우부터 시작하는 것이 현실적입니다.",
+    answer: "처음에는 웰컴, 육성, 휴면 회수처럼 고객 여정이 분명하고 반복성이 높은 플로우부터 시작하는 것이 현실적입니다.",
   },
   {
     category: "실행·리스크",
@@ -479,19 +491,9 @@ export default function MarketingMicrositePage() {
 
       <nav className="micro-nav" aria-label="하반기 마케팅 캠페인 섹션">
         <div className="micro-nav-inner">
-          <a href="#overview">개요</a>
-          <a href="#key-insights">핵심 인사이트</a>
-          <a href="#evidence">근거 기준</a>
-          <a href="#strategy-framework">전략 프레임</a>
-          <a href="#campaign-roadmap">실행 로드맵</a>
-          <a href="#channels">채널별 역할</a>
-          <a href="#ai-tools">AI 활용</a>
-          <a href="#kpi-risk">KPI</a>
+          <a href="#overview">전략 개요</a>
+          <a href="#campaign-roadmap">실행 계획</a>
           <a href="#workshop">실행 워크숍</a>
-          <a href="#checklist">체크리스트</a>
-          <a href="#instructor">강사</a>
-          <a href="#related-programs">강의</a>
-          <a href="#faq">FAQ</a>
           <a href="#report-contact" className="micro-nav-cta">
             교육 상담 문의하기
           </a>
@@ -719,7 +721,7 @@ export default function MarketingMicrositePage() {
         <div className="microsite-wrap ai-grid">
           <div>
             <p className="section-kicker">AI SYSTEM</p>
-          <h2>AI는 카피 도구가 아니라 업무 운영 방식입니다</h2>
+          <h2>AI는 카피 작성 도구가 아니라 업무 운영 방식입니다</h2>
             <p className="section-lead">
               하반기에는 프롬프트만 잘 쓰는 조직보다 업무 맥락, 승인 단계,
               도구, 데이터를 함께 정리하는 조직이 더 빠르게 움직입니다.
@@ -754,7 +756,7 @@ export default function MarketingMicrositePage() {
       <section className="microsite-section" id="kpi-risk">
         <div className="microsite-wrap">
           <p className="section-kicker">KPI & RISK</p>
-          <h2>성과관리와 리스크를 함께 봅니다</h2>
+          <h2>성과 관리와 리스크를 함께 봅니다</h2>
           <p className="section-lead">
             AI 활용 캠페인은 속도가 빠른 만큼 품질, 측정, 데이터 관리 기준을
             함께 세워야 합니다.
@@ -962,7 +964,7 @@ export default function MarketingMicrositePage() {
       <section className="microsite-section alt" id="related-programs">
         <div className="microsite-wrap">
           <p className="section-kicker">RELATED PROGRAMS</p>
-          <h2>이 리포트 내용을 교육으로 배우기</h2>
+          <h2>리포트 내용을 교육 프로그램으로 이어가기</h2>
           <div className="program-grid">
             {relatedPrograms.map((program) => (
               <article className="program-card" key={program.title}>

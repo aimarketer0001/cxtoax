@@ -17,15 +17,22 @@ export default function QuestionCard({
   question,
   value,
   onChange,
+  invalid = false,
 }: {
   question: PublicQuestion;
   value: Value;
   onChange: (v: Value) => void;
+  invalid?: boolean;
 }) {
   const q = question;
 
   return (
-    <div className="card" aria-live="polite">
+    <div
+      id={`question-${q.no}`}
+      className={`card question-card ${invalid ? "question-card-invalid" : ""}`}
+      aria-invalid={invalid || undefined}
+      aria-live="polite"
+    >
       <div className="badge badge-accent" style={{ marginBottom: 10 }}>
         {q.area}
       </div>

@@ -7,4 +7,5 @@ prisma/*.db
 prisma/*.db-journal
 tmp-ui-review
 tmp-video-frames
+backups
 Archived

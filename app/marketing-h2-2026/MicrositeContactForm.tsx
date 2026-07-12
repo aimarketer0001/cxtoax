@@ -7,7 +7,7 @@ const PROGRAM_OPTIONS = [
   "AI 마케팅 실무 교육",
   "AX 실무 전환 교육",
   "CRM 기반 고객경영 교육",
-  "프롬프트 기반 업무도구 제작(바이브코딩) 교육",
+  "프롬프트 기반 업무 도구 제작(바이브 코딩) 교육",
   "AI 검색/AEO 진단",
   "CRM 자동화 설계",
   "AI 콘텐츠 운영 체계 구축",
@@ -109,7 +109,7 @@ export default function MicrositeContactForm({
           <h2>하반기 마케팅 실행 체계를 함께 정리해 보세요</h2>
           <p className="section-lead">
             현재 조직의 콘텐츠, 검색, CRM, AI 활용 상황을 알려주시면
-            필요한 교육 또는 워크숍 형태로 제안드립니다.
+            필요한 교육이나 워크숍 형태를 제안드립니다.
           </p>
           <div className="contact-points">
             <div>

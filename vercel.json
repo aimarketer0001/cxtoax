@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build:free",
+  "buildCommand": "npm run build:vercel",
   "installCommand": "npm install",
   "framework": "nextjs"
 }

@@ -22,7 +22,7 @@ export default function ResultActions() {
         {copied ? "복사 완료" : "결과 링크 복사"}
       </button>
       <button className="btn btn-ghost btn-sm" onClick={() => window.print()}>
-        인쇄/PDF 저장
+        인쇄 또는 PDF 저장
       </button>
     </div>
   );

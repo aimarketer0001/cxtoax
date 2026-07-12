@@ -8,11 +8,11 @@ export default function MarketingHeader() {
           CX <span>to</span> AX
         </Link>
         <nav className="nav-links" aria-label="사이트 메뉴">
-          <Link href="/#about">소개</Link>
-          <Link href="/#expertise">전문분야</Link>
-          <Link href="/#programs">교육 과정</Link>
-          <Link href="/#insights">인사이트</Link>
-          <Link href="/#contact" className="nav-cta">
+          <Link href="/profile">소개</Link>
+          <Link href="/portfolio">프로젝트</Link>
+          <Link href="/courses">교육 과정</Link>
+          <Link href="/insights">인사이트</Link>
+          <Link href="/contact" className="nav-cta">
             교육 상담 문의하기
           </Link>
         </nav>

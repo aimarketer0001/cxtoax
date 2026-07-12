@@ -56,7 +56,7 @@
   position: relative;
   pointer-events: auto;
   width: 58px;
-  height: 260px;
+  height: 168px;
 }
 
 .floating-menu-panel {
@@ -64,7 +64,7 @@
   right: 0;
   bottom: 0;
   width: 58px;
-  height: 260px;
+  height: 168px;
   padding: 22px 0;
   overflow: hidden;
   border: 1px solid rgba(15, 23, 42, 0.06);
@@ -109,21 +109,21 @@
   opacity: 1;
 }
 
-.floating-menu ul {
+.floating-menu-groups {
   position: relative;
   display: grid;
-  gap: 10px;
+  gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.floating-menu-panel:not(:hover):not(:focus-within) ul {
+.floating-menu-panel:not(:hover):not(:focus-within) .floating-menu-groups {
   height: 100%;
   align-content: center;
 }
 
-.floating-menu ul::before {
+.floating-menu-groups::before {
   content: "";
   position: absolute;
   top: 6px;
@@ -134,14 +134,14 @@
   transform: translateX(-50%);
 }
 
-.floating-menu-panel:hover ul::before,
-.floating-menu-panel:focus-within ul::before {
+.floating-menu-panel:hover .floating-menu-groups::before,
+.floating-menu-panel:focus-within .floating-menu-groups::before {
   left: auto;
   right: 6px;
   transform: none;
 }
 
-.floating-menu li {
+.floating-menu-groups > li {
   position: relative;
   z-index: 1;
   min-width: 0;
@@ -161,6 +161,10 @@
   font-size: 13px;
   line-height: 1.15;
   white-space: nowrap;
+}
+
+.floating-menu-panel .floating-menu-groups > li > a {
+  font-weight: 800;
 }
 
 .floating-menu-panel a span {
@@ -186,6 +190,50 @@
   opacity: 1;
 }
 
+.floating-menu-sublist {
+  display: none;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0 18px 0 10px;
+  list-style: none;
+}
+
+.floating-menu-panel:hover .is-expanded .floating-menu-sublist,
+.floating-menu-panel:focus-within .is-expanded .floating-menu-sublist {
+  display: grid;
+}
+
+.floating-menu-sublist a {
+  justify-content: flex-start;
+  gap: 8px;
+  min-height: 18px;
+  color: #6b7480;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.floating-menu-panel:hover .floating-menu-sublist a,
+.floating-menu-panel:focus-within .floating-menu-sublist a {
+  justify-content: flex-start;
+  gap: 8px;
+  min-height: 18px;
+}
+
+.floating-menu-sublist a::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #a8b0bb;
+}
+
+.floating-menu-sublist a.is-active::before,
+.floating-menu-sublist a:hover::before,
+.floating-menu-sublist a:focus-visible::before {
+  background: var(--cobalt);
+}
+
 .floating-menu-panel a i {
   flex: 0 0 auto;
   width: 11px;
@@ -207,12 +255,17 @@
 
 .floating-menu-panel a:hover i,
 .floating-menu-panel a:focus-visible i {
-  background: #148414;
+  background: var(--cobalt);
+}
+
+.floating-menu-panel a:not(.is-active):hover i,
+.floating-menu-panel a:not(.is-active):focus-visible i {
+  background: #4f5864;
 }
 
 .floating-menu-panel:hover a.is-active i,
 .floating-menu-panel:focus-within a.is-active i {
-  background: #148414;
+  background: var(--cobalt);
 }
 
 .floating-menu-panel:hover a.is-active i,
@@ -300,8 +353,14 @@
   stroke-linejoin: round;
 }
 
-@media (min-width: 861px) {
+@media (min-width: 1201px) {
   .micro-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .floating-menu {
     display: none;
   }
 }
@@ -1959,6 +2018,11 @@
 }
 
 @media (max-width: 620px) {
+  .micro-nav {
+    position: static;
+    top: auto;
+  }
+
   .micro-nav-inner {
     gap: 14px;
   }
