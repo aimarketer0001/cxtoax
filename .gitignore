@@ -36,6 +36,7 @@ Archived/
 cxtoax/
 tmp-ui-review/
 tmp-video-frames/
+backups/
 og-image_1.jpg
 README__.txt
 .next-dev*.log
@@ -43,3 +44,6 @@ README__.txt
 
 # local Supabase CLI state
 supabase/.temp/
+
+# Netlify CLI local state
+.netlify/
