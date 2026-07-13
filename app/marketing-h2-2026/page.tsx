@@ -640,7 +640,7 @@ export default function MarketingMicrositePage() {
                 <b>{item.priority}</b>
               </div>
             ))}
-            {frameworkStages.map((item) => (
+            {frameworkStages.map((item, i) => (
               <article className="tl-phase" key={item.period}>
                 <strong>{item.title}</strong>
                 <p>{item.effect}</p>
@@ -650,6 +650,13 @@ export default function MarketingMicrositePage() {
                   ))}
                   <li>추천 채널 · {item.channels}</li>
                 </ul>
+                {i < frameworkStages.length - 1 && (
+                  <span className="tl-phase-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M5 2.5l4.5 4.5L5 11.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                )}
               </article>
             ))}
             {monthlyRoadmap.map((item) => (
