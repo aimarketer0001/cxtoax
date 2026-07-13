@@ -750,6 +750,13 @@ export default function MarketingMicrositePage() {
         </div>
       </section>
 
+      <div className="report-to-workshop" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <span>리포트를 읽었다면, 이제 직접 적용해 보세요</span>
+      </div>
+
       <section className="microsite-section alt practical-workshop" id="workshop">
         <div className="microsite-wrap">
           <p className="section-kicker">PRACTICAL WORKSHOP</p>

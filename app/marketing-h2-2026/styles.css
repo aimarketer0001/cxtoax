@@ -785,6 +785,18 @@
   min-width: 236px;
 }
 
+.report-to-workshop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 22px 24px;
+  color: var(--cobalt);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
 .practical-workshop {
   background:
     radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), transparent 340px),
