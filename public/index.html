@@ -267,8 +267,10 @@
     margin: 18px 0 22px;
   }
   .score-circle {
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 92px;
     height: 92px;
     border-radius: 999px;
@@ -820,8 +822,8 @@
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow mono">AI 마케팅 · CRM 자동화 · AX 전환</span>
-      <h1>CX to AX<br><em>CRM 경험 기반 실무형 AX 교육</em></h1>
-      <p class="lead">진단으로 현재 역량을 파악하고, 맞춤 교육과 컨설팅으로 AI 시대의 고객 경험과 비즈니스 성과를 함께 만들어갑니다.</p>
+      <h1>CRM 현장을 이해하는 강사가,<br><em>AI로 일하는 방식</em>을 함께 설계합니다.</h1>
+      <p class="lead">대기업 CRM 프로젝트에서 쌓은 고객 접점 경험을 바탕으로, 영업·상담·마케팅 업무에 바로 적용할 수 있는 AX·업무 자동화 교육을 진행합니다.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="/diagnosis">역량 진단 시작하기</a>
         <a class="btn btn-ghost" href="/contact">교육 상담 문의하기</a>
@@ -848,7 +850,7 @@
         <div>
           <div class="score-title">AX 역량 점수</div>
           <div class="score-note">상위 34%</div>
-          <div style="color:var(--gray); font-size:13px; margin-top:4px;">동종 업계 평균 대비</div>
+          <div style="color:var(--gray); font-size:13px; margin-top:4px;">동종 업계 평균 대비 <span style="font-size:11px; opacity:0.7;">(예시 데이터)</span></div>
         </div>
       </div>
       <div class="score-bars">
@@ -858,7 +860,7 @@
         <div class="score-bar"><span>자동화 역량</span><i style="--w:65%"></i><b>65</b></div>
         <div class="score-bar"><span>AX 실행력</span><i style="--w:81%"></i><b>81</b></div>
       </div>
-      <div class="diff-note" style="margin-top:22px;">강점 영역은 더 강화하고, 자동화 역량은 실습형 교육으로 보완합니다.</div>
+      <div class="diff-note" style="margin-top:22px;">강점 영역은 더 강화하고, 자동화·CRM 활용 영역은 실습형 교육으로 보완합니다.</div>
     </aside>
   </div>
 </header>
@@ -907,7 +909,7 @@
           <tbody>
             <tr><td>1막</td><td>Siebel 기반 CRM 컨설팅<br><span style="color:var(--gray); font-size:12px;">통신 · 자동차 · 공공</span></td></tr>
             <tr><td>2막</td><td>Salesforce 기반 CRM 컨설팅<br><span style="color:var(--gray); font-size:12px;">전자·반도체 · 유통 · 자동차</span></td></tr>
-            <tr><td>3막</td><td>AX·AI 활용 교육 강사<br><span style="color:var(--gray); font-size:12px;">현업형 AI 활용 · 업무 자동화 교육</span></td></tr>
+            <tr><td>3막</td><td>AX·AI 활용 교육 강사<br><span style="color:var(--gray); font-size:12px;">실무형 AI 활용 · 업무 자동화 교육</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -953,7 +955,7 @@
   <div class="wrap">
     <p class="sec-eyebrow mono">TRACK RECORD</p>
     <h2>CRM 프로젝트 경험으로 교육의 신뢰를 설명합니다</h2>
-    <p class="sec-lead">화려한 수식어보다 실제 수행 경험을 중요하게 봅니다. 아래 기록은 현업형 교육의 기반입니다.</p>
+    <p class="sec-lead">화려한 수식어보다 실제 수행 경험을 중요하게 봅니다. 아래 기록은 실무형 교육의 기반입니다.</p>
 
     <div class="num-strip">
       <div class="num-cell reveal"><div class="n">30<span>건+</span></div><div class="l">수행 프로젝트</div></div>
@@ -965,7 +967,7 @@
     <div class="case-list" style="margin-top:48px;">
       <article class="case-card reveal">
         <span class="case-tag">CASE 01 · 국내 대형 통신사</span>
-        <h3>상담 현장을 위한 CRM 시스템 구축과 3년의 운영</h3>
+        <h3>상담 현장을 위한 CRM 시스템 구축과 운영</h3>
         <div class="psr">
           <div><b>PROBLEM · 문제</b>급증하는 가입자와 상담 요청. 고객 정보와 응대 절차가 흩어져 있어 상담 현장의 응대가 느려지고, 상담사마다 품질 편차가 컸습니다.</div>
           <div><b>SOLUTION · 해결</b>PL/BA 역할로 CRM 시스템 구축과 이후 운영 과정에 참여했습니다. 시스템을 만드는 것에서 끝내지 않고 상담 현장에 정착시키는 일까지가 프로젝트였습니다.</div>
@@ -978,7 +980,7 @@
         <div class="psr">
           <div><b>PROBLEM · 문제</b>글로벌 B2B 고객사의 기술 문의·지원 요청을 부서별로 제각각 처리하고 있어, 고객 대응의 속도와 이력 관리에 한계가 있었습니다.</div>
           <div><b>SOLUTION · 해결</b>PL/BA 역할로 Salesforce Service Cloud 기반 고객 지원 CRM 설계·구축에 참여했습니다. 1차 구축 이후 후속 페이즈까지 연속으로 수행했습니다.</div>
-          <div class="result"><b>RESULT · 성과</b>고객 지원 요청의 접수부터 처리까지 하나의 시스템으로 통합. 2023년까지 대기업 현장에서 쌓아온 실무 감각이 <a href="#courses" style="color:var(--cobalt); font-weight:700;">강의</a>에 반영됩니다.</div>
+          <div class="result"><b>RESULT · 성과</b>고객 지원 요청의 접수부터 처리까지 하나의 시스템으로 통합. 대기업 현장에서 쌓아온 실무 감각이 <a href="#courses" style="color:var(--cobalt); font-weight:700;">강의</a>에 반영됩니다.</div>
         </div>
       </article>
     </div>
@@ -995,7 +997,7 @@
       <div style="background:var(--navy-soft); border:1px solid rgba(126,160,245,0.25); border-radius:var(--radius); padding:22px;">
         <div class="mono" style="color:var(--amber); font-size:13px; margin-bottom:8px;">STEP 1</div>
         <strong style="display:block; margin-bottom:6px;">업무 역량 진단</strong>
-        <span style="font-size:14px; color:#B9C6D8;">20개 문항 · 약 10분 · 개인 식별정보 서버 저장 없음</span>
+        <span style="font-size:14px; color:#B9C6D8;">20개 문항 · 약 10분 · 개인 식별 정보 서버 저장 없음</span>
       </div>
       <div style="background:var(--navy-soft); border:1px solid rgba(126,160,245,0.25); border-radius:var(--radius); padding:22px;">
         <div class="mono" style="color:var(--amber); font-size:13px; margin-bottom:8px;">STEP 2</div>
@@ -1008,7 +1010,7 @@
         <span style="font-size:14px; color:#B9C6D8;">추천 과정과 조직 상황을 바탕으로 상담 접수</span>
       </div>
     </div>
-    <a class="btn btn-primary" href="/diagnosis">교육 진단 시작하기 →</a>
+    <a class="btn btn-primary" href="/diagnosis">역량 진단 시작하기 →</a>
   </div>
 </section>
 <style>
@@ -1140,7 +1142,7 @@
           <div>롱폼 원본 콘텐츠는 숏폼, 뉴스레터, CRM 메시지로 재활용되어야 합니다.</div>
           <div>하반기 성과는 7~8월 구조 정비와 CRM 플로우 설계에서 갈립니다.</div>
         </div>
-        <a class="btn btn-primary" style="margin-top:22px; font-size:14px; padding:12px 22px;" href="https://cxtoax.vercel.app/marketing-h2-2026">전략 리포트 보기 →</a>
+        <a class="btn btn-primary" style="margin-top:22px; font-size:14px; padding:12px 22px;" href="/marketing-h2-2026">전략 리포트 보기 →</a>
       </div>
       <aside class="insight-preview">
         <div class="mono">INSIGHT REPORT</div>
@@ -1164,7 +1166,7 @@
       </details>
       <details>
         <summary><span class="edu-faq-tag">상담 준비</span><span class="edu-faq-q">교육 상담 전에 어떤 자료를 준비하면 좋나요?</span></summary>
-        <p>현재 운영 중인 랜딩 페이지, FAQ, 콘텐츠 캘린더, CRM 플로우 또는 반복 업무 고민을 준비하면 조직에 맞는 교육 범위를 더 빠르게 정할 수 있습니다.</p>
+        <p>교육 대상 직군과 예상 인원, 현재 주요 반복 업무, 기대 학습 목표를 간략히 정리해 오시면 조직에 맞는 교육 범위를 더 빠르게 정할 수 있습니다.</p>
       </details>
       <details>
         <summary><span class="edu-faq-tag">교육 대상</span><span class="edu-faq-q">어떤 조직이나 수강자에게 적합한가요?</span></summary>
