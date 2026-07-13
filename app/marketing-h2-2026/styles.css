@@ -614,6 +614,116 @@
   margin-bottom: 8px;
 }
 
+/* Combined insight + evidence cards */
+.combined-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.combined-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.combined-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.combined-card-head {
+  padding: 14px 18px 0;
+}
+
+.combined-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  background: var(--cobalt-light);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.combined-insight {
+  padding: 12px 18px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.combined-insight strong {
+  display: block;
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.combined-insight p {
+  font-size: 13.5px;
+  color: var(--gray);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.combined-evidence {
+  padding: 14px 18px;
+  flex: 1;
+}
+
+.combined-evidence-q {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+
+.combined-criteria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.combined-criteria li {
+  font-size: 11.5px;
+  color: var(--gray);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.combined-ref {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 18px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cobalt);
+  text-decoration: none;
+  background: var(--surface);
+  transition: background 0.15s ease;
+}
+
+.combined-ref:hover {
+  background: var(--cobalt-light);
+  text-decoration: none;
+}
+
 .insight-grid p,
 .strategy-card p,
 .channel-card p,
@@ -2049,6 +2159,7 @@ details[open] .evidence-chevron {
   }
 
   .insight-grid,
+  .combined-grid,
   .channel-grid,
   .resource-grid,
   .evidence-grid,

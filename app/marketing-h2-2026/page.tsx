@@ -31,26 +31,66 @@ export const metadata: Metadata = {
   },
 };
 
-const keyInsights = [
+const combinedCriteria = [
   {
-    title: "브랜드 신뢰가 AI 검색 결과를 좌우한다",
-    copy: "AI가 브랜드를 요약하고 추천하는 환경에서는 출처, 관점, 사례가 검색 노출의 기반이 됩니다.",
+    label: "AI 검색/AEO",
+    insightTitle: "브랜드 신뢰가 AI 검색 결과를 좌우한다",
+    insightCopy: "AI가 브랜드를 요약하고 추천하는 환경에서는 출처, 관점, 사례가 검색 노출의 기반이 됩니다.",
+    evidenceTitle: "AI가 인용할 수 있는 공개 웹 자산인가",
+    criteria: ["공개 접근 가능", "질문형 제목", "짧은 답변", "FAQ·비교표", "최종 업데이트·출처 표기"],
+    refSource: "OpenAI",
+    refTitle: "Publishers and Developers FAQ",
+    refHref: "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq",
   },
   {
-    title: "AI 검색 대응은 SEO를 넘어 AEO로 확장된다",
-    copy: "질문형 콘텐츠, FAQ, 비교표, 명확한 엔티티 구조가 답변 엔진의 인용 가능성을 높입니다.",
+    label: "웹사이트 가독성",
+    insightTitle: "AI 검색 대응은 SEO를 넘어 AEO로 확장된다",
+    insightCopy: "질문형 콘텐츠, FAQ, 비교표, 명확한 엔티티 구조가 답변 엔진의 인용 가능성을 높입니다.",
+    evidenceTitle: "사람뿐 아니라 LLM도 읽을 수 있는 구조인가",
+    criteria: ["이미지 안 텍스트 최소화", "핵심 스펙 텍스트화", "문단 길이 제한", "엔티티 명칭 일관성"],
+    refSource: "Adobe",
+    refTitle: "AI Traffic Surge & Machine Readability 분석",
+    refHref: "https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable",
   },
   {
-    title: "영상·숏폼은 인지도 확보의 기본 채널이 된다",
-    copy: "짧게 발견시키고, 긴 콘텐츠로 설득하며, CRM 메시지로 회수하는 연결 구조가 필요합니다.",
+    label: "콘텐츠 공급망",
+    insightTitle: "영상·숏폼은 인지도 확보의 기본 채널이 된다",
+    insightCopy: "짧게 발견시키고, 긴 콘텐츠로 설득하며, CRM 메시지로 회수하는 연결 구조가 필요합니다.",
+    evidenceTitle: "하나의 핵심 메시지가 채널별 자산으로 전환되는가",
+    criteria: ["월간 메시지 1문장", "롱폼 원본", "숏폼 변환", "뉴스레터·세일즈 자산 재활용"],
+    refSource: "HubSpot",
+    refTitle: "Marketing Statistics & Industry Trends",
+    refHref: "https://www.hubspot.com/marketing-statistics",
   },
   {
-    title: "CRM 리텐션 전략이 하반기 성과를 좌우한다",
-    copy: "신규 유입보다 먼저 웰컴·육성·휴면 회수 플로우를 정비해야 매출 누수를 막습니다.",
+    label: "CRM 자동화",
+    insightTitle: "CRM 리텐션 전략이 하반기 성과를 좌우한다",
+    insightCopy: "신규 유입보다 먼저 웰컴·육성·휴면 회수 플로우를 정비해야 매출 누수를 막습니다.",
+    evidenceTitle: "신규 광고 전에 회수·육성 플로우가 정리됐는가",
+    criteria: ["세그먼트 기준", "웰컴 플로우", "육성 플로우", "휴면 회수 플로우", "성과 코호트 분석"],
+    refSource: "Klaviyo",
+    refTitle: "Email Marketing Benchmarks",
+    refHref: "https://www.klaviyo.com/products/email-marketing/benchmarks",
   },
   {
-    title: "AI 업무 흐름이 실무 생산성을 높인다",
-    copy: "조사, 브리프, 초안, 검수, 보고를 반복 가능한 업무 흐름으로 연결합니다.",
+    label: "AI 운영 체계",
+    insightTitle: "AI 업무 흐름이 실무 생산성을 높인다",
+    insightCopy: "조사, 브리프, 초안, 검수, 보고를 반복 가능한 업무 흐름으로 연결합니다.",
+    evidenceTitle: "AI가 단발성 도구가 아니라 반복 업무 흐름에 들어갔는가",
+    criteria: ["리서치 자동화", "콘텐츠 QA", "주간 리포트", "다음 액션 제안", "사람 검토 단계"],
+    refSource: "LinkedIn",
+    refTitle: "2025 B2B Benchmark: AI Advantage",
+    refHref: "https://business.linkedin.com/content/dam/business/marketing-solutions/global/en_US/site/pdf/wp/2025/2025-b2b-benchmark-ai-advantage.pdf",
+  },
+  {
+    label: "리스크 기준",
+    insightTitle: null,
+    insightCopy: null,
+    evidenceTitle: "개인정보·저작권·브랜드 안전 기준이 문서화됐는가",
+    criteria: ["개인정보 마스킹", "저작권 검토", "브랜드 톤 검수", "승인 책임자", "로그·보안 관리"],
+    refSource: "개인정보보호위원회",
+    refTitle: "생성형 AI 개인정보 처리 안내",
+    refHref: "https://www.pipc.go.kr/np/cop/bbs/selectBoardArticle.do?bbsId=BS074&mCode=C020010000&nttId=11410",
   },
 ];
 
@@ -311,50 +351,6 @@ const risks = [
   "고객 데이터 관리 미흡",
 ];
 
-const evidenceCriteria = [
-  {
-    label: "AI 검색/AEO",
-    title: "AI가 인용할 수 있는 공개 웹 자산인가",
-    basis:
-      "OpenAI, Anthropic, Perplexity의 검색·인용형 답변 구조와 Google의 AI 검색 확장 흐름을 기준으로 봅니다.",
-    criteria: ["공개 접근 가능", "질문형 제목", "짧은 답변", "FAQ·비교표", "최종 업데이트·출처 표기"],
-  },
-  {
-    label: "웹사이트 가독성",
-    title: "사람뿐 아니라 LLM도 읽을 수 있는 구조인가",
-    basis:
-      "Adobe의 AI 유입·머신 리더블 분석 관점을 참고해 상품/서비스 페이지, FAQ, 비교 페이지의 텍스트 구조를 우선 점검합니다.",
-    criteria: ["이미지 안 텍스트 최소화", "핵심 스펙 텍스트화", "문단 길이 제한", "엔티티 명칭 일관성"],
-  },
-  {
-    label: "콘텐츠 공급망",
-    title: "하나의 핵심 메시지가 채널별 자산으로 전환되는가",
-    basis:
-      "HubSpot, YouTube, Meta/TikTok의 영상·원본성·채널별 맞춤 콘텐츠 흐름을 기준으로 롱폼-숏폼-CRM 연결을 봅니다.",
-    criteria: ["월간 메시지 1문장", "롱폼 원본", "숏폼 변환", "뉴스레터·세일즈 자산 재활용"],
-  },
-  {
-    label: "CRM 자동화",
-    title: "신규 광고 전에 회수·육성 플로우가 정리됐는가",
-    basis:
-      "Klaviyo 자동화 벤치마크와 CRM 플로우 운영 관점을 참고해 웰컴, 육성, 휴면 회수 흐름을 우선순위로 둡니다.",
-    criteria: ["세그먼트 기준", "웰컴 플로우", "육성 플로우", "휴면 회수 플로우", "성과 코호트 분석"],
-  },
-  {
-    label: "AI 운영 체계",
-    title: "AI가 단발성 도구가 아니라 반복 업무 흐름에 들어갔는가",
-    basis:
-      "LinkedIn, HubSpot, Salesforce의 AI 활용 사례를 참고해 조사, 브리프, 초안, QA, 보고를 하나의 루프로 연결합니다.",
-    criteria: ["리서치 자동화", "콘텐츠 QA", "주간 리포트", "다음 액션 제안", "사람 검토 단계"],
-  },
-  {
-    label: "리스크 기준",
-    title: "개인정보·저작권·브랜드 안전 기준이 문서화됐는가",
-    basis:
-      "EU AI Act, 한국 개인정보보호위원회 안내, 미국 저작권청의 AI 저작권 논의를 참고해 운영 가이드를 함께 둡니다.",
-    criteria: ["개인정보 마스킹", "저작권 검토", "브랜드 톤 검수", "승인 책임자", "로그·보안 관리"],
-  },
-];
 
 const referenceSources = [
   ["OpenAI", "Publishers and Developers FAQ", "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq"],
@@ -562,18 +558,45 @@ export default function MarketingMicrositePage() {
 
       <section className="microsite-section" id="key-insights">
         <div className="microsite-wrap">
-          <p className="section-kicker">KEY INSIGHTS</p>
-          <h2>하반기 마케팅 실행을 위한 5가지 인사이트</h2>
+          <p className="section-kicker">KEY INSIGHTS & CRITERIA</p>
+          <h2>하반기 마케팅 실행을 위한 6가지 인사이트</h2>
           <p className="section-lead">
             탐색 경로는 광고 클릭에서 끝나지 않습니다. AI 검색, 영상,
             커뮤니티, 메시징, CRM이 함께 작동하며 브랜드가 어떤 구조로
-            설명되는지가 성과에 영향을 줍니다.
+            설명되는지가 성과에 영향을 줍니다. 각 인사이트에는 점검 기준과
+            출처 링크를 함께 표시합니다.
           </p>
-          <div className="insight-grid">
-            {keyInsights.map((item) => (
-              <article key={item.title}>
-                <strong>{item.title}</strong>
-                <p>{item.copy}</p>
+          <div className="combined-grid">
+            {combinedCriteria.map((item) => (
+              <article className="combined-card" key={item.evidenceTitle}>
+                <div className="combined-card-head">
+                  <span className="combined-label">{item.label}</span>
+                </div>
+                {item.insightTitle && (
+                  <div className="combined-insight">
+                    <strong>{item.insightTitle}</strong>
+                    <p>{item.insightCopy}</p>
+                  </div>
+                )}
+                <div className="combined-evidence">
+                  <p className="combined-evidence-q">{item.evidenceTitle}</p>
+                  <ul className="combined-criteria">
+                    {item.criteria.map((c) => (
+                      <li key={c}>{c}</li>
+                    ))}
+                  </ul>
+                </div>
+                <a
+                  className="combined-ref"
+                  href={item.refHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  출처: {item.refSource}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
               </article>
             ))}
           </div>
@@ -601,72 +624,6 @@ export default function MarketingMicrositePage() {
         </div>
       </section>
 
-      <section className="microsite-section alt" id="evidence">
-        <div className="microsite-wrap">
-          <details className="evidence-details">
-            <summary className="evidence-summary">
-              <div className="evidence-summary-text">
-                <p className="section-kicker">EVIDENCE & CRITERIA</p>
-                <h2>이 리포트의 근거와 참고 기준</h2>
-              </div>
-              <svg className="evidence-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M5 7.5l5 5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </summary>
-
-            <div className="evidence-body">
-              <p className="section-lead">
-                아래 기준은 내부 딥서치 보고서
-                <strong> 「하반기 마케팅 캠페인 심층 전략 보고서」</strong>를
-                바탕으로 정리했습니다. 외부 자료의 숫자를 그대로 나열하기보다,
-                실제 마케팅 페이지와 캠페인을 점검할 때 사용할 수 있는 기준으로
-                압축했습니다.
-              </p>
-              <div className="evidence-meta" aria-label="보고서 기준 정보">
-                <span>기준 문서 · 하반기 마케팅 캠페인 심층 전략 보고서</span>
-                <span>파일 기준일 · 2026.07.03</span>
-                <span>페이지 최종 반영 · 2026.07.09</span>
-              </div>
-
-              <div className="evidence-grid">
-                {evidenceCriteria.map((item) => (
-                  <article className="evidence-card" key={item.label}>
-                    <span>{item.label}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.basis}</p>
-                    <ul>
-                      {item.criteria.map((criterion) => (
-                        <li key={criterion}>{criterion}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
-              </div>
-
-              <div className="reference-panel">
-                <div>
-                  <h3>주요 참고 자료</h3>
-                  <p>
-                    인용 가능한 페이지로 만들기 위해, 원문 출처명과 링크를 함께
-                    남겼습니다. 플랫폼 정책과 벤치마크는 변동될 수 있으므로
-                    교육·컨설팅 적용 시 최신 자료를 다시 확인합니다.
-                  </p>
-                </div>
-                <ul>
-                  {referenceSources.map(([source, title, href]) => (
-                    <li key={href}>
-                      <strong>{source}</strong>
-                      <a href={href} target="_blank" rel="noopener noreferrer">
-                        {title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
 
       <section className="microsite-section" id="strategy-framework">
         <div className="microsite-wrap">
