@@ -759,7 +759,7 @@ export default function MarketingMicrositePage() {
           <p className="section-kicker">PRACTICAL WORKSHOP</p>
           <h2>AI 검색 시대, 우리 회사 페이지부터 바꾸기</h2>
           <div className="workshop-origin" aria-label="워크숍 출처">
-            <span>INSIGHT 02 · AI 검색 대응은 SEO를 넘어 AEO로 확장된다</span>
+            <span>INSIGHT 02 · SEO에서 AEO로 확장</span>
             <span>전략 · AI 검색/AEO 대응</span>
           </div>
           <p className="workshop-intro">
