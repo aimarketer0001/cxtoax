@@ -384,8 +384,8 @@
 }
 
 .micro-hero {
-  background: var(--navy);
-  color: #fff;
+  background: linear-gradient(180deg, #F8FAFC 0%, #ffffff 80%);
+  color: var(--ink);
   padding: 82px 0 88px;
 }
 
@@ -409,7 +409,7 @@
 .micro-hero h1 {
   max-width: 720px;
   margin: 0;
-  color: #fff;
+  color: var(--navy);
   font-size: 58px;
   line-height: 1.18;
   letter-spacing: 0;
@@ -418,7 +418,7 @@
 .hero-lead {
   max-width: 640px;
   margin: 24px 0 0;
-  color: #c7d3e4;
+  color: #33404f;
   font-size: 18px;
 }
 
@@ -437,8 +437,8 @@
 }
 
 .report-meta span {
-  color: #dce5f0;
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: var(--gray);
+  border: 1px solid var(--line);
   border-radius: 999px;
   padding: 6px 12px;
   font-size: 13px;
@@ -470,12 +470,13 @@
 }
 
 .micro-btn-ghost {
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  color: #fff;
+  border: 1px solid var(--line);
+  color: var(--cobalt);
 }
 
 .micro-btn-ghost:hover {
-  border-color: #fff;
+  border-color: var(--cobalt);
+  background: var(--cobalt-light);
 }
 
 .micro-btn-outline {
@@ -500,11 +501,11 @@
 }
 
 .hero-panel {
-  background: #16283f;
-  border: 1px solid rgba(126, 160, 245, 0.28);
+  background: #fff;
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 26px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--card-shadow);
 }
 
 .panel-head {
@@ -514,8 +515,8 @@
   gap: 16px;
   padding-bottom: 14px;
   margin-bottom: 10px;
-  border-bottom: 1px solid rgba(126, 160, 245, 0.22);
-  color: #89a8f6;
+  border-bottom: 1px solid var(--line);
+  color: var(--gray);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -530,7 +531,7 @@
   grid-template-columns: 86px minmax(0, 1fr);
   gap: 14px;
   padding: 14px 0;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  border-bottom: 1px dashed var(--line);
 }
 
 .hero-panel dl > div:last-child {
@@ -544,7 +545,7 @@
 
 .hero-panel dd {
   margin: 0;
-  color: #fff;
+  color: var(--ink);
   font-weight: 600;
 }
 
