@@ -681,13 +681,13 @@
   .mobile-cta.hidden { transform: translateY(110%); }
   .mobile-cta a {
     flex: 1; display: block; text-align: center; text-decoration: none;
-    background: var(--cobalt); color: #fff;
+    background: transparent; border: 1.5px solid rgba(255,255,255,0.45); color: #fff;
     font-weight: 700; font-size: 16px;
     padding: 14px; border-radius: 10px;
   }
-  .mobile-cta a:active { background: #1b46c4; }
-  .mobile-cta .mc-diag { background: var(--amber); color: var(--navy); }
-  .mobile-cta .mc-diag:active { background: #d8912f; }
+  .mobile-cta a:active { border-color: rgba(255,255,255,0.7); }
+  .mobile-cta .mc-diag { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+  .mobile-cta .mc-diag:active { background: #1b46c4; border-color: #1b46c4; }
   @media (max-width: 720px) {
     .mobile-cta { display: flex; gap: 8px; }
     body { padding-bottom: 74px; }
@@ -1553,20 +1553,33 @@
 </footer>
 
 <div class="mobile-cta" id="mobile-cta" aria-hidden="false">
-  <a href="/diagnosis" class="mc-diag">교육 진단</a>
+  <a href="/diagnosis" class="mc-diag">역량 진단 시작하기</a>
   <a href="#contact">교육 상담 문의하기</a>
 </div>
 
 <script>
-  // 모바일 하단 CTA: 문의 폼이 보이면 숨김 (폼·전송 버튼 가림 방지)
+  // 모바일 하단 CTA: 히어로 버튼 또는 문의 폼이 보이면 숨김
   (function () {
     const bar = document.getElementById('mobile-cta');
+    if (!bar || !('IntersectionObserver' in window)) return;
+    let heroVisible = true;
+    let contactVisible = false;
+    function sync() { bar.classList.toggle('hidden', heroVisible || contactVisible); }
+    const heroBtnRow = document.querySelector('.hero .btn-row');
     const contact = document.getElementById('contact');
-    if (bar && contact && 'IntersectionObserver' in window) {
-      new IntersectionObserver(entries => {
-        entries.forEach(e => bar.classList.toggle('hidden', e.isIntersecting));
-      }, { threshold: 0.15 }).observe(contact);
+    if (heroBtnRow) {
+      new IntersectionObserver(
+        entries => { heroVisible = entries[0].isIntersecting; sync(); },
+        { threshold: 0.5 }
+      ).observe(heroBtnRow);
     }
+    if (contact) {
+      new IntersectionObserver(
+        entries => { contactVisible = entries[0].isIntersecting; sync(); },
+        { threshold: 0.15 }
+      ).observe(contact);
+    }
+    sync();
   })();
 
   // 문의 폼 → 관리자 상담 신청 저장
