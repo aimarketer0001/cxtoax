@@ -603,63 +603,66 @@ export default function MarketingMicrositePage() {
 
       <section className="microsite-section alt" id="evidence">
         <div className="microsite-wrap">
-          <p className="section-kicker">EVIDENCE & CRITERIA</p>
-          <h2>이 리포트의 근거와 참고 기준</h2>
-          <p className="section-lead">
-            아래 기준은 내부 딥서치 보고서
-            <strong> 「하반기 마케팅 캠페인 심층 전략 보고서」</strong>를
-            바탕으로 정리했습니다. 외부 자료의 숫자를 그대로 나열하기보다,
-            실제 마케팅 페이지와 캠페인을 점검할 때 사용할 수 있는 기준으로
-            압축했습니다.
-          </p>
-          <div className="evidence-meta" aria-label="보고서 기준 정보">
-            <span>기준 문서 · 하반기 마케팅 캠페인 심층 전략 보고서</span>
-            <span>파일 기준일 · 2026.07.03</span>
-            <span>페이지 최종 반영 · 2026.07.09</span>
-          </div>
-
           <details className="evidence-details">
             <summary className="evidence-summary">
-              <span>기준 항목 및 참고 자료 보기</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <div className="evidence-summary-text">
+                <p className="section-kicker">EVIDENCE & CRITERIA</p>
+                <h2>이 리포트의 근거와 참고 기준</h2>
+              </div>
+              <svg className="evidence-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7.5l5 5 5-5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </summary>
 
-            <div className="evidence-grid">
-              {evidenceCriteria.map((item) => (
-                <article className="evidence-card" key={item.label}>
-                  <span>{item.label}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.basis}</p>
-                  <ul>
-                    {item.criteria.map((criterion) => (
-                      <li key={criterion}>{criterion}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-
-            <div className="reference-panel">
-              <div>
-                <h3>주요 참고 자료</h3>
-                <p>
-                  인용 가능한 페이지로 만들기 위해, 원문 출처명과 링크를 함께
-                  남겼습니다. 플랫폼 정책과 벤치마크는 변동될 수 있으므로
-                  교육·컨설팅 적용 시 최신 자료를 다시 확인합니다.
-                </p>
+            <div className="evidence-body">
+              <p className="section-lead">
+                아래 기준은 내부 딥서치 보고서
+                <strong> 「하반기 마케팅 캠페인 심층 전략 보고서」</strong>를
+                바탕으로 정리했습니다. 외부 자료의 숫자를 그대로 나열하기보다,
+                실제 마케팅 페이지와 캠페인을 점검할 때 사용할 수 있는 기준으로
+                압축했습니다.
+              </p>
+              <div className="evidence-meta" aria-label="보고서 기준 정보">
+                <span>기준 문서 · 하반기 마케팅 캠페인 심층 전략 보고서</span>
+                <span>파일 기준일 · 2026.07.03</span>
+                <span>페이지 최종 반영 · 2026.07.09</span>
               </div>
-              <ul>
-                {referenceSources.map(([source, title, href]) => (
-                  <li key={href}>
-                    <strong>{source}</strong>
-                    <a href={href} target="_blank" rel="noopener noreferrer">
-                      {title}
-                    </a>
-                  </li>
+
+              <div className="evidence-grid">
+                {evidenceCriteria.map((item) => (
+                  <article className="evidence-card" key={item.label}>
+                    <span>{item.label}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.basis}</p>
+                    <ul>
+                      {item.criteria.map((criterion) => (
+                        <li key={criterion}>{criterion}</li>
+                      ))}
+                    </ul>
+                  </article>
                 ))}
-              </ul>
+              </div>
+
+              <div className="reference-panel">
+                <div>
+                  <h3>주요 참고 자료</h3>
+                  <p>
+                    인용 가능한 페이지로 만들기 위해, 원문 출처명과 링크를 함께
+                    남겼습니다. 플랫폼 정책과 벤치마크는 변동될 수 있으므로
+                    교육·컨설팅 적용 시 최신 자료를 다시 확인합니다.
+                  </p>
+                </div>
+                <ul>
+                  {referenceSources.map(([source, title, href]) => (
+                    <li key={href}>
+                      <strong>{source}</strong>
+                      <a href={href} target="_blank" rel="noopener noreferrer">
+                        {title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </details>
         </div>
