@@ -79,9 +79,8 @@
 }
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1B2C'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23FFFFFF' text-anchor='middle'%3ECX%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>
-  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css");
-
   :root {
     --navy: #1E293B;
     --navy-soft: #334155;
@@ -145,6 +144,7 @@
     .nav-links { gap: 14px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .nav-links a { white-space: nowrap; flex: none; }
     .nav-links .nav-cta { display: none; }
+    .nav-links a[href="/portfolio"] { display: none; }
   }
 
   /* ---------- Hero ---------- */
@@ -188,7 +188,7 @@
     max-width: 560px; margin-bottom: 32px;
   }
   @media (max-width: 640px) {
-    .hero h1 { font-size: 34px; }
+    .hero h1 { font-size: 26px; }
     .hero-trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .score-ring { grid-template-columns: 1fr; justify-items: center; text-align: center; }
     .score-bar { grid-template-columns: 82px minmax(0, 1fr) 30px; }
@@ -320,14 +320,14 @@
     font-size: 13px;
     font-weight: 700;
   }
-  .score-bar i {
+  .score-bar span[role="progressbar"] {
     display: block;
     height: 6px;
     border-radius: 999px;
     background: #E5E7EB;
     overflow: hidden;
   }
-  .score-bar i::before {
+  .score-bar span[role="progressbar"]::before {
     content: "";
     display: block;
     width: var(--w);
@@ -575,16 +575,21 @@
   }
   .edu-faq-list summary::-webkit-details-marker { display: none; }
   .edu-faq-list summary::after {
-    content: "+";
+    content: "";
     position: absolute;
-    right: 0;
+    right: 2px;
     top: 50%;
-    color: var(--cobalt);
-    font-size: 20px;
-    line-height: 1;
-    transform: translateY(-50%);
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid var(--cobalt);
+    border-bottom: 2px solid var(--cobalt);
+    transform: translateY(-65%) rotate(45deg);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
   }
-  .edu-faq-list details[open] summary::after { content: "-"; }
+  .edu-faq-list details[open] summary::after {
+    transform: translateY(-30%) rotate(-135deg);
+  }
   .edu-faq-tag {
     flex: 0 0 92px;
     display: inline-flex;
@@ -750,6 +755,8 @@
     overflow: hidden;
   }
   .f-error { color: #E5484D; font-size: 13px; margin-top: 10px; display: none; }
+  .f-field-err { color: #E5484D; font-size: 12px; margin-top: 4px; display: none; }
+  .f-field.has-error input, .f-field.has-error textarea, .f-field.has-error select { border-color: #E5484D; }
 
   /* ---------- Syllabus detail views ---------- */
   .syllabus-view { display: none; padding: 48px 0 80px; }
@@ -781,8 +788,8 @@
   /* subtle reveal */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.on { opacity: 1; transform: none; }
-  section, header { scroll-margin-top: 116px; }
-  .anchor-alias { display:block; position:relative; top:-116px; visibility:hidden; height:0; }
+  section, header { scroll-margin-top: 72px; }
+  .anchor-alias { display:block; position:relative; top:-72px; visibility:hidden; height:0; }
   .expertise-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
   .expertise-card { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:24px; }
   .expertise-card .icon { width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center; background:var(--cobalt-light); color:var(--cobalt); font-weight:800; margin-bottom:16px; }
@@ -830,20 +837,32 @@
       </div>
       <p style="font-size:13px; color:var(--gray); margin-top:14px;">교육 목적과 대상에 맞춰 커리큘럼과 실습 구성을 제안드립니다.</p>
       <div class="hero-trust-row" aria-label="서비스 신뢰 요소">
-        <div class="hero-trust-item"><span class="hero-trust-icon">✓</span><span>실무 중심<br>커리큘럼</span></div>
-        <div class="hero-trust-item"><span class="hero-trust-icon">◎</span><span>진단 기반<br>맞춤 추천</span></div>
-        <div class="hero-trust-item"><span class="hero-trust-icon">↗</span><span>검증된<br>성과</span></div>
-        <div class="hero-trust-item"><span class="hero-trust-icon">▣</span><span>기업 보안<br>준수</span></div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span>실무 중심<br>커리큘럼</span>
+        </div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+          <span>진단 기반<br>맞춤 추천</span>
+        </div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+          <span>검증된<br>성과</span>
+        </div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span>기업 보안<br>준수</span>
+        </div>
       </div>
     </div>
 
     <aside class="record-card" aria-label="진단 결과 기반 추천 예시">
       <div class="record-head">
         <span>진단 결과 기반 추천</span>
-        <span>preview</span>
+        <span>예시</span>
       </div>
       <div class="score-ring">
-        <div class="score-circle">
+        <div class="score-circle" aria-label="AX 역량 점수 72점 (상위 34%)">
           <strong>72</strong>
           <span>/100</span>
         </div>
@@ -854,11 +873,11 @@
         </div>
       </div>
       <div class="score-bars">
-        <div class="score-bar"><span>AI 이해</span><i style="--w:78%"></i><b>78</b></div>
-        <div class="score-bar"><span>CRM 활용</span><i style="--w:66%"></i><b>66</b></div>
-        <div class="score-bar"><span>데이터 분석</span><i style="--w:70%"></i><b>70</b></div>
-        <div class="score-bar"><span>자동화 역량</span><i style="--w:65%"></i><b>65</b></div>
-        <div class="score-bar"><span>AX 실행력</span><i style="--w:81%"></i><b>81</b></div>
+        <div class="score-bar"><span>AI 이해</span><span role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="AI 이해 78점" style="--w:78%"></span><b>78</b></div>
+        <div class="score-bar"><span>CRM 활용</span><span role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" aria-label="CRM 활용 66점" style="--w:66%"></span><b>66</b></div>
+        <div class="score-bar"><span>데이터 분석</span><span role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="데이터 분석 70점" style="--w:70%"></span><b>70</b></div>
+        <div class="score-bar"><span>자동화 역량</span><span role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="자동화 역량 65점" style="--w:65%"></span><b>65</b></div>
+        <div class="score-bar"><span>AX 실행력</span><span role="progressbar" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" aria-label="AX 실행력 81점" style="--w:81%"></span><b>81</b></div>
       </div>
       <div class="diff-note" style="margin-top:22px;">강점 영역은 더 강화하고, 자동화·CRM 활용 영역은 실습형 교육으로 보완합니다.</div>
     </aside>
@@ -900,7 +919,7 @@
     <div class="story-grid" style="margin-top:40px;">
       <div>
         <div class="reveal" style="border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: linear-gradient(160deg, #EAF1F8, #F7FAFD); box-shadow: 0 16px 40px rgba(14,27,44,0.12);">
-          <img src="/instructor.jpg" loading="lazy" decoding="async" alt="전선희 (Sunny Jun) 프로필 사진" style="width:100%; display:block;">
+          <img src="/instructor.jpg" loading="lazy" decoding="async" alt="전선희 (Sunny Jun) 프로필 사진" width="800" height="1000" style="width:100%; display:block;">
         </div>
         <table class="career-table">
           <thead>
@@ -1196,19 +1215,22 @@
         <span id="diag-banner-desc" style="font-size:14px; color:#33404F;">아래 문의 내용에 진단 결과와 추천 과정이 자동으로 입력되었습니다. 연락처를 남겨주시면 교육 상담을 이어가겠습니다.</span>
       </div>
       <div class="f-grid">
-        <div class="f-field">
+        <div class="f-field" id="ff-name">
           <label for="fq-name">이름 <span class="req">*</span></label>
           <input id="fq-name" type="text" placeholder="홍길동" autocomplete="name" required>
+          <span class="f-field-err" id="fq-name-err">이름을 입력해 주세요.</span>
         </div>
-        <div class="f-field">
+        <div class="f-field" id="ff-org">
           <label for="fq-org">소속 <span class="req">*</span></label>
           <input id="fq-org" type="text" placeholder="회사명 또는 기관명" autocomplete="organization" required>
+          <span class="f-field-err" id="fq-org-err">소속을 입력해 주세요.</span>
         </div>
       </div>
       <div class="f-grid">
-        <div class="f-field">
+        <div class="f-field" id="ff-phone">
           <label for="fq-phone">연락처 <span class="req">*</span></label>
           <input id="fq-phone" type="tel" placeholder="010-0000-0000" autocomplete="tel" required>
+          <span class="f-field-err" id="fq-phone-err">연락처를 입력해 주세요.</span>
         </div>
         <div class="f-field">
           <label for="fq-email">이메일 <span class="opt">(선택)</span></label>
@@ -1226,9 +1248,10 @@
           <option>기타</option>
         </select>
       </div>
-      <div class="f-field">
+      <div class="f-field" id="ff-msg">
         <label for="fq-msg">문의 내용 <span class="req">*</span></label>
         <textarea id="fq-msg" placeholder="교육 대상, 희망 일정, 예상 인원, 해결하고 싶은 업무 문제를 적어주세요." required></textarea>
+        <span class="f-field-err" id="fq-msg-err">문의 내용을 입력해 주세요.</span>
       </div>
       <div class="bot-field" aria-hidden="true">
         <label for="fq-website">웹사이트</label>
@@ -1537,14 +1560,24 @@
     const status = document.getElementById('fq-status');
     const btn = document.getElementById('fq-submit');
     const privacyConsent = document.getElementById('fq-privacy');
+    const showFieldErr = (fieldId, errId, show) => {
+      const field = document.getElementById(fieldId);
+      const errEl = document.getElementById(errId);
+      if (field) field.closest('.f-field').classList.toggle('has-error', show);
+      if (errEl) errEl.style.display = show ? 'block' : 'none';
+    };
+    showFieldErr('fq-name', 'fq-name-err', !name);
+    showFieldErr('fq-org', 'fq-org-err', !org);
+    showFieldErr('fq-phone', 'fq-phone-err', !phone);
+    showFieldErr('fq-msg', 'fq-msg-err', !msg);
     if (!name || !org || !phone || !msg) {
-      err.textContent = '이름, 소속, 연락처, 문의 내용을 입력해 주세요.';
-      err.style.display = 'block';
       if (status) status.style.display = 'none';
+      const firstErr = document.querySelector('.f-field.has-error input, .f-field.has-error textarea');
+      if (firstErr) firstErr.focus();
       return;
     }
     if (!privacyConsent || !privacyConsent.checked) {
-      err.textContent = '교육 상담 접수를 위해 개인정보 수집·이용 안내에 동의해 주세요.';
+      err.textContent = '개인정보 수집·이용 안내에 동의해 주세요.';
       err.style.display = 'block';
       if (status) status.style.display = 'none';
       return;

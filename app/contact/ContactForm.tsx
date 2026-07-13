@@ -10,6 +10,8 @@ const TOPIC_OPTIONS = [
   "기타",
 ];
 
+type FieldErrors = { name?: string; org?: string; phone?: string; message?: string };
+
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
@@ -19,22 +21,31 @@ export default function ContactForm() {
   const [message, setMessage] = useState("");
   const [website, setWebsite] = useState("");
   const [privacyConsent, setPrivacyConsent] = useState(false);
-  const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [consentError, setConsentError] = useState("");
+  const [apiError, setApiError] = useState("");
   const [success, setSuccess] = useState("");
   const [busy, setBusy] = useState(false);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSuccess("");
-    if (!name.trim() || !org.trim() || !phone.trim() || !message.trim()) {
-      setError("이름, 소속, 연락처, 문의 내용을 입력해 주세요.");
-      return;
-    }
+    setApiError("");
+    setConsentError("");
+
+    const errs: FieldErrors = {};
+    if (!name.trim()) errs.name = "이름을 입력해 주세요.";
+    if (!org.trim()) errs.org = "소속을 입력해 주세요.";
+    if (!phone.trim()) errs.phone = "연락처를 입력해 주세요.";
+    if (!message.trim()) errs.message = "문의 내용을 입력해 주세요.";
+    setFieldErrors(errs);
+    if (Object.keys(errs).length > 0) return;
+
     if (!privacyConsent) {
-      setError("교육 상담 접수를 위해 개인정보 수집·이용 안내에 동의해 주세요.");
+      setConsentError("개인정보 수집·이용 안내에 동의해 주세요.");
       return;
     }
-    setError("");
+
     setBusy(true);
     try {
       const res = await fetch("/api/inquiries", {
@@ -54,7 +65,7 @@ export default function ContactForm() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data?.error?.message ?? "교육 상담 신청을 저장하지 못했습니다.");
+        setApiError(data?.error?.message ?? "교육 상담 신청을 저장하지 못했습니다.");
         return;
       }
       setSuccess("교육 상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.");
@@ -66,8 +77,9 @@ export default function ContactForm() {
       setMessage("");
       setWebsite("");
       setPrivacyConsent(false);
+      setFieldErrors({});
     } catch {
-      setError("일시적인 네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      setApiError("일시적인 네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
     } finally {
       setBusy(false);
     }
@@ -75,42 +87,51 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={submit}>
-      <div className="field">
+      <div className="field" style={fieldErrors.name ? { borderColor: "#E5484D" } : {}}>
         <label htmlFor="contact-name">이름 *</label>
         <input
           id="contact-name"
           value={name}
-          onChange={(event) => setName(event.target.value)}
+          onChange={(e) => { setName(e.target.value); if (fieldErrors.name) setFieldErrors(p => ({ ...p, name: undefined })); }}
           type="text"
           autoComplete="name"
+          aria-describedby={fieldErrors.name ? "err-name" : undefined}
+          aria-invalid={!!fieldErrors.name}
         />
+        {fieldErrors.name && <span id="err-name" role="alert" style={{ color: "#E5484D", fontSize: 12, marginTop: 4, display: "block" }}>{fieldErrors.name}</span>}
       </div>
       <div className="field">
         <label htmlFor="contact-org">소속 *</label>
         <input
           id="contact-org"
           value={org}
-          onChange={(event) => setOrg(event.target.value)}
+          onChange={(e) => { setOrg(e.target.value); if (fieldErrors.org) setFieldErrors(p => ({ ...p, org: undefined })); }}
           type="text"
           autoComplete="organization"
+          aria-describedby={fieldErrors.org ? "err-org" : undefined}
+          aria-invalid={!!fieldErrors.org}
         />
+        {fieldErrors.org && <span id="err-org" role="alert" style={{ color: "#E5484D", fontSize: 12, marginTop: 4, display: "block" }}>{fieldErrors.org}</span>}
       </div>
       <div className="field">
         <label htmlFor="contact-phone">연락처 *</label>
         <input
           id="contact-phone"
           value={phone}
-          onChange={(event) => setPhone(event.target.value)}
+          onChange={(e) => { setPhone(e.target.value); if (fieldErrors.phone) setFieldErrors(p => ({ ...p, phone: undefined })); }}
           type="text"
           autoComplete="tel"
+          aria-describedby={fieldErrors.phone ? "err-phone" : undefined}
+          aria-invalid={!!fieldErrors.phone}
         />
+        {fieldErrors.phone && <span id="err-phone" role="alert" style={{ color: "#E5484D", fontSize: 12, marginTop: 4, display: "block" }}>{fieldErrors.phone}</span>}
       </div>
       <div className="field">
         <label htmlFor="contact-email">이메일 (선택)</label>
         <input
           id="contact-email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           type="text"
           autoComplete="email"
         />
@@ -120,7 +141,7 @@ export default function ContactForm() {
         <select
           id="contact-topic"
           value={topic}
-          onChange={(event) => setTopic(event.target.value)}
+          onChange={(e) => setTopic(e.target.value)}
         >
           <option value="">선택해 주세요</option>
           {TOPIC_OPTIONS.map((option) => (
@@ -135,9 +156,12 @@ export default function ContactForm() {
         <textarea
           id="contact-message"
           value={message}
-          onChange={(event) => setMessage(event.target.value)}
+          onChange={(e) => { setMessage(e.target.value); if (fieldErrors.message) setFieldErrors(p => ({ ...p, message: undefined })); }}
           placeholder="교육 대상, 희망 주제, 예상 일정 등을 알려주세요."
+          aria-describedby={fieldErrors.message ? "err-message" : undefined}
+          aria-invalid={!!fieldErrors.message}
         />
+        {fieldErrors.message && <span id="err-message" role="alert" style={{ color: "#E5484D", fontSize: 12, marginTop: 4, display: "block" }}>{fieldErrors.message}</span>}
       </div>
 
       <div
@@ -148,7 +172,7 @@ export default function ContactForm() {
         <input
           id="contact-website"
           value={website}
-          onChange={(event) => setWebsite(event.target.value)}
+          onChange={(e) => setWebsite(e.target.value)}
           type="text"
           tabIndex={-1}
           autoComplete="off"
@@ -175,7 +199,7 @@ export default function ContactForm() {
         <input
           id="contact-privacy-consent"
           checked={privacyConsent}
-          onChange={(event) => setPrivacyConsent(event.target.checked)}
+          onChange={(e) => { setPrivacyConsent(e.target.checked); if (consentError) setConsentError(""); }}
           type="checkbox"
           style={{ width: "auto", marginTop: 3 }}
         />
@@ -184,10 +208,11 @@ export default function ContactForm() {
           동의합니다.
         </span>
       </label>
+      {consentError && <p role="alert" style={{ color: "#E5484D", fontSize: 13, marginTop: 6 }}>{consentError}</p>}
 
-      {error && (
+      {apiError && (
         <p className="form-error" role="alert" style={{ color: "var(--danger, #c0392b)" }}>
-          {error}
+          {apiError}
         </p>
       )}
       {success && (
