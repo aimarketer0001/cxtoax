@@ -750,7 +750,12 @@ export default function MarketingMicrositePage() {
         </div>
       </section>
 
-      <section className="microsite-section alt practical-workshop" id="workshop">
+      <div className="practice-zone">
+        <div className="practice-zone-entry">
+          <span className="practice-zone-tag">PRACTICE ZONE</span>
+          <p>리포트 내용을 바로 적용해 보는 실습 구간입니다</p>
+        </div>
+        <section className="microsite-section practical-workshop" id="workshop">
         <div className="microsite-wrap">
           <p className="section-kicker">PRACTICAL WORKSHOP</p>
           <h2>AI 검색 시대, 우리 회사 페이지부터 바꾸기</h2>
@@ -841,7 +846,14 @@ export default function MarketingMicrositePage() {
         </div>
       </section>
 
-      <section className="microsite-section" id="checklist">
+        <div className="practice-zone-bridge" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>워크숍을 마쳤다면 체크리스트로 넘어가세요</span>
+        </div>
+
+        <section className="microsite-section" id="checklist">
         <div className="microsite-wrap">
           <p className="section-kicker">PAGE CHECKLIST</p>
           <h2>우리 회사 페이지 AI 가독성 체크리스트</h2>
@@ -888,6 +900,7 @@ export default function MarketingMicrositePage() {
           </aside>
         </div>
       </section>
+      </div>{/* /practice-zone */}
 
       <section className="microsite-section" id="instructor">
         <div className="microsite-wrap instructor-grid">
