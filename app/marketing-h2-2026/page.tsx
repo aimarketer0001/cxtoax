@@ -559,7 +559,7 @@ export default function MarketingMicrositePage() {
       <section className="microsite-section" id="key-insights">
         <div className="microsite-wrap">
           <p className="section-kicker">KEY INSIGHTS & CRITERIA</p>
-          <h2>하반기 마케팅 실행을 위한 6가지 인사이트</h2>
+          <h2>하반기 마케팅 실행을 위한 5가지 인사이트와 리스크 기준</h2>
           <p className="section-lead">
             탐색 경로는 광고 클릭에서 끝나지 않습니다. AI 검색, 영상,
             커뮤니티, 메시징, CRM이 함께 작동하며 브랜드가 어떤 구조로
@@ -760,16 +760,12 @@ export default function MarketingMicrositePage() {
           <h2>AI 검색 시대, 우리 회사 페이지부터 바꾸기</h2>
           <div className="workshop-origin" aria-label="워크숍 출처">
             <span>INSIGHT 02 · AI 검색 대응은 SEO를 넘어 AEO로 확장된다</span>
-            <span>STRATEGY 01 · AI 검색/AEO 대응</span>
+            <span>전략 · AI 검색/AEO 대응</span>
           </div>
-          <p className="section-lead">
-            앞에서 정리한 인사이트와 전략 프레임에서 나온 대표 실행 실습입니다.
-          </p>
           <p className="workshop-intro">
-            앞에서 정리한 전략 프레임, 채널 역할, AI 활용 기준을 실제
-            페이지 1개에 적용해 보는 짧은 실습입니다. 리포트를 읽는 데서
-            끝내지 않고, 우리 회사 페이지를 AI가 읽고 인용하기 쉬운 구조로
-            바꾸는 데 초점을 둡니다.
+            전략 프레임, 채널 역할, AI 활용 기준을 실제 페이지 1개에 적용해
+            보는 짧은 실습입니다. 리포트를 읽는 데서 끝내지 않고, 우리 회사
+            페이지를 AI가 읽고 인용하기 쉬운 구조로 바꾸는 데 초점을 둡니다.
           </p>
 
           <div className="workshop-meta" aria-label="워크숍 정보">
@@ -833,7 +829,7 @@ export default function MarketingMicrositePage() {
             </div>
           </div>
 
-          <div className="workshop-resource-grid" aria-label="수강자 자료">
+          <div className="workshop-resource-grid" aria-label="관련 자료">
             {workshopResources.map((item) => (
               <article className="workshop-resource-card" key={item.title}>
                 <h3>{item.title}</h3>
