@@ -1453,7 +1453,7 @@
 
 .tl-phase-arrow {
   position: absolute;
-  right: 10px;
+  right: -12px;
   top: 50%;
   transform: translateY(-50%);
   width: 24px;
@@ -1465,6 +1465,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .tl-phase strong {
@@ -2035,8 +2036,7 @@ details[open] .evidence-chevron {
 
 .program-link {
   margin-top: auto;
-  color: var(--cobalt);
-  font-weight: 800;
+  align-self: flex-start;
 }
 
 .faq-wrap {
@@ -2351,6 +2351,10 @@ details[open] .evidence-chevron {
   .micro-nav {
     position: static;
     top: auto;
+  }
+
+  .micro-nav-cta {
+    display: none;
   }
 
   .micro-nav-inner {

@@ -436,7 +436,7 @@ const articleJsonLd = {
   inLanguage: "ko-KR",
   mainEntityOfPage: pageUrl,
   datePublished: "2026-07-03",
-  dateModified: "2026-07-09",
+  dateModified: "2026-07-13",
   author: {
     "@type": "Person",
     name: "전선희 Sunny Jun",
@@ -745,7 +745,7 @@ export default function MarketingMicrositePage() {
             </article>
           </div>
           <div className="kpi-cta">
-            <a href="#report-contact" className="micro-btn micro-btn-outline">
+            <a href="#report-contact" className="micro-btn micro-btn-primary">
               교육 상담 문의하기
             </a>
           </div>
@@ -947,10 +947,10 @@ export default function MarketingMicrositePage() {
                 <p>{program.copy}</p>
                 <a
                   href="#report-contact"
-                  className="program-link"
-                data-contact-topic={program.title}
-                aria-label={`${program.title} 교육 상담`}
-              >
+                  className="micro-btn micro-btn-outline program-link"
+                  data-contact-topic={program.title}
+                  aria-label={`${program.title} 교육 상담`}
+                >
                   교육 상담 문의하기
                 </a>
               </article>

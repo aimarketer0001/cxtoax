@@ -174,7 +174,7 @@ export default function MicrositeContactForm({
                 id="micro-email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                type="text"
+                type="email"
                 autoComplete="email"
               />
             </div>
