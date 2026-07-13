@@ -169,7 +169,7 @@ export default function MicrositeContactForm({
               />
             </div>
             <div className="field">
-              <label htmlFor="micro-email">이메일</label>
+              <label htmlFor="micro-email">이메일 (선택)</label>
               <input
                 id="micro-email"
                 value={email}

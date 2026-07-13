@@ -11,7 +11,7 @@ export const SITE_NAME = "CX to AX";
 export const DEFAULT_TITLE = "CX to AX | CRM·AI·AX 실무 교육 및 컨설팅";
 
 export const DEFAULT_DESCRIPTION =
-  "30년 CRM·Salesforce 컨설팅 경험을 바탕으로 기업과 실무자를 위한 AI·AX 전환 교육, 생성형 AI 활용 교육, 바이브코딩 교육을 제공합니다.";
+  "대기업 CRM·Salesforce 컨설팅 경험을 바탕으로 기업과 실무자를 위한 AI·AX 전환 교육, 생성형 AI 활용 교육, 바이브코딩 교육을 제공합니다.";
 
 export const OG_IMAGE = "/og-image.png";
 

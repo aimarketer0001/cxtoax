@@ -415,7 +415,7 @@ const faqs = [
   {
     category: "전략 기준",
     question: "근거와 참고 기준은 어디에서 가져왔나요?",
-    answer: "첨부된 딥서치 보고서와 OpenAI, Google, Adobe, HubSpot, LinkedIn, Klaviyo 등 주요 플랫폼·벤치마크 자료를 바탕으로 정리했습니다.",
+    answer: "내부 딥서치 보고서와 OpenAI, Google, Adobe, HubSpot, LinkedIn, Klaviyo 등 주요 플랫폼·벤치마크 자료를 바탕으로 정리했습니다.",
   },
   {
     category: "CRM·자동화",
@@ -508,7 +508,7 @@ export default function MarketingMicrositePage() {
               2026 하반기 마케팅 실행 전략 리포트
             </h1>
             <p className="hero-lead">
-              AI 검색 대응, 브랜드 신뢰, 콘텐츠 운영, CRM 자동화를
+              AI 검색 대응, 브랜드 신뢰, 콘텐츠 운영, CRM 자동화, AI 운영을
               하나의 실행 흐름으로 묶어 하반기 마케팅 운영 체계로
               정리했습니다.
             </p>
@@ -538,6 +538,10 @@ export default function MarketingMicrositePage() {
               <div>
                 <dt>Search</dt>
                 <dd>SEO에서 AEO와 AI 검색 대응으로 확장</dd>
+              </div>
+              <div>
+                <dt>Trust</dt>
+                <dd>출처·관점·사례로 브랜드 신뢰 기반 축적</dd>
               </div>
               <div>
                 <dt>Content</dt>
@@ -602,7 +606,7 @@ export default function MarketingMicrositePage() {
           <p className="section-kicker">EVIDENCE & CRITERIA</p>
           <h2>이 리포트의 근거와 참고 기준</h2>
           <p className="section-lead">
-            아래 기준은 첨부된 딥서치 보고서
+            아래 기준은 내부 딥서치 보고서
             <strong> 「하반기 마케팅 캠페인 심층 전략 보고서」</strong>를
             바탕으로 정리했습니다. 외부 자료의 숫자를 그대로 나열하기보다,
             실제 마케팅 페이지와 캠페인을 점검할 때 사용할 수 있는 기준으로

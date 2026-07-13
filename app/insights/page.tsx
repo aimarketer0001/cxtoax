@@ -56,8 +56,8 @@ export default function InsightsPage() {
           <h2>AI 검색 시대, 하반기 마케팅은 캠페인이 아니라 운영 시스템입니다</h2>
           <p>
             AI 검색 대응, CRM 자동화, 콘텐츠 운영, 캠페인 실행 로드맵을 실무
-            관점으로 정리한 리포트입니다. 질문형 콘텐츠, FAQ, 비교표, 명확한
-            엔티티 구조가 답변 엔진의 인용 가능성을 높입니다.
+            관점으로 정리한 리포트입니다. AI 검색 대응부터 CRM 리텐션까지
+            하반기 실행 순서를 다룹니다.
           </p>
           <Link className="btn btn-primary" href={MARKETING_REPORT_URL}>
             2026 하반기 마케팅 실행 전략 리포트 보기

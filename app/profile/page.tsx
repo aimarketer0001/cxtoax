@@ -5,7 +5,7 @@ import { absoluteUrl, personSchema } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "AX 전문강사 프로필",
-  description: "30년 CRM 컨설팅 경험과 AI·AX 교육 역량을 소개합니다.",
+  description: "대기업 CRM 컨설팅 경험과 AI·AX 교육 역량을 소개합니다.",
   alternates: {
     canonical: absoluteUrl("/profile"),
   },
