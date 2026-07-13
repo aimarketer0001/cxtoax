@@ -658,7 +658,7 @@ export default function MarketingMicrositePage() {
             ))}
             {monthlyRoadmap.map((item) => (
               <article className="tl-month" key={`month-${item.month}`}>
-                <h4>{item.goal}</h4>
+                <h3>{item.goal}</h3>
                 <p>{item.copy}</p>
               </article>
             ))}
@@ -744,6 +744,11 @@ export default function MarketingMicrositePage() {
               </ul>
             </article>
           </div>
+          <div className="kpi-cta">
+            <a href="#report-contact" className="micro-btn micro-btn-outline">
+              교육 상담 문의하기
+            </a>
+          </div>
         </div>
       </section>
 
@@ -791,7 +796,7 @@ export default function MarketingMicrositePage() {
             <div className="section-head-row">
               <div>
                 <p className="section-kicker">BEFORE / AFTER</p>
-                <h2>AI가 읽기 어려운 페이지 vs 인용하기 쉬운 페이지</h2>
+                <h3>AI가 읽기 어려운 페이지 vs 인용하기 쉬운 페이지</h3>
               </div>
             </div>
             <div className="compare-grid">
@@ -801,7 +806,7 @@ export default function MarketingMicrositePage() {
                   key={item.label}
                 >
                   <span>{item.label}</span>
-                  <h3>{item.title}</h3>
+                  <h4>{item.title}</h4>
                   <ComparePageMockup tone={item.tone} />
                   <ul>
                     {item.bullets.map((bullet) => (
@@ -856,7 +861,7 @@ export default function MarketingMicrositePage() {
           <aside className="weekly-action" aria-label="이번 주 실행 과제">
             <div>
               <p className="section-kicker">THIS WEEK ACTION</p>
-              <h2>이번 주, 딱 한 페이지만 바꿔보세요</h2>
+              <h3>이번 주, 딱 한 페이지만 바꿔보세요</h3>
               <p>
                 20개를 한 번에 고치려고 하지 않아도 됩니다. 방문이 많은
                 페이지 1개를 골라 질문형 소제목, 짧은 답변, FAQ 구조를
@@ -868,7 +873,7 @@ export default function MarketingMicrositePage() {
               {weeklyActions.map((item, index) => (
                 <article key={item.title}>
                   <span>{index + 1}</span>
-                  <h3>{item.title}</h3>
+                  <h4>{item.title}</h4>
                   <p>{item.copy}</p>
                   <strong>{item.time}</strong>
                 </article>
@@ -919,9 +924,14 @@ export default function MarketingMicrositePage() {
                 <span>AI 활용과 업무 자동화 교육</span>
               </div>
             </div>
-            <Link href="/#about" className="text-link">
-              강사 프로필 자세히 보기
-            </Link>
+            <div className="instructor-cta">
+              <Link href="/#about" className="text-link">
+                강사 프로필 자세히 보기
+              </Link>
+              <a href="#report-contact" className="micro-btn micro-btn-primary">
+                교육 상담 문의하기
+              </a>
+            </div>
           </div>
         </div>
       </section>
