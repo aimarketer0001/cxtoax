@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ServiceHeader from "@/components/ServiceHeader";
 import { absoluteUrl } from "@/lib/site";
+import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "기업 교육 및 강의 문의",
@@ -45,18 +46,22 @@ export default function ContactPage() {
 
         <section className="card" style={{ marginTop: 16 }}>
           <h2>상담 접수</h2>
-          <p>
-            현재 상담 폼은 홈 하단에서 운영됩니다. 문의 내용을 남기면 확인 후
-            교육 주제와 일정, 대상자 수준에 맞춰 연락드립니다.
+          <p className="muted" style={{ marginBottom: 20 }}>
+            문의 내용을 남기면 확인 후 교육 주제와 일정, 대상자 수준에 맞춰
+            연락드립니다.
           </p>
-          <div className="row">
-            <Link className="btn btn-primary" href="/#contact">
-              홈 상담 폼으로 이동하기
-            </Link>
-            <Link className="btn btn-ghost" href="/diagnosis">
-              먼저 역량 진단하기
-            </Link>
-          </div>
+          <ContactForm />
+        </section>
+
+        <section className="card" style={{ marginTop: 16 }}>
+          <h2>어떤 교육이 맞는지 모르겠다면</h2>
+          <p className="muted" style={{ marginBottom: 16 }}>
+            10분 역량 진단으로 적합한 과정을 먼저 확인한 뒤 상담을 신청할 수
+            있습니다.
+          </p>
+          <Link className="btn btn-ghost" href="/diagnosis">
+            먼저 역량 진단하기
+          </Link>
         </section>
       </div>
     </>
