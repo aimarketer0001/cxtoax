@@ -163,17 +163,40 @@ h3 {
 .nav-cta:hover {
   background: var(--cobalt-dark);
 }
-.service-header {
-  background: rgba(255, 255, 255, 0.96);
-}
+.service-header,
 .marketing-header {
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(30, 41, 59, 0.96);
+  border-bottom-color: rgba(226, 232, 240, 0.16);
+}
+.service-header .brand,
+.marketing-header .brand {
+  color: #fff;
+}
+.service-header .brand span,
+.marketing-header .brand span {
+  color: #93c5fd;
+}
+.service-header .nav-links a,
+.marketing-header .nav-links a {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+.service-header .nav-links a:hover,
+.marketing-header .nav-links a:hover,
+.service-header .nav-links a.active,
+.marketing-header .nav-links a.active {
+  color: #fff;
+  text-decoration: none;
 }
 .site-header {
   transition: box-shadow 0.25s ease;
 }
 .site-header.scrolled {
   box-shadow: 0 1px 0 var(--line), 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+.service-header.scrolled,
+.marketing-header.scrolled {
+  box-shadow: 0 1px 0 rgba(226, 232, 240, 0.16), 0 4px 20px rgba(15, 23, 42, 0.20);
 }
 .admin-header {
   background: #fff;
