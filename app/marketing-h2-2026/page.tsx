@@ -154,7 +154,7 @@ const workshopResources = [
   {
     title: "하반기 전략 리포트",
     copy: "핵심 인사이트와 7~12월 실행 프레임 다시 보기",
-    href: "#strategy-framework",
+    href: "#campaign-roadmap",
   },
   {
     title: "페이지 진단 체크리스트",
@@ -613,7 +613,7 @@ export default function MarketingMicrositePage() {
               </p>
             </div>
             <div className="workshop-bridge-actions">
-              <a href="#strategy-framework" className="micro-btn micro-btn-primary">
+              <a href="#campaign-roadmap" className="micro-btn micro-btn-primary">
                 전략 프레임 보기
               </a>
               <a href="#campaign-roadmap" className="micro-btn micro-btn-outline">
@@ -625,48 +625,36 @@ export default function MarketingMicrositePage() {
       </section>
 
 
-      <section className="microsite-section" id="strategy-framework">
+      <section className="microsite-section" id="campaign-roadmap">
         <div className="microsite-wrap">
-          <p className="section-kicker">STRATEGY FRAMEWORK</p>
-          <h2>7월부터 12월까지의 3단계 전략 프레임</h2>
+          <p className="section-kicker">STRATEGY FRAMEWORK & ROADMAP</p>
+          <h2>7월부터 12월까지, 단계별 실행 계획</h2>
           <p className="section-lead">
-            하반기는 구조 정비, 신뢰·모수 축적, 수익화·리텐션 극대화로
-            나누어 운영하는 것이 가장 현실적입니다.
+            하반기는 구조 정비, 신뢰·모수 축적, 수익화·리텐션 극대화 3단계로
+            운영합니다. 월별 메시지를 한 줄로 고정하고 실행 리듬을 반복합니다.
           </p>
-          <div className="strategy-grid">
+          <div className="timeline-grid">
+            {monthlyRoadmap.map((item) => (
+              <div className="tl-head" key={`head-${item.month}`}>
+                <span>{item.month}</span>
+                <b>{item.priority}</b>
+              </div>
+            ))}
             {frameworkStages.map((item) => (
-              <article className="strategy-card" key={item.period}>
-                <span>{item.period}</span>
-                <h3>{item.title}</h3>
+              <article className="tl-phase" key={item.period}>
+                <strong>{item.title}</strong>
                 <p>{item.effect}</p>
                 <ul>
-                  {item.tasks.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
+                  {item.tasks.map((t) => (
+                    <li key={t}>{t}</li>
                   ))}
                   <li>추천 채널 · {item.channels}</li>
                 </ul>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="microsite-section alt" id="campaign-roadmap">
-        <div className="microsite-wrap">
-          <p className="section-kicker">ROADMAP</p>
-          <h2>7월부터 12월까지, 구조 정비에서 리텐션까지</h2>
-          <p className="section-lead">
-            하반기 성과는 성수기 직전의 데이터, 콘텐츠, 픽셀, CRM 준비 상태에서
-            결정됩니다. 월별 메시지를 한 줄로 고정하고 실행 리듬을 반복합니다.
-          </p>
-          <div className="roadmap">
             {monthlyRoadmap.map((item) => (
-              <article key={item.month}>
-                <div className="roadmap-month">
-                  <span>{item.month}</span>
-                  <b>{item.priority}</b>
-                </div>
-                <h3>{item.goal}</h3>
+              <article className="tl-month" key={`month-${item.month}`}>
+                <h4>{item.goal}</h4>
                 <p>{item.copy}</p>
               </article>
             ))}

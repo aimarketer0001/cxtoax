@@ -1397,6 +1397,103 @@
   margin-top: 34px;
 }
 
+/* Timeline: merged strategy framework + roadmap */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  background: var(--line);
+  gap: 1px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 34px;
+}
+
+.tl-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--navy);
+  color: #fff;
+}
+
+.tl-head span {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.tl-head b {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.tl-phase {
+  grid-column: span 2;
+  padding: 18px 20px;
+  background: var(--surface);
+}
+
+.tl-phase strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.tl-phase > p {
+  font-size: 12.5px;
+  color: var(--gray);
+  margin: 0 0 12px;
+}
+
+.tl-phase ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tl-phase li {
+  font-size: 12px;
+  color: var(--ink);
+  padding-left: 10px;
+  position: relative;
+}
+
+.tl-phase li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--cobalt);
+}
+
+.tl-month {
+  padding: 16px;
+  background: #fff;
+}
+
+.tl-month h4 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+
+.tl-month p {
+  font-size: 12px;
+  color: var(--gray);
+  margin: 0;
+  line-height: 1.6;
+}
+
 .roadmap article {
   padding: 22px;
   min-height: 260px;
@@ -2167,6 +2264,11 @@ details[open] .evidence-chevron {
   .kpi-risk-grid,
   .profile-facts {
     grid-template-columns: 1fr;
+  }
+
+  .timeline-grid {
+    grid-template-columns: repeat(6, minmax(140px, 1fr));
+    overflow-x: auto;
   }
 
   .section-head-row {
