@@ -1678,17 +1678,20 @@
   margin: 18px 0 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .kpi-risk-grid li {
   color: #33404f;
-  background: var(--off);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-weight: 700;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .evidence-details {
