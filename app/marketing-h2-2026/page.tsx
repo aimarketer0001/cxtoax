@@ -791,7 +791,7 @@ export default function MarketingMicrositePage() {
             <div className="section-head-row">
               <div>
                 <p className="section-kicker">BEFORE / AFTER</p>
-                <h2>AI가 이해하기 어려운 페이지 vs 인용하기 쉬운 페이지</h2>
+                <h2>AI가 읽기 어려운 페이지 vs 인용하기 쉬운 페이지</h2>
               </div>
             </div>
             <div className="compare-grid">
