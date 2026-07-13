@@ -3,42 +3,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const floatingGroups = [
-  {
-    href: "#overview",
-    label: "전략 개요",
-    id: "overview",
-    children: [
-      { href: "#key-insights", label: "핵심 인사이트", id: "key-insights" },
-      { href: "#evidence", label: "근거 기준", id: "evidence" },
-      { href: "#strategy-framework", label: "전략 프레임", id: "strategy-framework" },
-    ],
-  },
-  {
-    href: "#campaign-roadmap",
-    label: "실행 계획",
-    id: "execution-plan",
-    children: [
-      { href: "#campaign-roadmap", label: "캠페인 로드맵", id: "campaign-roadmap" },
-      { href: "#channels", label: "채널별 역할", id: "channels" },
-      { href: "#ai-tools", label: "AI 활용 도구", id: "ai-tools" },
-      { href: "#kpi-risk", label: "KPI·리스크", id: "kpi-risk" },
-    ],
-  },
-  {
-    href: "#workshop",
-    label: "실행 워크숍",
-    id: "workshop",
-    children: [
-      { href: "#checklist", label: "체크리스트", id: "checklist" },
-    ],
-  },
+const floatingItems = [
+  { href: "#overview", label: "전략 개요", id: "overview" },
+  { href: "#key-insights", label: "핵심 인사이트", id: "key-insights" },
+  { href: "#campaign-roadmap", label: "실행 계획", id: "campaign-roadmap" },
+  { href: "#channels", label: "채널별 역할", id: "channels" },
+  { href: "#kpi-risk", label: "KPI·리스크", id: "kpi-risk" },
+  { href: "#workshop", label: "실습 워크숍", id: "workshop" },
 ];
-
-const floatingLinks = floatingGroups.flatMap((group) => [
-  { href: group.href, label: group.label, id: group.id },
-  ...group.children,
-]);
 
 function MailIcon() {
   return (
@@ -65,13 +37,12 @@ function ProfileIcon() {
 }
 
 export default function MicrositeFloatingMenu() {
-  const [activeId, setActiveId] = useState(floatingLinks[0].id);
+  const [activeId, setActiveId] = useState(floatingItems[0].id);
 
   useEffect(() => {
     const syncActiveSectionFromHash = () => {
       const hashId = window.location.hash.replace("#", "");
-
-      if (floatingLinks.some((item) => item.id === hashId)) {
+      if (floatingItems.some((item) => item.id === hashId)) {
         setActiveId(hashId);
       }
     };
@@ -82,7 +53,7 @@ export default function MicrositeFloatingMenu() {
   }, []);
 
   useEffect(() => {
-    const targets = floatingLinks
+    const targets = floatingItems
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => Boolean(section));
 
@@ -114,43 +85,19 @@ export default function MicrositeFloatingMenu() {
         <nav className="floating-menu-panel" aria-label="보고서 섹션">
           <span className="floating-menu-title">바로가기:</span>
           <ul className="floating-menu-groups">
-            {floatingGroups.map((group) => {
-              const groupActive =
-                activeId === group.id ||
-                group.children.some((child) => child.id === activeId);
-
+            {floatingItems.map((item) => {
+              const isActive = activeId === item.id;
               return (
-                <li
-                  key={group.id}
-                  className={groupActive ? "is-expanded" : undefined}
-                >
+                <li key={item.id}>
                   <a
-                    href={group.href}
-                    className={groupActive ? "is-active" : undefined}
-                    aria-current={activeId === group.id ? "location" : undefined}
-                    onClick={() => setActiveId(group.id)}
+                    href={item.href}
+                    className={isActive ? "is-active" : undefined}
+                    aria-current={isActive ? "location" : undefined}
+                    onClick={() => setActiveId(item.id)}
                   >
-                    <span>{group.label}</span>
+                    <span>{item.label}</span>
                     <i aria-hidden="true" />
                   </a>
-                  <ul className="floating-menu-sublist">
-                    {group.children.map((child) => {
-                      const childActive = activeId === child.id;
-
-                      return (
-                        <li key={child.id}>
-                          <a
-                            href={child.href}
-                            className={childActive ? "is-active" : undefined}
-                            aria-current={childActive ? "location" : undefined}
-                            onClick={() => setActiveId(child.id)}
-                          >
-                            <span>{child.label}</span>
-                          </a>
-                        </li>
-                      );
-                    })}
-                  </ul>
                 </li>
               );
             })}

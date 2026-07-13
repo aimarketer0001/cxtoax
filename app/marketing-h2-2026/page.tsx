@@ -614,10 +614,7 @@ export default function MarketingMicrositePage() {
             </div>
             <div className="workshop-bridge-actions">
               <a href="#campaign-roadmap" className="micro-btn micro-btn-primary">
-                전략 프레임 보기
-              </a>
-              <a href="#campaign-roadmap" className="micro-btn micro-btn-outline">
-                실행 로드맵 보기
+                실행 계획·로드맵 보기
               </a>
             </div>
           </aside>
@@ -882,13 +879,10 @@ export default function MarketingMicrositePage() {
               ))}
             </div>
             <div className="weekly-action-cta">
-              <a href="#checklist" className="micro-btn micro-btn-primary">
-                체크리스트로 진단하기
-              </a>
-              <a href="#report-contact" className="micro-btn micro-btn-outline">
+              <a href="#report-contact" className="micro-btn micro-btn-primary">
                 교육 상담 문의하기
               </a>
-              <a href="#key-insights" className="micro-btn micro-btn-subtle">
+              <a href="#key-insights" className="micro-btn micro-btn-outline">
                 핵심 인사이트 보기
               </a>
             </div>
