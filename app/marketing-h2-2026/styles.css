@@ -1635,7 +1635,7 @@
 
 .ai-data-table {
   width: 100%;
-  min-width: 720px;
+  min-width: 540px;
   border-collapse: separate;
   border-spacing: 0 10px;
 }
@@ -1651,7 +1651,7 @@
 
 .ai-data-table th,
 .ai-data-table td {
-  padding: 14px 16px;
+  padding: 12px 14px;
   text-align: left;
   vertical-align: middle;
 }
@@ -1670,11 +1670,11 @@
 }
 
 .ai-data-table tbody th {
-  width: 150px;
+  width: 120px;
   border-left: 1px solid var(--line);
   border-radius: 8px 0 0 8px;
   color: var(--navy);
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .ai-data-table tbody td {
