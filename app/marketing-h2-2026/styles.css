@@ -1607,18 +1607,6 @@
   min-width: 0;
 }
 
-.ai-table-wrap::after {
-  content: "";
-  position: sticky;
-  right: 0;
-  top: 0;
-  display: block;
-  width: 48px;
-  height: 100%;
-  margin-top: -100%;
-  background: linear-gradient(to right, transparent, var(--off));
-  pointer-events: none;
-}
 
 .kpi-cta {
   margin-top: 28px;
