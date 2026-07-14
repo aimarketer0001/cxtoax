@@ -34,9 +34,9 @@ export const metadata: Metadata = {
 const combinedCriteria = [
   {
     label: "AI 검색/AEO",
-    insightTitle: "브랜드 신뢰가 AI 검색 결과를 좌우한다",
-    insightCopy: "AI가 브랜드를 요약하고 추천하는 환경에서는 출처, 관점, 사례가 검색 노출의 기반이 됩니다.",
-    evidenceTitle: "AI가 인용할 수 있는 공개 웹 자산인가",
+    insightTitle: "브랜드 신뢰 자산은 AI 검색에서 일관된 정보를 제공하는 기반이 된다",
+    insightCopy: "AI와 사용자가 브랜드 정보를 요약하고 비교하는 환경에서는 출처, 관점, 사례가 일관된 이해의 기반이 됩니다.",
+    evidenceTitle: "사용자와 검색 시스템이 이해하기 쉬운 공개 웹 자산인가",
     criteria: ["공개 접근 가능", "질문형 제목", "짧은 답변", "FAQ·비교표", "최종 업데이트·출처 표기"],
     refSource: "OpenAI",
     refTitle: "Publishers and Developers FAQ",
@@ -44,9 +44,9 @@ const combinedCriteria = [
   },
   {
     label: "웹사이트 가독성",
-    insightTitle: "AI 검색 대응은 SEO를 넘어 AEO로 확장된다",
-    insightCopy: "질문형 콘텐츠, FAQ, 비교표, 명확한 엔티티 구조가 답변 엔진의 인용 가능성을 높입니다.",
-    evidenceTitle: "사람뿐 아니라 LLM도 읽을 수 있는 구조인가",
+    insightTitle: "AI 검색 대응은 기존 SEO를 대화형·생성형 검색 환경까지 확장하는 일이다",
+    insightCopy: "질문형 콘텐츠, FAQ, 비교표, 명확한 엔티티 구조는 사용자와 검색 시스템이 핵심 정보를 파악하기 쉽게 합니다.",
+    evidenceTitle: "사람과 검색 시스템이 모두 이해할 수 있는 구조인가",
     criteria: ["이미지 안 텍스트 최소화", "핵심 스펙 텍스트화", "문단 길이 제한", "엔티티 명칭 일관성"],
     refSource: "Adobe",
     refTitle: "AI Traffic Surge & Machine Readability 분석",
@@ -99,13 +99,13 @@ const workshopSteps = [
     step: "Step 1",
     title: "변화 이해",
     copy: "검색의 주체가 사람에서 AI로 확장되었음을 업무 관점에서 이해합니다.",
-    awareness: "AI가 먼저 우리 페이지를 읽는구나",
-    action: "AI가 보는 첫 화면이 무엇인지 생각해 보기",
+    awareness: "우리 페이지는 사람뿐 아니라 검색 시스템도 이해해야 하는구나",
+    action: "페이지에서 먼저 확인되는 핵심 정보가 무엇인지 생각해 보기",
   },
   {
     step: "Step 2",
     title: "진단 기준 확인",
-    copy: "AI가 읽기 어려운 페이지와 인용하기 쉬운 페이지를 비교합니다.",
+    copy: "정보 구조가 불명확한 페이지와 핵심 정보를 이해하기 쉬운 페이지를 비교합니다.",
     awareness: "우리 페이지에도 문제가 있을 수 있겠네",
     action: "우리 회사 주요 페이지 1개를 떠올리기",
   },
@@ -119,7 +119,7 @@ const workshopSteps = [
   {
     step: "Step 4",
     title: "실행 과제 정리",
-    copy: "방문이 많은 페이지 1개를 골라 바로 개편합니다.",
+    copy: "방문이 많은 페이지 1개를 골라 개편 초안을 만듭니다.",
     awareness: "오늘 해야 할 일이 명확하다",
     action: "이번 주에 바꿀 페이지 1개 정하기",
   },
@@ -128,7 +128,7 @@ const workshopSteps = [
 const pageComparison = [
   {
     label: "BEFORE",
-    title: "AI가 이해하기 어려운 페이지",
+    title: "정보 구조가 불명확한 페이지",
     tone: "before",
     bullets: [
       "효능 표현은 많지만 어떤 피부 고민에 맞는지 불명확",
@@ -139,7 +139,7 @@ const pageComparison = [
   },
   {
     label: "AFTER",
-    title: "AI가 인용하기 쉬운 페이지",
+    title: "핵심 정보를 이해하기 쉬운 페이지",
     tone: "after",
     bullets: [
       "피부 고민 질문 아래 2~3문장으로 바로 답변",
@@ -158,7 +158,7 @@ const workshopResources = [
   },
   {
     title: "페이지 진단 체크리스트",
-    copy: "우리 회사 페이지의 AI 가독성을 점검하는 4가지 기준",
+    copy: "우리 회사 페이지의 정보 구조를 점검하는 4가지 기준",
     href: "#checklist",
   },
   {
@@ -181,15 +181,15 @@ const weeklyActions = [
   },
   {
     title: "우선 개선",
-    copy: "X가 가장 많은 페이지 1개부터 질문형 소제목과 FAQ를 추가한다.",
-    time: "10분 이상",
+    copy: "X가 가장 많은 페이지 1개부터 질문형 소제목과 FAQ 초안을 만든다.",
+    time: "10분",
   },
 ];
 
 function ComparePageMockup({ tone }: { tone: string }) {
   if (tone === "before") {
     return (
-      <figure className="compare-mockup compare-mockup-before" aria-label="AI가 읽기 어려운 화장품 에센스 상세 페이지 예시">
+      <figure className="compare-mockup compare-mockup-before" aria-label="정보 구조가 불명확한 화장품 에센스 상세 페이지 예시">
         <div className="mock-browser-bar" aria-hidden="true">
           <i />
           <i />
@@ -215,7 +215,7 @@ function ComparePageMockup({ tone }: { tone: string }) {
   }
 
   return (
-    <figure className="compare-mockup compare-mockup-after" aria-label="AI가 인용하기 쉬운 화장품 에센스 상세 페이지 예시">
+    <figure className="compare-mockup compare-mockup-after" aria-label="핵심 정보를 이해하기 쉬운 화장품 에센스 상세 페이지 예시">
       <div className="mock-browser-bar" aria-hidden="true">
         <i />
         <i />
@@ -316,8 +316,8 @@ const monthlyRoadmap = [
 ];
 
 const channelCards = [
-  ["홈페이지/FAQ", "AI가 읽는 브랜드 허브", "월 4~8개 섹션 리프레시"],
-  ["블로그/SEO/AEO", "비브랜드 검색과 답변형 노출", "주 2~4개 고품질 발행"],
+  ["홈페이지/FAQ", "사람과 검색 시스템이 이해하는 브랜드 허브", "월 4~8개 섹션 리프레시"],
+  ["블로그/SEO/AEO", "비브랜드 검색과 답변형 검색 노출", "주 2~4개 고품질 발행"],
   ["Shorts/TikTok/Reels", "발견과 리콜 확장", "주 4~7개 숏폼"],
   ["YouTube/웨비나", "깊은 설명과 신뢰 전환", "주 1회 이상 롱폼"],
   ["뉴스레터/이메일", "리드 육성과 재방문", "주 1~3회 캠페인"],
@@ -391,7 +391,7 @@ const faqs = [
   {
     category: "AI 검색",
     question: "AI 검색 대응은 SEO와 무엇이 다른가요?",
-    answer: "키워드 순위뿐 아니라 AI가 브랜드를 어떤 문장으로 요약하고 어떤 출처를 인용하는지까지 관리합니다.",
+    answer: "키워드 순위뿐 아니라 사용자와 AI가 브랜드를 어떤 문장으로 이해하는지, 어떤 공개 출처를 참고하는지까지 점검합니다.",
   },
   {
     category: "CRM·자동화",
@@ -400,8 +400,8 @@ const faqs = [
   },
   {
     category: "AI 검색",
-    question: "AI가 인용하기 쉬운 페이지는 어떤 구조인가요?",
-    answer: "질문형 소제목 아래에 2~3문장의 짧은 답변을 두고, 핵심 스펙은 이미지가 아닌 텍스트 표나 목록으로 제공하는 구조가 좋습니다.",
+    question: "검색 시스템과 사용자가 이해하기 쉬운 페이지는 어떤 구조인가요?",
+    answer: "질문형 소제목 아래에 2~3문장의 짧은 답변을 두고, 핵심 스펙은 이미지가 아닌 텍스트 표나 목록으로 제공하는 구조가 좋습니다. FAQ는 상담·이메일·세일즈 자료로도 재활용할 수 있습니다.",
   },
   {
     category: "실행·리스크",
@@ -512,8 +512,8 @@ export default function MarketingMicrositePage() {
               <span>대상 · 마케팅 리더/실무자/교육 담당자</span>
               <span>작성자 · 전선희 Sunny Jun</span>
               <span>발행일 · 2026.07.03</span>
-              <span>최종 업데이트 · 2026.07.09</span>
-              <span>검토 기준 · 딥서치 보고서와 주요 플랫폼 공식 자료</span>
+              <span>최종 업데이트 · 2026.07.13</span>
+              <span>검토 기준 · 첨부 보고서, 강의안, 주요 플랫폼 공식 자료</span>
             </div>
             <div className="hero-actions">
               <a href="#key-insights" className="micro-btn micro-btn-primary">
@@ -770,7 +770,7 @@ export default function MarketingMicrositePage() {
           <p className="workshop-intro">
             전략 프레임, 채널 역할, AI 활용 기준을 실제 페이지 1개에 적용해
             보는 짧은 실습입니다. 리포트를 읽는 데서 끝내지 않고, 우리 회사
-            페이지를 AI가 읽고 인용하기 쉬운 구조로 바꾸는 데 초점을 둡니다.
+            페이지를 사용자와 검색 시스템이 이해하기 쉬운 구조로 바꾸는 데 초점을 둡니다.
           </p>
 
           <div className="workshop-meta" aria-label="워크숍 정보">
@@ -796,7 +796,7 @@ export default function MarketingMicrositePage() {
             <div className="section-head-row">
               <div>
                 <p className="section-kicker">BEFORE / AFTER</p>
-                <h3>AI가 읽기 어려운 페이지 vs 인용하기 쉬운 페이지</h3>
+                <h3>정보 구조가 불명확한 페이지 vs 핵심 정보를 이해하기 쉬운 페이지</h3>
               </div>
             </div>
             <div className="compare-grid">
@@ -817,8 +817,9 @@ export default function MarketingMicrositePage() {
               ))}
             </div>
             <p className="workshop-highlight">
-              AI는 ‘질문 → 짧은 답’ 구조를 잘 인용합니다. 그래서 FAQ와
-              텍스트 표가 중요합니다.
+              질문 아래에 짧은 답과 텍스트 표를 두면 사용자와 검색 시스템이
+              핵심 정보를 파악하기 쉽습니다. 다만 FAQ를 추가한다고 검색 노출이나
+              AI 인용이 자동으로 보장되지는 않습니다.
             </p>
             <div className="compare-next-step">
               <div>
@@ -849,7 +850,7 @@ export default function MarketingMicrositePage() {
       <section className="microsite-section" id="checklist">
         <div className="microsite-wrap">
           <p className="section-kicker">PAGE CHECKLIST</p>
-          <h2>우리 회사 페이지 AI 가독성 체크리스트</h2>
+          <h2>우리 회사 페이지 정보 구조 체크리스트</h2>
           <p className="section-lead">
             워크숍에서 확인한 기준을 바탕으로 방문이 많은 페이지 1개를
             진단해 보세요. 미흡한 항목이 많은 페이지부터 이번 주 개선
@@ -864,8 +865,8 @@ export default function MarketingMicrositePage() {
               <h3>이번 주, 딱 한 페이지만 바꿔보세요</h3>
               <p>
                 20개를 한 번에 고치려고 하지 않아도 됩니다. 방문이 많은
-                페이지 1개를 골라 질문형 소제목, 짧은 답변, FAQ 구조를
-                추가하는 것부터 시작하세요. 작은 시작이 AI 검색 시대의 가장
+                페이지 1개를 골라 질문형 소제목, 짧은 답변, FAQ 초안을
+                만드는 것부터 시작하세요. 작은 시작이 AI 검색 시대의 가장
                 확실한 준비입니다.
               </p>
             </div>

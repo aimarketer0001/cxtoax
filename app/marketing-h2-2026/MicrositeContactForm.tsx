@@ -251,7 +251,7 @@ export default function MicrositeContactForm({
               유형, 희망 일정, 문의 내용
             </p>
             <p>이용 목적: 교육 상담 회신 및 맞춤 제안</p>
-            <p>보유 기간: 상담 종료 후 1년 또는 삭제 요청 시까지</p>
+            <p>보유 기간: 상담 종료일로부터 1년간 보관 후 파기합니다. 보관 기간 이전에 삭제를 요청하면 확인 후 파기합니다.</p>
             <p>동의를 거부할 수 있으며, 거부 시 상담 신청 접수가 제한됩니다.</p>
           </div>
           <label className="privacy-check" htmlFor="micro-privacy-consent">
