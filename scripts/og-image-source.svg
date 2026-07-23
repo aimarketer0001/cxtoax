@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">CX to AX 홈페이지 공유 이미지</title>
+  <desc id="desc">CRM 현장을 이해하는 강사가 AI로 일하는 방식을 함께 설계합니다.</desc>
+
+  <rect width="1200" height="630" fill="#F5F3EE"/>
+
+  <!-- Quiet editorial motif: the path from CX to AX -->
+  <circle cx="1110" cy="45" r="250" fill="#EAE5DA"/>
+  <circle cx="1110" cy="45" r="178" fill="none" stroke="#D97757" stroke-width="2" opacity=".22"/>
+  <circle cx="1110" cy="45" r="118" fill="none" stroke="#1C3D5A" stroke-width="2" opacity=".12"/>
+  <path d="M870 630 C965 530 1055 530 1200 430" fill="none" stroke="#1C3D5A" stroke-width="78" opacity=".045"/>
+  <path d="M930 630 C1010 555 1090 545 1200 470" fill="none" stroke="#D97757" stroke-width="2" opacity=".28"/>
+
+  <!-- Brand -->
+  <g font-family="'Noto Sans KR', 'Malgun Gothic', sans-serif">
+    <rect x="84" y="66" width="58" height="58" rx="4" fill="#1C3D5A"/>
+    <text x="113" y="105" fill="#FFFFFF" font-size="24" font-weight="700" text-anchor="middle">CX</text>
+    <text x="166" y="101" fill="#1C3D5A" font-size="27" font-weight="700" letter-spacing="-.5">CX to <tspan fill="#D97757">AX</tspan></text>
+
+    <line x1="327" y1="95" x2="373" y2="95" stroke="#D97757" stroke-width="2"/>
+    <text x="394" y="102" fill="#6B6558" font-size="20" font-weight="400">고객경험(CX)에서 AI 전환(AX)으로</text>
+
+    <!-- Main promise -->
+    <text x="84" y="242" fill="#16130F" font-size="54" font-weight="700" letter-spacing="-1.8">CRM 현장을 이해하는 강사가,</text>
+    <text x="84" y="326" font-size="54" font-weight="700" letter-spacing="-1.8">
+      <tspan fill="#1C3D5A">AI로 일하는 방식</tspan>
+      <tspan fill="#16130F">을 함께 설계합니다.</tspan>
+    </text>
+
+    <!-- Trust signals -->
+    <g fill="#5C574C" font-size="22" font-weight="400">
+      <text x="84" y="420">CRM 프로젝트 <tspan fill="#1C3D5A" font-weight="700">30건+</tspan></text>
+      <circle cx="351" cy="412" r="3" fill="#D97757"/>
+      <text x="378" y="420">함께한 기업 <tspan fill="#1C3D5A" font-weight="700">15개사+</tspan></text>
+      <circle cx="666" cy="412" r="3" fill="#D97757"/>
+      <text x="693" y="420">Salesforce 공인 자격 <tspan fill="#1C3D5A" font-weight="700">5종</tspan></text>
+    </g>
+
+    <line x1="84" y1="492" x2="1116" y2="492" stroke="#D8D1C3" stroke-width="2"/>
+
+    <!-- Instructor and destination -->
+    <text x="84" y="558" fill="#16130F" font-size="27" font-weight="700">전선희 (Sunny Jun)</text>
+    <text x="350" y="558" fill="#6B6558" font-size="24" font-weight="500">·</text>
+    <text x="377" y="558" fill="#1C3D5A" font-size="25" font-weight="600">CRM 기반 AX 실무 교육</text>
+    <text x="1116" y="558" fill="#D97757" font-size="28" font-weight="700" text-anchor="end">cxtoax.vercel.app</text>
+  </g>
+</svg>
