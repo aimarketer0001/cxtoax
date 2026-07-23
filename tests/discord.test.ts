@@ -39,12 +39,19 @@ describe("notifyDiscordOfInquiry", () => {
 
     const payload = JSON.parse(String(requestInit?.body));
     expect(payload.allowed_mentions).toEqual({ parse: [] });
+    expect(payload.content).toContain(
+      "https://cxtoax.vercel.app/admin/inquiries/inquiry_123"
+    );
     expect(payload.embeds[0].title).toBe("새 교육문의가 등록되었습니다");
     expect(payload.embeds[0].url).toContain("/admin/inquiries/inquiry_123");
     expect(payload.embeds[0].fields).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ name: "유입 경로", value: "contact" }),
         expect.objectContaining({ name: "문의 목적", value: "기업 AI 교육" }),
+        expect.objectContaining({
+          name: "관리자 화면",
+          value: expect.stringContaining("/admin/inquiries/inquiry_123"),
+        }),
       ])
     );
 

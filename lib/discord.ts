@@ -57,6 +57,7 @@ export async function notifyDiscordOfInquiry(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       username: "CX to AX 알림",
+      content: `🔔 새 교육문의가 등록되었습니다.\n관리자 화면: <${adminUrl}>`,
       allowed_mentions: { parse: [] },
       embeds: [
         {
@@ -72,6 +73,11 @@ export async function notifyDiscordOfInquiry(
             {
               name: "접수 시각",
               value: formatKoreanTime(inquiry.createdAt),
+              inline: false,
+            },
+            {
+              name: "관리자 화면",
+              value: `[교육상담 상세 보기](${adminUrl})`,
               inline: false,
             },
           ],
