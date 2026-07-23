@@ -107,7 +107,7 @@ export default function MicrositeFloatingMenu() {
 
       <div className="floating-actions">
         <a href="#report-contact" aria-label="교육 상담 문의">
-          <span>교육 상담 문의하기</span>
+          <span>교육 상담</span>
           <MailIcon />
         </a>
         <Link href="/#about" aria-label="강사 프로필">

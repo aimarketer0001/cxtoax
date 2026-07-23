@@ -12,6 +12,18 @@ const SCALE_LABELS = ["전혀 아니다", "아니다", "보통", "그렇다", "�
 const QUESTIONS_PER_PAGE = 5;
 const SEC_PER_Q = 18; // 남은 시간 추정용
 
+function DiagnosisHeading() {
+  return (
+    <header className="page-head diagnosis-page-head">
+      <p className="badge badge-accent">AI·AX Diagnosis</p>
+      <h1>AI·AX 역량 진단</h1>
+      <p className="muted">
+        20개 문항으로 현재 업무 역량을 확인하고 조직과 실무에 맞는 교육 과정을 추천받으세요.
+      </p>
+    </header>
+  );
+}
+
 export default function DiagnosisPage() {
   const router = useRouter();
   const [questions, setQuestions] = useState<PublicQuestion[]>([]);
@@ -258,12 +270,14 @@ export default function DiagnosisPage() {
   if (loading)
     return (
       <div className="container">
+        <DiagnosisHeading />
         <p>불러오는 중…</p>
       </div>
     );
   if (loadError)
     return (
       <div className="container">
+        <DiagnosisHeading />
         <div className="alert alert-danger">{loadError}</div>
       </div>
     );
@@ -281,6 +295,8 @@ export default function DiagnosisPage() {
       <a className="back-link" href="/">
         ← 홈으로 돌아가기
       </a>
+
+      <DiagnosisHeading />
 
       {resumeAvailable && pageStep === -1 && (
         <div className="alert alert-warning" role="status">

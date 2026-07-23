@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -6,12 +7,15 @@ import {
   SITE_NAME,
   SITE_URL,
   absoluteUrl,
+  organizationSchema,
   seoKeywords,
+  websiteSchema,
 } from "@/lib/site";
 import "./globals.css";
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 const naverVerification = process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION;
+const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -34,8 +38,15 @@ export const metadata: Metadata = {
   },
   verification: {
     ...(googleVerification ? { google: googleVerification } : {}),
-    ...(naverVerification
-      ? { other: { "naver-site-verification": naverVerification } }
+    ...(naverVerification || bingVerification
+      ? {
+          other: {
+            ...(naverVerification
+              ? { "naver-site-verification": naverVerification }
+              : {}),
+            ...(bingVerification ? { "msvalidate.01": bingVerification } : {}),
+          },
+        }
       : {}),
   },
   openGraph: {
@@ -70,6 +81,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+        <JsonLd data={[websiteSchema, organizationSchema]} />
         <main>{children}</main>
       </body>
     </html>

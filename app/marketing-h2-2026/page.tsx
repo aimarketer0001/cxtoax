@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import MarketingHeader from "@/components/MarketingHeader";
 import MicrositeContactForm from "./MicrositeContactForm";
 import MicrositeFloatingMenu from "./MicrositeFloatingMenu";
@@ -425,7 +426,7 @@ const faqs = [
   },
 ];
 
-const pageUrl = "https://cxtoax.vercel.app/marketing-h2-2026";
+const pageUrl = absoluteUrl("/marketing-h2-2026");
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -436,16 +437,19 @@ const articleJsonLd = {
   inLanguage: "ko-KR",
   mainEntityOfPage: pageUrl,
   datePublished: "2026-07-03",
-  dateModified: "2026-07-13",
+  dateModified: "2026-07-22",
+  image: absoluteUrl(OG_IMAGE),
   author: {
     "@type": "Person",
+    "@id": `${absoluteUrl("/instructor/jeon-seonhee")}#person`,
     name: "전선희 Sunny Jun",
-    url: "https://cxtoax.vercel.app/#about",
+    url: absoluteUrl("/instructor/jeon-seonhee"),
   },
   publisher: {
     "@type": "Organization",
+    "@id": `${absoluteUrl("/")}#organization`,
     name: "CX to AX",
-    url: "https://cxtoax.vercel.app",
+    url: absoluteUrl("/"),
   },
   about: [
     "AI 검색 대응",
@@ -471,31 +475,40 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "홈", item: absoluteUrl("/") },
+    { "@type": "ListItem", position: 2, name: "인사이트", item: absoluteUrl("/insights") },
+    { "@type": "ListItem", position: 3, name: "2026 하반기 마케팅 실행 전략 리포트", item: pageUrl },
+  ],
+};
+
 export default function MarketingMicrositePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <JsonLd data={[articleJsonLd, faqJsonLd, breadcrumbJsonLd]} />
+      <a className="skip-link" href="#report-main">본문 바로가기</a>
       <MarketingHeader />
       <MicrositeFloatingMenu />
 
       <nav className="micro-nav" aria-label="하반기 마케팅 캠페인 섹션">
         <div className="micro-nav-inner">
           <a href="#overview">전략 개요</a>
+          <a href="#key-insights">핵심 인사이트</a>
           <a href="#campaign-roadmap">실행 계획</a>
+          <a href="#channels">채널</a>
+          <a href="#ai-tools">AI 활용</a>
+          <a href="#kpi-risk">KPI·리스크</a>
           <a href="#workshop">실행 워크숍</a>
           <a href="#report-contact" className="micro-nav-cta">
-            교육 상담 문의하기
+            교육 상담
           </a>
         </div>
       </nav>
 
+      <div id="report-main">
       <header className="micro-hero" id="overview">
         <div className="microsite-wrap hero-grid">
           <div>
@@ -512,7 +525,7 @@ export default function MarketingMicrositePage() {
               <span>대상 · 마케팅 리더/실무자/교육 담당자</span>
               <span>작성자 · 전선희 Sunny Jun</span>
               <span>발행일 · 2026.07.03</span>
-              <span>최종 업데이트 · 2026.07.13</span>
+              <span>최종 업데이트 · 2026.07.22</span>
               <span>검토 기준 · 첨부 보고서, 강의안, 주요 플랫폼 공식 자료</span>
             </div>
             <div className="hero-actions">
@@ -520,7 +533,7 @@ export default function MarketingMicrositePage() {
                 핵심 인사이트 보기
               </a>
               <a href="#report-contact" className="micro-btn micro-btn-ghost">
-                교육 상담 문의하기
+                교육 상담
               </a>
             </div>
           </div>
@@ -559,7 +572,7 @@ export default function MarketingMicrositePage() {
       <section className="microsite-section" id="key-insights">
         <div className="microsite-wrap">
           <p className="section-kicker">KEY INSIGHTS & CRITERIA</p>
-          <h2>하반기 마케팅 실행을 위한 5가지 인사이트와 리스크 기준</h2>
+          <h2>하반기 마케팅 실행을 위한 6가지 인사이트</h2>
           <p className="section-lead">
             탐색 경로는 광고 클릭에서 끝나지 않습니다. AI 검색, 영상,
             커뮤니티, 메시징, CRM이 함께 작동하며 브랜드가 어떤 구조로
@@ -630,7 +643,16 @@ export default function MarketingMicrositePage() {
             하반기는 구조 정비, 신뢰·모수 축적, 수익화·리텐션 극대화 3단계로
             운영합니다. 월별 메시지를 한 줄로 고정하고 실행 리듬을 반복합니다.
           </p>
-          <div className="timeline-grid">
+          <p className="scroll-hint" id="roadmap-scroll-hint">
+            표는 좌우로 밀어 전체 일정을 확인할 수 있습니다.
+          </p>
+          <div
+            className="timeline-grid"
+            tabIndex={0}
+            role="region"
+            aria-label="7월부터 12월까지의 실행 계획"
+            aria-describedby="roadmap-scroll-hint"
+          >
             {monthlyRoadmap.map((item) => (
               <div className="tl-head" key={`head-${item.month}`}>
                 <span>{item.month}</span>
@@ -692,7 +714,16 @@ export default function MarketingMicrositePage() {
               도구, 데이터를 함께 정리하는 조직이 더 빠르게 움직입니다.
             </p>
           </div>
-          <div className="ai-table-wrap">
+          <div
+            className="ai-table-wrap"
+            tabIndex={0}
+            role="region"
+            aria-label="마케팅 업무별 AI 적용 표"
+            aria-describedby="ai-table-scroll-hint"
+          >
+            <p className="scroll-hint" id="ai-table-scroll-hint">
+              표는 좌우로 밀어 세부 항목을 확인할 수 있습니다.
+            </p>
             <table className="ai-data-table">
               <caption>마케팅 업무별 AI 적용 방식, 기대 효과, 검토 기준</caption>
               <thead>
@@ -746,7 +777,7 @@ export default function MarketingMicrositePage() {
           </div>
           <div className="kpi-cta">
             <a href="#report-contact" className="micro-btn micro-btn-primary">
-              교육 상담 문의하기
+              교육 상담
             </a>
           </div>
         </div>
@@ -882,7 +913,7 @@ export default function MarketingMicrositePage() {
             </div>
             <div className="weekly-action-cta">
               <a href="#report-contact" className="micro-btn micro-btn-primary">
-                교육 상담 문의하기
+                교육 상담
               </a>
               <a href="#key-insights" className="micro-btn micro-btn-outline">
                 핵심 인사이트 보기
@@ -930,7 +961,7 @@ export default function MarketingMicrositePage() {
                 강사 프로필 자세히 보기
               </Link>
               <a href="#report-contact" className="micro-btn micro-btn-primary">
-                교육 상담 문의하기
+                교육 상담
               </a>
             </div>
           </div>
@@ -952,7 +983,7 @@ export default function MarketingMicrositePage() {
                   data-contact-topic={program.title}
                   aria-label={`${program.title} 교육 상담`}
                 >
-                  교육 상담 문의하기
+                  교육 상담
                 </a>
               </article>
             ))}
@@ -979,6 +1010,7 @@ export default function MarketingMicrositePage() {
       </section>
 
       <MicrositeContactForm />
+      </div>
     </>
   );
 }

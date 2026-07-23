@@ -221,7 +221,7 @@ export default function ContactForm() {
         </p>
       )}
       <button className="btn btn-primary" type="submit" disabled={busy}>
-        {busy ? "접수 중..." : "교육 상담 신청하기"}
+        {busy ? "접수 중..." : "상담 신청하기"}
       </button>
     </form>
   );

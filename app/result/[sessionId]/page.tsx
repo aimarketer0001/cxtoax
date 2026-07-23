@@ -172,7 +172,7 @@ export default async function ResultPage({
                   : ""
               }#contact`}
             >
-              진단 결과 기반으로 교육 상담 신청하기 →
+              진단 결과로 교육 상담 →
             </a>
             <a className="btn btn-ghost" href="/#courses">
               전체 교육 과정 보기

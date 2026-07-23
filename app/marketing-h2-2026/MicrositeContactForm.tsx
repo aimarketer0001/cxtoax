@@ -155,69 +155,17 @@ export default function MicrositeContactForm({
             </div>
           </div>
 
-          <div className="form-grid">
-            <div className="field">
-              <label htmlFor="micro-phone">
-                연락처 <span className="req">*</span>
-              </label>
-              <input
-                id="micro-phone"
-                value={phone}
-                onChange={(event) => setPhone(event.target.value)}
-                type="text"
-                autoComplete="tel"
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="micro-email">이메일 (선택)</label>
-              <input
-                id="micro-email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                type="email"
-                autoComplete="email"
-              />
-            </div>
-          </div>
-
           <div className="field">
-            <label htmlFor="micro-topic">
-              관심 주제 <span className="req">*</span>
+            <label htmlFor="micro-phone">
+              연락처 <span className="req">*</span>
             </label>
-            <select
-              id="micro-topic"
-              value={topic}
-              onChange={(event) => setTopic(event.target.value)}
-            >
-              {PROGRAM_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-grid">
-            <div className="field">
-              <label htmlFor="micro-industry">업종/조직 유형</label>
-              <input
-                id="micro-industry"
-                value={industry}
-                onChange={(event) => setIndustry(event.target.value)}
-                type="text"
-                placeholder="예: B2B SaaS, 제조, 교육기관"
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="micro-schedule">희망 일정</label>
-              <input
-                id="micro-schedule"
-                value={schedule}
-                onChange={(event) => setSchedule(event.target.value)}
-                type="text"
-                placeholder="예: 8월 중, 9월 초"
-              />
-            </div>
+            <input
+              id="micro-phone"
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+              type="tel"
+              autoComplete="tel"
+            />
           </div>
 
           <div className="field">
@@ -231,6 +179,60 @@ export default function MicrositeContactForm({
               placeholder="예: 하반기 캠페인 메시지, CRM 자동화, 콘텐츠 운영을 함께 정리하는 교육이 필요합니다."
             />
           </div>
+
+          <details className="optional-fields">
+            <summary>추가 정보 입력 (선택)</summary>
+            <div className="optional-fields-body">
+              <div className="form-grid">
+                <div className="field">
+                  <label htmlFor="micro-email">이메일</label>
+                  <input
+                    id="micro-email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    type="email"
+                    autoComplete="email"
+                  />
+                </div>
+                <div className="field">
+                  <label htmlFor="micro-topic">관심 주제</label>
+                  <select
+                    id="micro-topic"
+                    value={topic}
+                    onChange={(event) => setTopic(event.target.value)}
+                  >
+                    {PROGRAM_OPTIONS.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div className="form-grid">
+                <div className="field">
+                  <label htmlFor="micro-industry">업종/조직 유형</label>
+                  <input
+                    id="micro-industry"
+                    value={industry}
+                    onChange={(event) => setIndustry(event.target.value)}
+                    type="text"
+                    placeholder="예: B2B SaaS, 제조, 교육기관"
+                  />
+                </div>
+                <div className="field">
+                  <label htmlFor="micro-schedule">희망 일정</label>
+                  <input
+                    id="micro-schedule"
+                    value={schedule}
+                    onChange={(event) => setSchedule(event.target.value)}
+                    type="text"
+                    placeholder="예: 8월 중, 9월 초"
+                  />
+                </div>
+              </div>
+            </div>
+          </details>
 
           <div className="bot-field" aria-hidden="true">
             <label htmlFor="micro-website">웹사이트</label>
@@ -282,7 +284,7 @@ export default function MicrositeContactForm({
             </p>
           )}
           <button className="contact-submit" type="submit" disabled={busy}>
-            {busy ? "접수 중..." : "교육 상담 신청하기"}
+            {busy ? "접수 중..." : "상담 신청하기"}
           </button>
         </form>
       </div>

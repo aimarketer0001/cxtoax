@@ -27,17 +27,31 @@
   "@graph": [
     {
       "@type": "WebSite",
+      "@id": "https://cxtoax.vercel.app/#website",
       "name": "CX to AX",
       "url": "https://cxtoax.vercel.app",
       "inLanguage": "ko-KR",
-      "description": "CRM·Salesforce 실무 경험을 기반으로 한 AI·AX 교육 및 컨설팅 사이트"
+      "description": "CRM·Salesforce 실무 경험을 기반으로 한 AI·AX 교육 및 컨설팅 사이트",
+      "publisher": { "@id": "https://cxtoax.vercel.app/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cxtoax.vercel.app/#organization",
+      "name": "CX to AX",
+      "url": "https://cxtoax.vercel.app/",
+      "logo": "https://cxtoax.vercel.app/og-image.png",
+      "description": "CRM·Salesforce 컨설팅 경험을 바탕으로 기업과 실무자를 위한 AI·AX 전환 교육과 업무 자동화 교육을 제공합니다.",
+      "founder": { "@id": "https://cxtoax.vercel.app/instructor/jeon-seonhee#person" }
     },
     {
       "@type": "Person",
+      "@id": "https://cxtoax.vercel.app/instructor/jeon-seonhee#person",
       "name": "전선희",
       "alternateName": "Sunny Jun",
-      "url": "https://cxtoax.vercel.app/profile",
+      "url": "https://cxtoax.vercel.app/instructor/jeon-seonhee",
+      "image": "https://cxtoax.vercel.app/instructor.jpg",
       "jobTitle": "CRM·AI·AX 전문강사 및 컨설턴트",
+      "worksFor": { "@id": "https://cxtoax.vercel.app/#organization" },
       "knowsAbout": ["CRM", "Salesforce", "AI", "AX", "생성형 AI", "바이브코딩", "AI 마케팅", "고객경험"]
     },
     {
@@ -48,9 +62,11 @@
           "position": 1,
           "item": {
             "@type": "Course",
+            "@id": "https://cxtoax.vercel.app/courses/crm-ai-automation#course",
             "name": "AI로 고객관리(CRM) 업무 자동화하기",
             "description": "CRM 업무 흐름을 AI로 자동화하는 실무형 AX 교육 과정",
-            "provider": { "@type": "Organization", "name": "CX to AX", "sameAs": "https://cxtoax.vercel.app" }
+            "url": "https://cxtoax.vercel.app/courses/crm-ai-automation",
+            "provider": { "@id": "https://cxtoax.vercel.app/#organization" }
           }
         },
         {
@@ -58,9 +74,11 @@
           "position": 2,
           "item": {
             "@type": "Course",
+            "@id": "https://cxtoax.vercel.app/courses/customer-service-generative-ai#course",
             "name": "고객 상담 업무에 생성형 AI 적용하기",
             "description": "응대 스크립트와 FAQ 자동화를 실습하는 생성형 AI 교육 과정",
-            "provider": { "@type": "Organization", "name": "CX to AX", "sameAs": "https://cxtoax.vercel.app" }
+            "url": "https://cxtoax.vercel.app/courses/customer-service-generative-ai",
+            "provider": { "@id": "https://cxtoax.vercel.app/#organization" }
           }
         },
         {
@@ -68,9 +86,11 @@
           "position": 3,
           "item": {
             "@type": "Course",
+            "@id": "https://cxtoax.vercel.app/courses/sales-ai-automation#course",
             "name": "영업 실무자를 위한 AI",
             "description": "제안서, 영업 메일, 미팅 준비 자동화를 다루는 실무 교육 과정",
-            "provider": { "@type": "Organization", "name": "CX to AX", "sameAs": "https://cxtoax.vercel.app" }
+            "url": "https://cxtoax.vercel.app/courses/sales-ai-automation",
+            "provider": { "@id": "https://cxtoax.vercel.app/#organization" }
           }
         }
       ]
@@ -82,22 +102,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>
   :root {
-    --navy: #18243D;
-    --navy-soft: #2A3754;
-    --cobalt: #2878F0;
-    --cobalt-hover: #1765D8;
-    --cobalt-light: #EEF4FF;
+    --navy: #1C3D5A;
+    --navy-soft: #31526C;
+    --cobalt: #1C3D5A;
+    --cobalt-hover: #15304A;
+    --cobalt-light: #EAE5DA;
     --white: #FFFFFF;
-    --off: #F7F9FC;
-    --ink: #15213A;
-    --gray: #59657A;
-    --line: #D8E0EB;
-    --amber: #B7791F;
-    --radius: 6px;
-    --maxw: 1080px;
-    --section-py: 88px;
-    --card-shadow: 0 8px 24px rgba(24,36,61,0.08);
-    --card-shadow-hover: 0 12px 32px rgba(24,36,61,0.12);
+    --off: #F5F3EE;
+    --ink: #16130F;
+    --gray: #6B6558;
+    --line: #E2DDD0;
+    --amber: #D97757;
+    --coral-text: #A34D35;
+    --radius: 4px;
+    --maxw: 1180px;
+    --section-py: 110px;
+    --card-shadow: none;
+    --card-shadow-hover: 0 16px 36px rgba(28,61,90,0.10);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -128,6 +149,7 @@
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
     height: 72px;
+    position: relative;
   }
   .nav-logo { font-weight: 800; font-size: 22px; text-decoration: none; color: #fff; }
   .nav-logo span { color: #7EA0F5; }
@@ -142,13 +164,51 @@
     white-space: nowrap; height: 44px; display: inline-flex; align-items: center;
   }
   .nav-cta:hover { background: var(--cobalt-hover); }
+  .nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--navy);
+    cursor: pointer;
+  }
+  .nav-toggle span { width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-toggle:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
   nav.scrolled { box-shadow: 0 4px 20px rgba(24,36,61,0.20); transition: box-shadow 0.25s ease; }
   @media (max-width: 720px) {
     .nav-inner { gap: 14px; }
-    .nav-links { gap: 14px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .nav-links a { white-space: nowrap; flex: none; }
-    .nav-links .nav-cta { display: none; }
-    .nav-links a[href="/portfolio"] { display: none; }
+    .nav-toggle { display: inline-flex; }
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      display: grid;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      border: 0 solid var(--line);
+      border-radius: 0 0 4px 4px;
+      background: rgba(245,243,238,.98);
+      box-shadow: 0 18px 36px rgba(28,61,90,.12);
+      transition: max-height .22s ease, opacity .18s ease, border-width .18s ease;
+    }
+    .nav-links.open { max-height: 360px; opacity: 1; pointer-events: auto; border-width: 1px; }
+    .nav-links a { display: block; width: 100%; padding: 13px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    .nav-links a:last-child { border-bottom: 0; }
+    .nav-links .nav-cta { display: block; width: auto; margin: 8px; text-align: center; }
   }
 
   /* ---------- Hero ---------- */
@@ -678,22 +738,23 @@
     display: none;
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
     padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-    background: rgba(14, 27, 44, 0.96);
+    background: rgba(245, 243, 238, 0.97);
     backdrop-filter: blur(6px);
-    border-top: 1px solid rgba(126, 160, 245, 0.25);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -10px 30px rgba(28,61,90,.10);
     transform: translateY(0);
     transition: transform 0.25s ease;
   }
   .mobile-cta.hidden { transform: translateY(110%); }
   .mobile-cta a {
     flex: 1; display: block; text-align: center; text-decoration: none;
-    background: transparent; border: 1.5px solid rgba(255,255,255,0.45); color: #fff;
-    font-weight: 700; font-size: 16px;
-    padding: 14px; border-radius: 10px;
+    background: transparent; border: 1px solid var(--navy); color: var(--navy);
+    font-weight: 700; font-size: 15px;
+    padding: 13px; border-radius: 2px;
   }
-  .mobile-cta a:active { border-color: rgba(255,255,255,0.7); }
-  .mobile-cta .mc-diag { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
-  .mobile-cta .mc-diag:active { background: #1b46c4; border-color: #1b46c4; }
+  .mobile-cta a:active { background: #eae5da; }
+  .mobile-cta .mc-diag { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .mobile-cta .mc-diag:active { background: var(--cobalt-hover); border-color: var(--cobalt-hover); }
   @media (max-width: 720px) {
     .mobile-cta { display: flex; gap: 8px; }
     body { padding-bottom: 74px; }
@@ -709,6 +770,21 @@
   .f-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 600px) { .f-grid { grid-template-columns: 1fr; } }
   .f-field { margin-bottom: 16px; }
+  .f-optional {
+    margin: 4px 0 18px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--off);
+  }
+  .f-optional summary {
+    padding: 14px 16px;
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .f-optional-body { padding: 2px 16px 2px; border-top: 1px solid var(--line); }
+  .f-optional summary:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
   .f-field label {
     display: block; font-size: 13.5px; font-weight: 700; color: var(--ink); margin-bottom: 7px;
     transition: color 0.15s ease;
@@ -786,10 +862,10 @@
   /* ---------- Syllabus detail views ---------- */
   .syllabus-view { display: none; padding: 48px 0 80px; }
   body.syllabus-mode > nav { display: block; }
-  body.syllabus-mode > header,
-  body.syllabus-mode > section:not(.syllabus-view),
+  body.syllabus-mode > main > header,
+  body.syllabus-mode > main > section:not(.syllabus-view),
   body.syllabus-mode > footer { display: none; }
-  body.syllabus-mode > .syllabus-view.active { display: block; }
+  body.syllabus-mode > main > .syllabus-view.active { display: block; }
   .syl-back {
     display: inline-block; text-decoration: none; font-size: 14px; font-weight: 600;
     color: var(--cobalt); margin-bottom: 26px;
@@ -811,8 +887,9 @@
   }
 
   /* subtle reveal */
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.on { opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.reveal-ready { opacity: 0; transform: translateY(16px); }
+  .reveal.reveal-ready.on { opacity: 1; transform: none; }
   section, header { scroll-margin-top: 80px; }
   .anchor-alias { display:block; position:relative; top:-80px; visibility:hidden; height:0; }
   .expertise-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
@@ -833,22 +910,381 @@
     .expertise-grid { grid-template-columns:1fr; }
     .insight-card { grid-template-columns:1fr; }
   }
+
+  /* ---------- 2026 editorial redesign ---------- */
+  ::selection { background: var(--amber); color: #fff; }
+  .wrap { padding-left: 40px; padding-right: 40px; }
+  nav {
+    background: rgba(245,243,238,0.92);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+  .nav-inner { height: 74px; }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--navy);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+  .nav-logo-copy { display: block; color: var(--navy) !important; white-space: nowrap; }
+  .nav-logo-copy > span { color: var(--amber); }
+  .nav-tagline {
+    display: block;
+    margin-top: 3px;
+    color: #6b6558;
+    font-size: 12.5px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .nav-links a { color: #4a453d; font-size: 15px; font-weight: 400; }
+  .nav-links a:hover,
+  .nav-links a:focus-visible { color: var(--navy); }
+  .nav-cta {
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 2px;
+    background: var(--navy);
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
+  nav.scrolled { box-shadow: 0 8px 24px rgba(28,61,90,0.08); }
+
+  header.hero {
+    padding: 110px 0 90px;
+    border-bottom: 0;
+    background: var(--off);
+  }
+  .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 56px; }
+  .eyebrow {
+    padding: 0;
+    margin-bottom: 22px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--coral-text);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .12em;
+  }
+  .hero h1 {
+    max-width: 650px;
+    margin-bottom: 26px;
+    color: var(--ink);
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.32;
+  }
+  .hero h1 em { color: var(--navy); }
+  .hero p.lead { max-width: 540px; margin-bottom: 20px; color: #5c574c; font-size: 16.5px; line-height: 1.85; }
+  .btn { border-radius: 2px; box-shadow: none; font-weight: 600; }
+  .btn-primary { background: var(--navy); box-shadow: none; }
+  .btn-ghost { border-color: var(--navy); background: transparent; color: var(--navy); }
+  .btn-ghost:hover { background: #eae5da; }
+  .hero-trust-row {
+    display: flex;
+    gap: 40px;
+    max-width: none;
+    margin-top: 36px;
+    padding-top: 32px;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+  }
+  .hero-trust-metric { align-items: flex-start; padding: 0; border: 0; text-align: left; }
+  .hero-trust-metric strong { margin-bottom: 4px; color: var(--navy); font-size: 28px; font-weight: 700; }
+  .hero-trust-metric strong span { color: var(--navy); }
+  .hero-trust-metric em { color: #8a8578; font-size: 13px; }
+  .record-card {
+    position: relative;
+    z-index: 1;
+    padding: 32px;
+    border-radius: 6px;
+    box-shadow: 0 20px 50px -20px rgba(28,61,90,.25);
+  }
+  .record-card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -20px -20px 20px 20px;
+    border: 1px solid var(--amber);
+    border-radius: 4px;
+  }
+  .record-head { color: #8a8578; border: 0; margin-bottom: 12px; padding: 0; text-transform: none; }
+  .score-ring { display: block; margin: 0 0 18px; }
+  .score-circle { width: auto; height: auto; display: inline-flex; flex-direction: row; gap: 5px; background: none; }
+  .score-circle::before { display: none; }
+  .score-circle strong { color: var(--navy); font-size: 44px; font-weight: 700; }
+  .score-circle span { align-self: flex-end; padding-bottom: 7px; color: #8a8578; font-size: 16px; }
+  .score-title { margin-top: 8px; color: #3a352c; font-size: 14px; }
+  .score-note { color: var(--coral-text); font-size: 13px; }
+  .score-bar { color: #4a453d; font-weight: 400; }
+  .score-bar span[role="progressbar"] { background: #eae5da; }
+  .score-bar span[role="progressbar"]::before { background: var(--navy); }
+  .score-bar:last-child span[role="progressbar"]::before { background: var(--amber); }
+  .diff-note { border-color: var(--line); background: var(--off); color: #6b6558; }
+
+  section { padding: 110px 0; }
+  .sec-eyebrow { margin-bottom: 16px; color: var(--coral-text); font-size: 14px; font-weight: 600; letter-spacing: .1em; }
+  h2 { color: var(--ink); font-size: 32px; font-weight: 700; letter-spacing: -.02em; }
+  h3 { color: var(--ink); }
+  .sec-lead { color: #6b6558; font-size: 15px; line-height: 1.8; }
+  #pain,
+  .edu-faq { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  #about,
+  #proof,
+  #programs,
+  #insights { background: var(--off); }
+  .pain-grid { gap: 1px; border: 1px solid var(--line); background: var(--line); }
+  .pain-card { padding: 36px; border: 0; border-radius: 0; box-shadow: none; }
+  .pain-card:hover { box-shadow: none; transform: none; }
+  .pain-card .q { color: var(--amber); }
+  .pain-card p { color: #3a352c; font-weight: 400; line-height: 1.75; }
+  .pain-answer { max-width: 800px; margin: 42px auto 0; padding: 0; background: transparent; color: #3a352c; text-align: center; font-weight: 400; }
+  .pain-answer strong { color: var(--navy); }
+  .story-body p { color: #3a352c; font-size: 15.5px; line-height: 1.85; }
+  .story-cta { padding: 32px; border-radius: 4px; background: var(--navy); }
+  .story-cta p { color: #f0ede4; }
+  .story-cta strong { color: #fff; }
+  .story-cta .mono { color: #e8935f !important; }
+  .career-table th { color: #8a8578; }
+  .career-table td:first-child { color: var(--amber); }
+  #expertise { background: var(--navy); }
+  #expertise h2 { color: #fff; }
+  #expertise .sec-eyebrow { color: #e8935f; }
+  #expertise .sec-lead { color: #b8c4cf; }
+  .expertise-grid { gap: 1px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.16); }
+  .expertise-card { padding: 36px 32px; border: 0; border-radius: 0; background: var(--navy); box-shadow: none; }
+  .expertise-card:hover { box-shadow: none; transform: none; }
+  .expertise-card .icon { width: auto; height: auto; justify-content: flex-start; margin-bottom: 12px; border-radius: 0; background: transparent; color: #e8935f; font-size: 12px; }
+  .expertise-card h3 { color: #fff; font-size: 17px; }
+  .expertise-card p { color: #b8c4cf; }
+  .expertise-card span { padding: 0; border: 0; border-radius: 0; background: transparent; color: #8fa3b5; }
+  .case-card,
+  .course-card,
+  .insight-card,
+  .edu-faq-list details { border-radius: 4px; box-shadow: none; }
+  .case-card:hover,
+  .course-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-1px); }
+  .case-tag,
+  .course-kicker { color: var(--coral-text); }
+  #diagnosis-cta { background: #fff !important; color: var(--ink) !important; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  #diagnosis-cta h2 { color: var(--ink) !important; }
+  #diagnosis-cta .sec-eyebrow { color: var(--coral-text) !important; }
+  #diagnosis-cta .sec-lead { color: #6b6558 !important; }
+  #diagnosis-cta .wrap {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    column-gap: 72px;
+    align-items: start;
+  }
+  #diagnosis-cta .wrap > .sec-eyebrow,
+  #diagnosis-cta .wrap > h2,
+  #diagnosis-cta .wrap > .sec-lead,
+  #diagnosis-cta .wrap > .btn { grid-column: 1; }
+  #diagnosis-cta .wrap > .btn { justify-self: start; }
+  #diagnosis-cta .diag-steps {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 0 !important;
+  }
+  #diagnosis-cta .diag-steps > div {
+    padding: 24px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 4px !important;
+    background: var(--off) !important;
+  }
+  #diagnosis-cta .diag-steps strong { color: var(--ink); }
+  #diagnosis-cta .diag-steps span { color: #6b6558 !important; }
+  .course-meta span,
+  .edu-faq-tag { border-radius: 2px; background: #eae5da; color: var(--navy); }
+  .insight-preview,
+  .cta-final { background: var(--navy); }
+  .cta-final .sec-eyebrow { color: #e8935f !important; }
+  .insight-preview .mono { color: #e8935f; }
+  .cta-final { padding: 110px 0; }
+  .f-card,
+  .contact-form-card { border-radius: 4px !important; }
+  footer { background: var(--off); color: #6b6558; }
+  footer .wrap > div { color: #6b6558 !important; }
+  .skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 200;
+    padding: 10px 14px;
+    border-radius: 2px;
+    background: var(--navy);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(-160%);
+  }
+  .skip-link:focus { transform: translateY(0); }
+
+  @media (max-width: 860px) {
+    .wrap { padding-left: 24px; padding-right: 24px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+    .record-card { max-width: 560px; }
+    .hero h1 { font-size: 40px; }
+    .hero-trust-row { flex-wrap: wrap; }
+    #diagnosis-cta .wrap { grid-template-columns: 1fr; }
+    #diagnosis-cta .diag-steps {
+      grid-column: 1;
+      grid-row: auto;
+      margin: 10px 0 32px !important;
+    }
+  }
+  @media (max-width: 640px) {
+    :root { --section-py: 72px; }
+    .wrap { padding-left: 20px; padding-right: 20px; }
+    .nav-inner { height: 66px; }
+    .nav-tagline { display: none; }
+    .nav-logo { font-size: 17px; }
+    header.hero { padding: 68px 0 72px; }
+    .hero h1 { font-size: 30px; }
+    .hero-trust-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .record-card::before { inset: -12px -12px 12px 12px; }
+    section { padding: 72px 0; }
+    h2 { font-size: 27px; }
+    .pain-card { padding: 28px 24px; }
+    .expertise-card { padding: 30px 24px; }
+    .cta-final { padding: 72px 0; }
+  }
+
+  /* ---------- spacing and mobile readability polish ---------- */
+  .hero p.lead,
+  .sec-lead,
+  .pain-card p,
+  .story-body p,
+  .expertise-card p,
+  .edu-faq-list p {
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 860px) {
+    header.hero { padding: 84px 0 80px; }
+    .hero-grid { gap: 44px; }
+    section { padding: 84px 0; }
+    .story-grid { gap: 40px; }
+    .sec-lead { margin-bottom: 36px; }
+  }
+
+  @media (max-width: 640px) {
+    body {
+      line-height: 1.75;
+      overflow-wrap: break-word;
+    }
+
+    .nav-inner { height: 64px; }
+    .nav-links a { padding: 14px 16px; }
+
+    header.hero { padding: 56px 0 64px; }
+    .hero-grid { gap: 38px; }
+    .eyebrow { margin-bottom: 14px; font-size: 12.5px; }
+    .hero h1 { margin-bottom: 18px; font-size: 30px; line-height: 1.38; }
+    .hero p.lead { margin-bottom: 26px; font-size: 15.5px; line-height: 1.78; }
+
+    .hero .btn-row,
+    .story-cta .btn-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .hero .btn,
+    .story-cta .btn {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 12px 18px;
+      text-align: center;
+    }
+
+    .hero-trust-row { gap: 20px 16px; margin-top: 30px; padding-top: 26px; }
+    .hero-trust-metric strong { font-size: 25px; }
+    .hero-trust-metric em { font-size: 12.5px; line-height: 1.5; }
+
+    .record-card { padding: 22px 20px; }
+    .record-card::before { inset: -8px -8px 8px 8px; }
+    .score-circle strong { font-size: 38px; }
+
+    section,
+    .cta-final { padding: 64px 0; }
+    .sec-eyebrow { margin-bottom: 12px; font-size: 12.5px; }
+    h2 { margin-bottom: 14px; font-size: 26px; line-height: 1.42; }
+    .sec-lead { margin-bottom: 30px; font-size: 15.5px; line-height: 1.78; }
+
+    .pain-card,
+    .expertise-card { padding: 24px 20px; }
+    .pain-card p,
+    .story-body p,
+    .expertise-card p,
+    .edu-faq-list p { font-size: 15px; line-height: 1.75; }
+    .pain-answer { margin-top: 30px; font-size: 15.5px; line-height: 1.75; }
+
+    .story-grid { gap: 32px; }
+    .photo-ph { max-width: 420px; }
+    .story-cta,
+    .insight-card,
+    .insight-preview { padding: 22px 20px; }
+
+    #diagnosis-cta .diag-steps { margin: 4px 0 26px !important; }
+    #diagnosis-cta .diag-steps > div { padding: 20px !important; }
+
+    .edu-faq-list { margin-top: 26px; }
+    .edu-faq-list details { padding: 16px; }
+    .edu-faq-list summary { line-height: 1.55; }
+    .edu-faq-tag { flex-basis: 78px; padding: 4px 8px; }
+
+    .form-card { padding: 24px 18px; }
+    .contact-row { gap: 10px; }
+    .contact-btn { justify-content: center; width: 100%; min-height: 48px; }
+  }
+
+  @media (max-width: 380px) {
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .hero h1 { font-size: 28px; }
+    h2 { font-size: 24px; }
+    .hero-trust-row { grid-template-columns: 1fr; }
+    .record-card::before { display: none; }
+  }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">본문 바로가기</a>
+
 <nav>
   <div class="wrap nav-inner">
-    <a class="nav-logo" href="/">CX <span>to</span> AX</a>
-    <div class="nav-links">
+    <a class="nav-logo" href="/" aria-label="CX to AX 홈">
+      <span class="nav-logo-copy">CX <span>to</span> AX<small class="nav-tagline">고객경험에서 AI 전환으로</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <div class="nav-links" id="site-menu">
       <a href="#about">소개</a>
       <a href="#expertise">전문분야</a>
       <a href="#programs">교육 과정</a>
       <a href="#insights">인사이트</a>
-      <a class="nav-cta" href="#contact">교육 상담 문의하기</a>
+      <a class="nav-cta" href="#contact">교육 상담</a>
     </div>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
@@ -858,8 +1294,8 @@
       <h1>CRM 현장을 이해하는 강사가,<br><em>AI로 일하는 방식</em>을 함께 설계합니다.</h1>
       <p class="lead">대기업 CRM 프로젝트에서 쌓은 고객 접점 경험을 바탕으로, 영업·상담·마케팅 업무에 바로 적용할 수 있는 AX·업무 자동화 교육을 진행합니다.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="/diagnosis">역량 진단 시작하기</a>
-        <a class="btn btn-ghost" href="/contact">교육 상담 문의하기</a>
+        <a class="btn btn-primary" href="/diagnosis">AI 역량 진단</a>
+        <a class="btn btn-ghost" href="/contact">교육 상담</a>
       </div>
       <p style="font-size:13px; color:var(--gray); margin-top:14px;">교육 목적과 대상에 맞춰 커리큘럼과 실습 구성을 제안드립니다.</p>
       <div class="hero-trust-row" aria-label="강사 실적 요약">
@@ -969,8 +1405,9 @@
           <div class="mono" style="font-size:11px; color:#7EA0F5; letter-spacing:0.08em; margin-bottom:10px;">WHY "CX TO AX"</div>
           <p>저는 고객경험<strong>(CX)</strong> 현장에서 업무 흐름을 설계해 왔고, 이제 그 흐름에 AI 전환<strong>(AX)</strong>을 연결하는 교육을 합니다. 기준은 같습니다. <strong>고객을 만나는 현업에서 실제로 작동해야 한다는 것</strong>입니다.</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="/courses">실무형 교육 과정 보기</a>
-            <a class="btn btn-ghost" href="/contact">교육 상담 문의하기</a>
+            <a class="btn btn-primary" href="/instructor/jeon-seonhee">전선희 강사 프로필 보기</a>
+            <a class="btn btn-ghost" href="/courses">실무형 교육 과정 보기</a>
+            <a class="btn btn-ghost" href="/contact">교육 상담</a>
           </div>
         </div>
       </div>
@@ -1055,7 +1492,7 @@
         <span style="font-size:14px; color:#B9C6D8;">추천 과정과 조직 상황을 바탕으로 상담 접수</span>
       </div>
     </div>
-    <a class="btn btn-primary" href="/diagnosis">역량 진단 시작하기 →</a>
+    <a class="btn btn-primary" href="/diagnosis">AI 역량 진단 →</a>
   </div>
 </section>
 <style>
@@ -1076,7 +1513,7 @@
           <span class="case-tag">COURSE 01 · 고객관리</span>
           <h3>AI로 고객관리(CRM) 업무 자동화하기 — 실무자를 위한 AX 첫걸음</h3>
         </div>
-        <a class="btn btn-primary course-detail-btn" href="#syllabus-1">상세 커리큘럼 보기 →</a>
+        <a class="btn btn-primary course-detail-btn" href="/courses/crm-ai-automation">CRM 업무 자동화 과정 상세 보기 →</a>
       </div>
       <div class="course-meta">
         <span>대상 · 영업·CS·마케팅 실무자, 기업 교육 담당자</span>
@@ -1106,7 +1543,7 @@
           <span class="case-tag">COURSE 02 · 고객상담</span>
           <h3>고객 상담 업무에 생성형 AI 적용하기 — 응대 스크립트·FAQ 자동화</h3>
         </div>
-        <a class="btn btn-primary course-detail-btn" href="#syllabus-2">상세 커리큘럼 보기 →</a>
+        <a class="btn btn-primary course-detail-btn" href="/courses/customer-service-generative-ai">고객상담 AI 과정 상세 보기 →</a>
       </div>
       <div class="course-meta">
         <span>대상 · 상담·CS 조직 실무자와 관리자</span>
@@ -1136,7 +1573,7 @@
           <span class="case-tag">COURSE 03 · 영업</span>
           <h3>영업 실무자를 위한 AI — 제안서·영업 메일·미팅 준비 자동화</h3>
         </div>
-        <a class="btn btn-primary course-detail-btn" href="#syllabus-3">상세 커리큘럼 보기 →</a>
+        <a class="btn btn-primary course-detail-btn" href="/courses/sales-ai-automation">영업 AI 자동화 과정 상세 보기 →</a>
       </div>
       <div class="course-meta">
         <span>대상 · B2B 영업 실무자, 영업 관리자</span>
@@ -1252,33 +1689,36 @@
           <span class="f-field-err" id="fq-org-err">소속을 입력해 주세요.</span>
         </div>
       </div>
-      <div class="f-grid">
-        <div class="f-field" id="ff-phone">
-          <label for="fq-phone">연락처 <span class="req">*</span></label>
-          <input id="fq-phone" type="tel" placeholder="010-0000-0000" autocomplete="tel" required>
-          <span class="f-field-err" id="fq-phone-err">연락처를 입력해 주세요.</span>
-        </div>
-        <div class="f-field">
-          <label for="fq-email">이메일 <span class="opt">(선택)</span></label>
-          <input id="fq-email" type="email" placeholder="example@email.com" autocomplete="email">
-        </div>
-      </div>
-      <div class="f-field">
-        <label for="fq-purpose">문의 목적 <span class="opt">(선택)</span></label>
-        <select id="fq-purpose">
-          <option value="">선택해 주세요</option>
-          <option>대표 교육 과정 문의 (고객관리·상담·영업 AI)</option>
-          <option>기타 교육 주제 문의 (전체 30개 주제)</option>
-          <option>특강·행사 강연 문의</option>
-          <option>커리큘럼 맞춤 상담</option>
-          <option>기타</option>
-        </select>
+      <div class="f-field" id="ff-phone">
+        <label for="fq-phone">연락처 <span class="req">*</span></label>
+        <input id="fq-phone" type="tel" placeholder="010-0000-0000" autocomplete="tel" required>
+        <span class="f-field-err" id="fq-phone-err">연락처를 입력해 주세요.</span>
       </div>
       <div class="f-field" id="ff-msg">
         <label for="fq-msg">문의 내용 <span class="req">*</span></label>
         <textarea id="fq-msg" placeholder="교육 대상, 희망 일정, 예상 인원, 해결하고 싶은 업무 문제를 적어주세요." required></textarea>
         <span class="f-field-err" id="fq-msg-err">문의 내용을 입력해 주세요.</span>
       </div>
+      <details class="f-optional">
+        <summary>추가 정보 입력 <span class="opt">(선택)</span></summary>
+        <div class="f-optional-body">
+          <div class="f-field">
+            <label for="fq-email">이메일 <span class="opt">(선택)</span></label>
+            <input id="fq-email" type="email" placeholder="example@email.com" autocomplete="email">
+          </div>
+          <div class="f-field">
+            <label for="fq-purpose">문의 목적 <span class="opt">(선택)</span></label>
+            <select id="fq-purpose">
+              <option value="">선택해 주세요</option>
+              <option>대표 교육 과정 문의 (고객관리·상담·영업 AI)</option>
+              <option>기타 교육 주제 문의 (전체 30개 주제)</option>
+              <option>특강·행사 강연 문의</option>
+              <option>커리큘럼 맞춤 상담</option>
+              <option>기타</option>
+            </select>
+          </div>
+        </div>
+      </details>
       <div class="bot-field" aria-hidden="true">
         <label for="fq-website">웹사이트</label>
         <input id="fq-website" type="text" tabindex="-1" autocomplete="off">
@@ -1294,7 +1734,7 @@
         <input id="fq-privacy" type="checkbox">
         <span>개인정보 수집·이용 안내를 확인했으며 교육 상담 회신을 위한 정보 제공에 동의합니다.</span>
       </label>
-      <button type="button" class="f-submit" id="fq-submit">교육 상담 신청하기</button>
+      <button type="button" class="f-submit" id="fq-submit">상담 신청하기</button>
       <p class="f-status" id="fq-status" role="status" aria-live="polite">교육 상담 내용을 접수하고 있습니다...</p>
       <p class="f-error" id="fq-error">이름, 소속, 연락처, 문의 내용을 입력해 주세요.</p>
       <p style="font-size:12.5px; color:var(--gray); margin-top:12px; text-align:center;">접수 내용은 교육 상담 회신을 위해 보관됩니다.</p>
@@ -1354,7 +1794,7 @@
     <div class="syl-note">본 커리큘럼은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
 
     <div style="margin-top:34px;">
-      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담 문의하기</a>
+      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담</a>
       <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 과정 보기</a>
     </div>
   </div>
@@ -1401,7 +1841,7 @@
     <div class="syl-note">본 커리큘럼은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
 
     <div style="margin-top:34px;">
-      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담 문의하기</a>
+      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담</a>
       <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 과정 보기</a>
     </div>
   </div>
@@ -1448,7 +1888,7 @@
     <div class="syl-note">본 커리큘럼은 표준안입니다. 사전 미팅에서 조직의 업무 특성과 교육 목표를 확인한 뒤, 모듈 구성과 실습 예제를 귀사 업무에 맞춰 조정해 드립니다.</div>
 
     <div style="margin-top:34px;">
-      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담 문의하기</a>
+      <a class="btn btn-primary syl-inquiry" href="#contact">교육 상담</a>
       <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">다른 과정 보기</a>
     </div>
   </div>
@@ -1545,11 +1985,13 @@
     </div>
     <div class="syl-note">이 목록에 없는 주제도 고객 접점·CRM·AI 활용 범위라면 협의 후 개설 가능합니다. 조직의 교육 목표를 알려주시면 적합한 주제와 구성을 제안드립니다.</div>
     <div style="margin-top:34px;">
-      <a class="btn btn-primary" href="#contact">교육 상담 문의하기</a>
+      <a class="btn btn-primary" href="#contact">교육 상담</a>
       <a class="btn" style="border:1px solid var(--line); color:var(--ink); margin-left:8px;" href="#courses">대표 과정 보기</a>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
@@ -1559,11 +2001,31 @@
 </footer>
 
 <div class="mobile-cta" id="mobile-cta" aria-hidden="false">
-  <a href="/diagnosis" class="mc-diag">역량 진단 시작하기</a>
-  <a href="#contact">교육 상담 문의하기</a>
+  <a href="/diagnosis" class="mc-diag">AI 역량 진단</a>
+  <a href="#contact">교육 상담</a>
 </div>
 
 <script>
+  // 모바일 내비게이션
+  (function () {
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('site-menu');
+    if (!toggle || !menu) return;
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+      menu.classList.toggle('open', open);
+    }
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  })();
+
   // 모바일 하단 CTA: 히어로 버튼 또는 문의 폼이 보이면 숨김
   (function () {
     const bar = document.getElementById('mobile-cta');
@@ -1660,7 +2122,7 @@
         if (status) status.style.display = 'none';
         if (btn) {
           btn.disabled = false;
-          btn.textContent = '교육 상담 신청하기';
+          btn.textContent = '상담 신청하기';
         }
         sendInquiry.busy = false;
         return;
@@ -1676,7 +2138,7 @@
       if (status) status.style.display = 'none';
       if (btn) {
         btn.disabled = false;
-        btn.textContent = '교육 상담 신청하기';
+        btn.textContent = '상담 신청하기';
       }
       if (status) {
         status.textContent = '교육 상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.';
@@ -1690,7 +2152,7 @@
       if (status) status.style.display = 'none';
       if (btn) {
         btn.disabled = false;
-        btn.textContent = '교육 상담 신청하기';
+        btn.textContent = '상담 신청하기';
       }
       sendInquiry.busy = false;
     }
@@ -1787,6 +2249,7 @@
   // 스크롤 시 부드러운 등장 (reduced motion 존중)
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const targets = document.querySelectorAll('.reveal');
+  targets.forEach(el => el.classList.add('reveal-ready'));
   if (prefersReduced || !('IntersectionObserver' in window)) {
     targets.forEach(el => el.classList.add('on'));
   } else {

@@ -4,7 +4,7 @@
   "private": true,
   "description": "수강 전 역량 진단 및 맞춤 교육 추천 서비스 (MVP)",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 127.0.0.1 -p 3001",
     "build": "next build",
     "build:free": "prisma generate --schema prisma/schema.free.prisma && next build",
     "build:vercel": "node scripts/vercel-build.mjs",

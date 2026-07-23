@@ -73,6 +73,18 @@ export default function InsightsPage() {
             <li>바이브 코딩 방식의 AI 서비스 기획</li>
           </ul>
         </section>
+
+        <section className="card" style={{ marginTop: 16 }}>
+          <h2>관련 실무 교육 과정</h2>
+          <p className="muted">
+            인사이트의 CRM 자동화와 고객 접점 AI 활용을 실제 업무 예제로 연습할 수 있습니다.
+          </p>
+          <div className="stack">
+            <Link href="/courses/crm-ai-automation">AI로 고객관리(CRM) 업무 자동화하기</Link>
+            <Link href="/courses/customer-service-generative-ai">고객 상담 업무에 생성형 AI 적용하기</Link>
+            <Link href="/courses/sales-ai-automation">영업 실무자를 위한 AI 자동화</Link>
+          </div>
+        </section>
       </div>
     </>
   );

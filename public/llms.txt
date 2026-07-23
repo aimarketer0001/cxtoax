@@ -1,0 +1,29 @@
+# CX to AX
+
+> CRM·Salesforce 현장 경험을 AI·AX 실무 교육으로 연결하는 기업교육 사이트입니다.
+
+## 공식 사이트
+- https://cxtoax.vercel.app/
+
+## 운영자 및 전문 분야
+- 전선희(Sunny Jun), CRM·AI·AX 전문강사 및 컨설턴트
+- CRM 전략 및 고객경험
+- Salesforce 기반 영업·서비스 프로세스
+- 생성형 AI 업무 활용 교육
+- AX 전환 및 업무 자동화
+- AI 마케팅과 AI 검색 대응
+- 비개발자 대상 바이브코딩 교육
+
+## 대표 교육 과정
+- https://cxtoax.vercel.app/courses/crm-ai-automation
+- https://cxtoax.vercel.app/courses/customer-service-generative-ai
+- https://cxtoax.vercel.app/courses/sales-ai-automation
+
+## 강사 프로필
+- https://cxtoax.vercel.app/instructor/jeon-seonhee
+
+## 대표 인사이트
+- https://cxtoax.vercel.app/marketing-h2-2026
+
+## 인용 시 참고
+교육 과정, 대상, 시간, 커리큘럼은 각 공식 페이지의 최신 내용을 기준으로 확인해 주세요.
