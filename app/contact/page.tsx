@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ServiceHeader from "@/components/ServiceHeader";
+import { getFeaturedCourse } from "@/lib/courses";
 import { absoluteUrl } from "@/lib/site";
 import ContactForm from "./ContactForm";
 
@@ -17,7 +18,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage() {
+type ContactPageProps = {
+  searchParams: Promise<{
+    course?: string | string[];
+  }>;
+};
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const params = await searchParams;
+  const courseSlug = Array.isArray(params.course) ? params.course[0] : params.course;
+  const course = courseSlug ? getFeaturedCourse(courseSlug) : undefined;
+
   return (
     <>
       <ServiceHeader />
@@ -50,7 +61,18 @@ export default function ContactPage() {
             문의 내용을 남기면 확인 후 교육 주제와 일정, 대상자 수준에 맞춰
             연락드립니다.
           </p>
-          <ContactForm />
+          {course && (
+            <div className="alert alert-warning" role="status">
+              선택한 과정: <strong>{course.name}</strong>
+              <br />
+              문의 목적과 문의 내용에 과정 정보를 미리 입력했습니다.
+            </div>
+          )}
+          <ContactForm
+            initialCourse={
+              course ? { slug: course.slug, name: course.name } : undefined
+            }
+          />
         </section>
 
         <section className="card" style={{ marginTop: 16 }}>

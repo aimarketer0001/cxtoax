@@ -12,13 +12,31 @@ const TOPIC_OPTIONS = [
 
 type FieldErrors = { name?: string; org?: string; phone?: string; message?: string };
 
-export default function ContactForm() {
+type ContactFormProps = {
+  initialCourse?: {
+    slug: string;
+    name: string;
+  };
+};
+
+function buildInitialMessage(course?: ContactFormProps["initialCourse"]) {
+  if (!course) return "";
+
+  return `[${course.name}] 과정 상담을 요청합니다.
+
+교육 대상:
+희망 일정:
+예상 인원:
+해결하고 싶은 업무 과제:`;
+}
+
+export default function ContactForm({ initialCourse }: ContactFormProps) {
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [topic, setTopic] = useState("");
-  const [message, setMessage] = useState("");
+  const [topic, setTopic] = useState(initialCourse ? TOPIC_OPTIONS[0] : "");
+  const [message, setMessage] = useState(() => buildInitialMessage(initialCourse));
   const [website, setWebsite] = useState("");
   const [privacyConsent, setPrivacyConsent] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -132,7 +150,7 @@ export default function ContactForm() {
           id="contact-email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          type="text"
+          type="email"
           autoComplete="email"
         />
       </div>
