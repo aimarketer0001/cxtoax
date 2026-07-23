@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ApiErrors } from "@/lib/api";
 import { prisma } from "@/lib/db";
+import { notifyDiscordOfInquiry } from "@/lib/discord";
 
 type InquiryBody = {
   source?: string;
@@ -36,6 +37,11 @@ export async function POST(req: NextRequest) {
   const phone = clean(body.phone, 80);
   const message = clean(body.message, 2000);
   const honeypot = clean(body.website, 160);
+  const source = clean(body.source, 40) ?? "landing";
+  const email = clean(body.email, 160);
+  const topic = clean(body.topic, 160);
+  const industry = clean(body.industry, 160);
+  const schedule = clean(body.schedule, 160);
 
   if (honeypot) {
     return NextResponse.json({ ok: true });
@@ -54,18 +60,32 @@ export async function POST(req: NextRequest) {
   try {
     const inquiry = await prisma.consultationInquiry.create({
       data: {
-        source: clean(body.source, 40) ?? "landing",
+        source,
         name,
         org,
         phone,
         message,
-        email: clean(body.email, 160),
-        topic: clean(body.topic, 160),
-        industry: clean(body.industry, 160),
-        schedule: clean(body.schedule, 160),
+        email,
+        topic,
+        industry,
+        schedule,
       },
       select: { id: true, createdAt: true },
     });
+
+    try {
+      await notifyDiscordOfInquiry({
+        id: inquiry.id,
+        createdAt: inquiry.createdAt,
+        source,
+        topic,
+      });
+    } catch (notificationError) {
+      console.error(
+        `consultation inquiry Discord notification failed (${inquiry.id})`,
+        notificationError
+      );
+    }
 
     return NextResponse.json({
       ok: true,
