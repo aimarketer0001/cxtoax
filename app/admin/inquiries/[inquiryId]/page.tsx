@@ -31,8 +31,11 @@ export default async function AdminInquiryDetailPage({
 }: {
   params: Promise<{ inquiryId: string }>;
 }) {
-  if (!(await isAdminSession())) redirect("/admin/login");
   const { inquiryId } = await params;
+  if (!(await isAdminSession())) {
+    const nextPath = `/admin/inquiries/${encodeURIComponent(inquiryId)}`;
+    redirect(`/admin/login?next=${encodeURIComponent(nextPath)}`);
+  }
 
   const inquiry = await prisma.consultationInquiry.findUnique({
     where: { id: inquiryId },

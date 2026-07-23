@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { safeAdminRedirect } from "@/lib/adminRedirect";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -23,7 +24,8 @@ export default function AdminLoginPage() {
         setError("비밀번호가 올바르지 않습니다.");
         return;
       }
-      router.push("/admin");
+      const nextPath = new URLSearchParams(window.location.search).get("next");
+      router.push(safeAdminRedirect(nextPath));
       router.refresh();
     } catch {
       setError("로그인 중 오류가 발생했습니다.");
